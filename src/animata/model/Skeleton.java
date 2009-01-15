@@ -223,6 +223,7 @@ public class Skeleton {
 		}
 
 		public void setScale(Float value) {
+			setTempo(0);
 			value = PApplet.constrain(value, 0f, 1f);
 			animateScale(value);
 		}

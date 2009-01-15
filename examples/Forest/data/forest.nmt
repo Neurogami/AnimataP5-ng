@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <animata version="0.004">
     <layer name="forest" x="0.000000" y="0.000000" z="78.000000" alpha="1.000000" scale="1.000000" vis="1">
-        <layer name="pianotree" x="-661.755127" y="-515.643921" z="114.000000" alpha="1.000000" scale="2.020000" vis="1">
+        <layer name="pianotree" x="-661.755127" y="-515.643921" z="54.000000" alpha="1.000000" scale="2.020000" vis="1">
             <layer name="tree" x="0.000000" y="0.000000" z="1.000000" alpha="1.000000" scale="1.000000" vis="1">
                 <texture location="pianotreebetter.png" x="0.000000" y="0.000000" scale="1.000000" />
                 <mesh>

@@ -8,17 +8,19 @@ import animata.model.Mesh.Vertex;
 public class MeshView extends ViewBase {
 
 	private final Layer layer;
+	//private PFont font;
 
 	public MeshView(PApplet applet, Layer layer) {
 		super(applet);
+		//if(font == null) font = applet.loadFont("Helvetica.vlw");
 		this.layer = layer;
 	}
-
 	public void draw() {
-
 		drawFaces(layer.mesh.faces);
+//		applet.textFont(font);
+//		applet.fill(0);
+//		applet.text(layer.name,0,0,100,40,1);
 	}
-
 	private void drawFaces(Face[] faces) {
 		for (int i = 0; i < faces.length; i++) {
 			Face face = faces[i];

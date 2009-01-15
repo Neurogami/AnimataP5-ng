@@ -20,8 +20,6 @@ public class LayerView extends ViewBase {
 		addChildLayers(layer.layers);
 	}
 
-
-
 	private void addChildLayers(ArrayList<Layer> layers) {
 		this.layers = new ArrayList<LayerView>();
 		for (Layer layer : layers) {
@@ -35,31 +33,25 @@ public class LayerView extends ViewBase {
 		doTransformation();
 		applet.pushMatrix();
 		drawMesh();
-		drawSkeleton();
+		drawChildLayers();
 		applet.popMatrix();
 
-		drawChildLayers();
 		applet.popMatrix();
 	}
 	private void drawChildLayers() {
 		for (LayerView layerView : layers) {
 			layerView.draw();
 		}
-
 	}
 
 	private void drawMesh() {
 		if(mesh!= null) mesh.draw();
 	}
-	private void drawSkeleton() {
-
-	}
-
 
 	// this is like the calcTransformationMatrix method from the original, but called during draw
 	private void doTransformation() {
-		applet.scale(layer.scale,layer.scale,1);
 		applet.translate(layer.x, layer.y,layer.z);
+		applet.scale(layer.scale,layer.scale,1);
 	}
 
 }
