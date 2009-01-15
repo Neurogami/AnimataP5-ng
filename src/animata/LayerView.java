@@ -2,29 +2,13 @@ package animata;
 
 import java.util.ArrayList;
 
+import animata.model.Mesh;
+
 import processing.core.PApplet;
 import processing.xml.XMLElement;
 
 public class LayerView extends ViewBase{
 
-	public class Mesh {
-
-		public Mesh(XMLElement child) {
-			addVertices(child.getChildren("vertices/vertex"));
-			addFaces(child.getChildren("faces/face"));
-		}
-
-		private void addVertices(XMLElement[] children) {
-			System.out.println("adding " + children.length + " children");
-
-		}
-
-		private void addFaces(XMLElement[] children) {
-
-
-		}
-
-	}
 
 
 	public class Texture {
@@ -67,6 +51,7 @@ public class LayerView extends ViewBase{
 	private void setupLayer(XMLElement element) {
 		texture = new Texture(element.getChild("texture"));
 		mesh = new Mesh(element.getChild("mesh"));
+
 	}
 
 
