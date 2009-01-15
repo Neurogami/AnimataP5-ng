@@ -1,6 +1,7 @@
 package animata;
 
 import processing.core.PApplet;
+import processing.xml.XMLElement;
 
 public class AnimataPlayback {
 	private final PApplet applet;
@@ -15,7 +16,8 @@ public class AnimataPlayback {
 		addScene(xml, root);
 	}
 	public void addScene(String xml, LayerView parent){
-
+		XMLElement element= new XMLElement(applet, xml);
+		parent.addLayers(element.getChildren("layer"));
 	}
 	public void draw(){
 
