@@ -7,7 +7,7 @@ public class Forest extends PApplet{
 
 	AnimataPlayback playback;
 	public void setup() {
-	  size(1600,1100, OPENGL);
+	  size(950,614, OPENGL);
 	  playback = new AnimataPlayback(this);
 	  playback.addScene("forest.nmt");
 	}
