@@ -34,7 +34,7 @@ public class Skeleton {
 			float alpha = PApplet.atan2(y1 - y0, x1 - x0);
 			float dx = (x1 - x0);
 			float dy = (y1 - y0);
-			float dCurrent = PApplet.sqrt(dx*dx + dy*dy);
+//			float dCurrent = PApplet.sqrt(dx*dx + dy*dy);
 			float x = x0 + dx * 0.5f;
 			float y = y0 + dy * 0.5f;
 
@@ -143,7 +143,7 @@ public class Skeleton {
 		public void simulate() {
 			if (tempo > 0)
 			{
-				time += tempo / 42.0f;	// FIXME
+				time += tempo / AnimataPlayback.timeDivision;	// FIXME
 				animateScale(0.5f + PApplet.sin(time) * 0.5f);
 			}
 
@@ -201,7 +201,7 @@ public class Skeleton {
 //			}
 			dx /= dCurrent;
 			dy /= dCurrent;
-			
+
 			if(attachedVertices == null) return;
 			for (AttachedVertex v : attachedVertices) {
 				float vx = v.vertex.x;

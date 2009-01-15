@@ -5,6 +5,7 @@ import processing.core.PApplet;
 import processing.xml.XMLElement;
 
 public class AnimataPlayback {
+	public static final float timeDivision = 42f;
 	public static float gravity = 0;
 	private final PApplet applet;
 	private Layer root;
