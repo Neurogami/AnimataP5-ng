@@ -1,0 +1,12 @@
+Not sure how far I'll get, but it feels vaguely possible to take the view stuff from Animata (http://animata.kibu.hu) and render it as part of a wider scene using Processing. I'm having a go anyway.
+
+Usage will be something like:
+
+AnimataPlayback playback;
+void setup(){
+	 playback = new AnimataPlayback(this);
+	 playback.addScene("myscene.nmt");
+}
+void draw(){
+	// drawn automatically or called manually, we'll see
+}
