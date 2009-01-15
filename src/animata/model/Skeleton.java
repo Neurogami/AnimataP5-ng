@@ -1,9 +1,11 @@
 package animata.model;
 
-import animata.AnimataPlayback;
-import animata.model.Mesh.Vertex;
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 import processing.xml.XMLElement;
+import animata.AnimataPlayback;
+import animata.model.Mesh.Vertex;
 
 public class Skeleton {
 
@@ -79,7 +81,7 @@ public class Skeleton {
 		private float scale;
 		private float maxScale;
 		private float minScale;
-		private float tempo;
+		public Float tempo;
 		private float radius;
 		private boolean selected;
 		private float size;
@@ -216,6 +218,17 @@ public class Skeleton {
 			}
 		}
 
+		public void setTempo(float value) {
+			tempo = value;
+		}
+
+		public void setScale(Float value) {
+			value = PApplet.constrain(value, 0f, 1f);
+			animateScale(value);
+		}
+
+
+
 	}
 
 	public class Joint {
@@ -246,6 +259,8 @@ public class Skeleton {
 	private Bone[] bones;
 	private final Mesh mesh;
 
+	private static ArrayList<Bone> allBones = new ArrayList<Bone>();
+
 	public Skeleton(XMLElement child, Mesh mesh) {
 		this.mesh = mesh;
 		addJoints(child.getChildren("joints/joint"));
@@ -258,6 +273,7 @@ public class Skeleton {
 			XMLElement element = children[i];
 			Bone bone = new Bone(element);
 			bones[i] = bone;
+			allBones.add(bone);
 		}
 	}
 
@@ -282,6 +298,14 @@ public class Skeleton {
 			}
 		}
 
+	}
+
+	public static ArrayList<Bone> findBones(String name) {
+		ArrayList<Bone> result = new ArrayList<Bone>();
+		for (Bone bone : allBones) {
+			if(bone.name.equals(name)) result.add(bone);
+		}
+		return result;
 	}
 
 }

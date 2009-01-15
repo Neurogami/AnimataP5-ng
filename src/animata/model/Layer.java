@@ -64,7 +64,7 @@ public class Layer{
 		name = element.getStringAttribute("name");
 		x = element.getFloatAttribute("x");
 		y = element.getFloatAttribute("y");
-		z = element.getFloatAttribute("z");
+		z = - element.getFloatAttribute("z");
 		alpha = element.getFloatAttribute("alpha");
 		scale = element.getFloatAttribute("scale");
 		visible = element.getIntAttribute("vis") == 1;
@@ -73,7 +73,9 @@ public class Layer{
 	private void setupLayerContents(XMLElement element) {
 		texture = new Texture(element.getChild("texture"));
 		mesh = new Mesh(element.getChild("mesh"));
-		skeleton = new Skeleton(element.getChild("skeleton"), mesh);
+		XMLElement skeletonElement = element.getChild("skeleton");
+		if(skeletonElement == null) return;
+		skeleton = new Skeleton(skeletonElement, mesh);
 	}
 
 	public void addLayers(XMLElement[] children) {

@@ -3,17 +3,17 @@ package test;
 import animata.AnimataPlayback;
 import processing.core.PApplet;
 import processing.opengl.*;
-public class AddScene extends PApplet{
+public class Forest extends PApplet{
 
 	AnimataPlayback playback;
 	public void setup() {
-	  size(400,400, OPENGL);
+	  size(1600,1100, OPENGL);
 	  playback = new AnimataPlayback(this);
-	  playback.addScene("violaplayer.nmt");
+	  playback.addScene("forest.nmt");
 	}
 
 	public void draw() {
-	  background(0);
+	  background(255);
 	  playback.draw();
 	}
 
