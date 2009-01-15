@@ -13,7 +13,6 @@ public class AnimataPlayback {
 
 	public AnimataPlayback(PApplet applet){
 		this.applet = applet;
-		this.applet.registerDraw(this);
 		this.applet.hint(PApplet.ENABLE_OPENGL_2X_SMOOTH);
 		root = new Layer();
 	}
