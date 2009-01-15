@@ -83,5 +83,13 @@ public class Layer{
 		}
 	}
 
+	public void simulate() {
+		if(skeleton != null) skeleton.simulate(40);
+		for (Layer layer : layers) {
+			layer.simulate();
+		}
+
+	}
+
 
 }

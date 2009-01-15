@@ -184,7 +184,7 @@
                 <joint x="347.276855" y="-114.027451" fixed="1" selected="0" />
             </joints>
             <bones>
-                <bone j0="5" j1="4" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="53.108875" selected="0" radius="1.000000">
+                <bone j0="5" j1="4" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="1.000000" time="1.570796" size="53.108875" selected="0" radius="1.000000">
                     <attached>
                         <vertex id="40" d="16.772774" w="0.368363" ca="16.610260" sa="2.329212" />
                         <vertex id="41" d="4.179230" w="0.842616" ca="-4.140466" sa="0.567894" />
@@ -197,7 +197,7 @@
                         <vertex id="48" d="39.250481" w="0.010000" ca="-36.793694" sa="13.668371" />
                     </attached>
                 </bone>
-                <bone j0="0" j1="1" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="58.611191" selected="0" radius="1.000000">
+                <bone j0="0" j1="1" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="1.000000" time="1.570796" size="58.611191" selected="0" radius="1.000000">
                     <attached>
                         <vertex id="3" d="23.236731" w="0.207089" ca="-19.961285" sa="-11.895074" />
                         <vertex id="4" d="13.056404" w="0.554474" ca="-2.595147" sa="-12.795894" />
@@ -209,7 +209,7 @@
                         <vertex id="33" d="29.417366" w="0.010000" ca="29.051088" sa="4.627709" />
                     </attached>
                 </bone>
-                <bone j0="1" j1="2" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="68.494370" selected="0" radius="1.000000">
+                <bone j0="1" j1="2" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="1.000000" time="1.570796" size="68.494370" selected="0" radius="1.000000">
                     <attached>
                         <vertex id="6" d="26.547359" w="0.224831" ca="-24.940916" sa="-9.094666" />
                         <vertex id="7" d="14.308496" w="0.582199" ca="-11.046266" sa="-9.094672" />
@@ -222,7 +222,7 @@
                         <vertex id="35" d="22.690050" w="0.337462" ca="22.655457" sa="1.252464" />
                     </attached>
                 </bone>
-                <bone j0="2" j1="3" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="24.907532" selected="0" radius="1.000000">
+                <bone j0="2" j1="3" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="1.000000" time="1.570796" size="24.907532" selected="0" radius="1.000000">
                     <attached>
                         <vertex id="10" d="22.445719" w="0.010000" ca="-20.923611" sa="8.124826" />
                         <vertex id="49" d="13.181298" w="0.010000" ca="5.994106" sa="-11.739562" />
@@ -230,7 +230,7 @@
                         <vertex id="51" d="23.913641" w="0.010000" ca="1.528093" sa="23.864769" />
                     </attached>
                 </bone>
-                <bone j0="8" j1="9" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="38.005745" selected="0" radius="1.000000">
+                <bone j0="8" j1="9" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="1.000000" time="1.570796" size="38.005745" selected="0" radius="1.000000">
                     <attached>
                         <vertex id="53" d="71.126488" w="0.010000" ca="56.053394" sa="-43.783489" />
                         <vertex id="54" d="70.270485" w="0.010000" ca="61.978611" sa="33.114841" />
@@ -239,7 +239,7 @@
                         <vertex id="57" d="56.679478" w="0.010000" ca="-17.796173" sa="-53.813190" />
                     </attached>
                 </bone>
-                <bone j0="5" j1="10" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="52.832211" selected="0" radius="1.000000">
+                <bone j0="5" j1="10" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="1.000000" time="1.570796" size="52.832211" selected="0" radius="1.000000">
                     <attached>
                         <vertex id="58" d="26.736315" w="0.010000" ca="-24.889860" sa="9.763472" />
                         <vertex id="59" d="31.960062" w="0.010000" ca="-31.838058" sa="2.789916" />
@@ -252,8 +252,8 @@
                         <vertex id="73" d="25.637669" w="0.029468" ca="25.637630" sa="-0.044362" />
                     </attached>
                 </bone>
-                <bone j0="10" j1="11" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="21.111761" selected="0" radius="1.000000" />
-                <bone j0="11" j1="12" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="158.584564" selected="0" radius="1.000000">
+                <bone j0="10" j1="11" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="1.000000" time="1.570796" size="21.111761" selected="0" radius="1.000000" />
+                <bone j0="11" j1="12" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="1.000000" time="1.570796" size="158.584564" selected="0" radius="1.000000">
                     <attached>
                         <vertex id="64" d="114.008484" w="0.010000" ca="-113.705597" sa="-8.304940" />
                         <vertex id="65" d="100.775810" w="0.010000" ca="-100.642891" sa="5.174264" />

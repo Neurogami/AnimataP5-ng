@@ -5,6 +5,7 @@ import processing.core.PApplet;
 import processing.xml.XMLElement;
 
 public class AnimataPlayback {
+	public static float gravity = 0;
 	private final PApplet applet;
 	private Layer root;
 	private LayerView layersView;
@@ -24,6 +25,7 @@ public class AnimataPlayback {
 		layersView = new LayerView(root, applet);
 	}
 	public void draw(){
+		root.simulate();
 		applet.textureMode(PApplet.NORMAL);
 		applet.noStroke();
 		applet.translate(-200, 0,0);
