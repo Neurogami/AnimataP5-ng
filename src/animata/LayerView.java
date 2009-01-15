@@ -3,6 +3,7 @@ package animata;
 import java.util.ArrayList;
 
 import animata.model.Mesh;
+import animata.model.Skeleton;
 
 import processing.core.PApplet;
 import processing.xml.XMLElement;
@@ -32,6 +33,14 @@ public class LayerView extends ViewBase{
 	private ArrayList<LayerView>layers = new ArrayList<LayerView>();
 	private Texture texture;
 	private Mesh mesh;
+	private Skeleton skeleton;
+	private String name;
+	private float x;
+	private float y;
+	private float z;
+	private float alpha;
+	private float scale;
+	private boolean visible;
 
 	public LayerView(PApplet applet) {
 		super(applet);
@@ -39,19 +48,34 @@ public class LayerView extends ViewBase{
 
 	public LayerView(PApplet applet, XMLElement element) {
 		super(applet);
+
+		setupAttributes(element);
+
 		XMLElement[] innerLayers = element.getChildren("layer");
 		if(innerLayers.length > 0){
 			addLayers(innerLayers);
 		}else{
-			setupLayer(element);
+			setupLayerContents(element);
 		}
 
 	}
 
-	private void setupLayer(XMLElement element) {
+	private void setupAttributes(XMLElement element) {
+		name = element.getStringAttribute("name");
+		x = element.getFloatAttribute("x");
+		y = element.getFloatAttribute("y");
+		z = element.getFloatAttribute("z");
+		alpha = element.getFloatAttribute("alpha");
+		scale = element.getFloatAttribute("scale");
+		visible = element.getIntAttribute("vis") == 1;
+
+	}
+
+	private void setupLayerContents(XMLElement element) {
+
 		texture = new Texture(element.getChild("texture"));
 		mesh = new Mesh(element.getChild("mesh"));
-
+		skeleton = new Skeleton(element.getChild("skeleton"), mesh);
 	}
 
 

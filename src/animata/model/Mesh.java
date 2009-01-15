@@ -4,16 +4,15 @@ import processing.xml.XMLElement;
 
 public class Mesh {
 	public class Face {
-		private int v0;
-		private int v1;
-		private int v2;
+		private Vertex v0;
+		private Vertex v1;
+		private Vertex v2;
 
 		public Face(XMLElement element) {
-			v0 = element.getIntAttribute("v0");
-			v1 = element.getIntAttribute("v1");
-			v2 = element.getIntAttribute("v2");
+			v0 = vertices[element.getIntAttribute("v0")];
+			v1 = vertices[element.getIntAttribute("v1")];
+			v2 = vertices[element.getIntAttribute("v2")];
 		}
-
 	}
 
 	public class Vertex {
@@ -30,11 +29,10 @@ public class Mesh {
 			v = element.getFloatAttribute("v");
 			selected = element.getIntAttribute("selected");
 		}
-
 	}
 
-	private Vertex[] vertices;
-	private Face[] faces;
+	protected Vertex[] vertices;
+	protected Face[] faces;
 
 	public Mesh(XMLElement child) {
 		addVertices(child.getChildren("vertices/vertex"));
@@ -58,5 +56,6 @@ public class Mesh {
 			faces[i] = face;
 		}
 	}
+
 
 }
