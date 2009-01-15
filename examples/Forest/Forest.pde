@@ -1,16 +1,19 @@
+import oscP5.*;
+import netP5.*;
+
 import processing.opengl.*;
 
 import animata.*;
 AnimataPlayback playback;
 PImage viola;
 void setup() {
-  size(400,400,OPENGL);
+  size(950,614,OPENGL);
   hint(ENABLE_OPENGL_4X_SMOOTH);
   playback = new AnimataPlayback(this);
-  playback.addScene("violaplayer.nmt");
+  playback.addScene("forest.nmt");
 }
 
 void draw() {
-  background(0);
+  background(255);
   playback.draw();
 }

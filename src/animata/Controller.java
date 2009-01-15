@@ -86,8 +86,6 @@ public class Controller {
 
 	private boolean animateBone(OscMessage message) {
 		ArrayList<Bone> bones = Skeleton.findBones((String) message.arguments()[0]);
-		System.out.println("gona animate " + bones.size() + " bones ");
-		message.print();
 		for (Bone bone : bones) {
 			bone.setScale((Float) message.arguments()[1]);
 		}
