@@ -225,7 +225,6 @@ public class Skeleton {
 		public void setScale(Float value) {
 			setTempo(0);
 			value = PApplet.constrain(value, 0f, 1f);
-			
 			animateScale(value);
 		}
 
@@ -307,6 +306,7 @@ public class Skeleton {
 		for (Bone bone : allBones) {
 			if(bone.name.equals(name)) result.add(bone);
 		}
+		if(result.size() == 0) System.out.println("sorry, couldn't find a bone called " + name);
 		return result;
 	}
 

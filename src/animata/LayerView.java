@@ -9,14 +9,12 @@ public class LayerView extends ViewBase {
 
 	private final Layer layer;
 	private MeshView mesh;
-	private SkeletonView skeleton;
 	private ArrayList<LayerView> layers;
 
 	public LayerView(Layer layer, PApplet applet) {
 		super(applet);
 		this.layer = layer;
 		if(layer.mesh != null) mesh = new MeshView(applet,layer);
-		if(layer.skeleton != null) skeleton = new SkeletonView(applet,layer.skeleton);
 		addChildLayers(layer.layers);
 	}
 

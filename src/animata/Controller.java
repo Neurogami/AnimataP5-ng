@@ -2,94 +2,65 @@ package animata;
 
 import java.util.ArrayList;
 
-import oscP5.OscArgument;
-import oscP5.OscMessage;
-import oscP5.OscP5;
 import processing.core.PApplet;
-import animata.model.*;
+import animata.model.Layer;
+import animata.model.Skeleton;
 import animata.model.Skeleton.Bone;
 
 public class Controller {
 
-	private OscP5 oscP5;
-	private final PApplet applet;
+	private static Controller instance;
 	private final AnimataPlayback animataPlayback;
 
 	public Controller(PApplet applet, Layer root, AnimataPlayback animataPlayback) {
-		this.applet = applet;
 		this.animataPlayback = animataPlayback;
-		oscP5 = new OscP5(this, 7110);// 12000);
-
-		// NetAddress netAddress = new NetAddress(NetInfo.getHostAddress(),
-		// 7110);
 	}
 
-	void oscEvent(OscMessage message) {
-		boolean result = run(message);
-		if (!result) {
-			System.out.println("failed to respond to message " + message.addrPattern());
-			message.print();
-		}
-	}
-
-	/*
-	 * "/bonetempo") == 0 "/joint") == 0) "/layervis") == 0) "/layeralpha") ==
-	 * "/layerpos") == 0) "/layerdeltapos") "/cameradeltazoom"
-	 * "/cameradeltapan")
-	 */
-	private boolean run(OscMessage message) {
-		String type = message.addrPattern();
-		if (type.equals("/anibone")) return animateBone(message);
-		if (type.equals("/bonetempo")) return setBoneTempo(message);
-		if (type.equals("/joint")) return setJoint(message);
-		if (type.equals("/layervis")) return setLayerVisibility(message);
-		if (type.equals("/layerpos")) return setLayerPosition(message);
-		if (type.equals("/cameradeltazoom")) return cameraDeltaZoom(message);
-		if (type.equals("/cameradeltapan")) return cameraDeltaPan(message);
-		System.out.println("no handler defined for type " + type);
-		return false;
-	}
-
-	private boolean cameraDeltaPan(OscMessage message) {
-		return false;
-	}
-
-	private boolean cameraDeltaZoom(OscMessage message) {
-		float delta  = (Float) message.arguments()[0];
-		animataPlayback.setMoveCameraZ(delta);
+	public boolean cameraDeltaPan(float delta) {
+		animataPlayback.panCameraX(delta);
 		return true;
 	}
 
-	private boolean setLayerPosition(OscMessage message) {
-		// TODO Auto-generated method stub
+	public boolean cameraDeltaZoom(float delta) {
+		animataPlayback.zoomCamera(delta);
+		return true;
+	}
+
+	public boolean setLayerPosition(String layer, float x, float y, float z) {
 		return false;
 	}
 
-	private boolean setLayerVisibility(OscMessage message) {
-		// TODO Auto-generated method stub
+	public boolean setLayerVisibility(String layer, boolean visible) {
 		return false;
 	}
 
-	private boolean setJoint(OscMessage message) {
-		// TODO Auto-generated method stub
+	public boolean setJoint(String joint, float x, float y, float z) {
 		return false;
 	}
 
-	private boolean setBoneTempo(OscMessage message) {
-		// name, value
-		ArrayList<Bone> bones = Skeleton.findBones((String) message.arguments()[0]);
+	public boolean setBoneTempo(String name, Float tempo) {
+		ArrayList<Bone> bones = Skeleton.findBones(name);
 		for (Bone bone : bones) {
-			bone.setTempo((Float) message.arguments()[1]);
+			bone.setTempo(tempo);
 		}
 		return true;
 	}
 
-	private boolean animateBone(OscMessage message) {
-		ArrayList<Bone> bones = Skeleton.findBones((String) message.arguments()[0]);
+	public boolean animateBone(String name, float scale) {
+		ArrayList<Bone> bones = Skeleton.findBones(name);
 		for (Bone bone : bones) {
-			bone.setScale((Float) message.arguments()[1]);
+			bone.setScale(scale);
 		}
 		return true;
+	}
+
+	public static Controller getInstance() {
+		return instance;
+	}
+
+	public static void init(PApplet applet, Layer root, AnimataPlayback animataPlayback) {
+		instance = new Controller(applet,root,animataPlayback);
+
 	}
 
 }

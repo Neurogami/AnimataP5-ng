@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/opengl/library/jogl.jar"/>
 	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/oscP5/library/oscP5.jar"/>
 	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/opengl/library/opengl.jar"/>
+	<classpathentry kind="lib" path="/Applications/Processing.app/Contents/Resources/Java/libraries/rwmidi/library/rwmidi.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

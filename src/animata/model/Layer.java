@@ -1,5 +1,6 @@
 package animata.model;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.vecmath.Matrix3d;
@@ -18,8 +19,8 @@ public class Layer{
 		public float scale;
 		public PImage image;
 
-		public Texture(XMLElement child) {
-			location = child.getStringAttribute("location");
+		public Texture(XMLElement child, String folder) {
+			location = folder + File.separator + child.getStringAttribute("location");
 			x = child.getFloatAttribute("x");
 			y = child.getFloatAttribute("y");
 			scale = child.getFloatAttribute("scale");
@@ -46,17 +47,17 @@ public class Layer{
 	public Layer() {
 	}
 
-	public Layer(XMLElement element) {
+	public Layer(XMLElement element, String folder) {
 		setupAttributes(element);
-		addChildLayersIfPresent(element);
+		addChildLayersIfPresent(element, folder);
 	}
 
-	private void addChildLayersIfPresent(XMLElement element) {
+	private void addChildLayersIfPresent(XMLElement element, String folder) {
 		XMLElement[] innerLayers = element.getChildren("layer");
 		if(innerLayers.length > 0){
-			addLayers(innerLayers);
+			addLayers(innerLayers,folder);
 		}else{
-			setupLayerContents(element);
+			setupLayerContents(element,folder);
 		}
 	}
 
@@ -70,18 +71,18 @@ public class Layer{
 		visible = element.getIntAttribute("vis") == 1;
 	}
 
-	private void setupLayerContents(XMLElement element) {
-		texture = new Texture(element.getChild("texture"));
+	private void setupLayerContents(XMLElement element, String folder) {
+		texture = new Texture(element.getChild("texture"), folder);
 		mesh = new Mesh(element.getChild("mesh"));
 		XMLElement skeletonElement = element.getChild("skeleton");
 		if(skeletonElement == null) return;
 		skeleton = new Skeleton(skeletonElement, mesh);
 	}
 
-	public void addLayers(XMLElement[] children) {
+	public void addLayers(XMLElement[] children, String folder) {
 		for (int i = 0; i < children.length; i++) {
 			XMLElement element = children[i];
-			layers.add(new Layer(element));
+			layers.add(new Layer(element,folder));
 		}
 	}
 

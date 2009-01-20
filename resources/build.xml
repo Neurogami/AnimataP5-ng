@@ -1,12 +1,12 @@
-<project name="processingLibs" default="build" basedir="../">
-    
+<project name='processingLibs' default='build' basedir='../'>
+
 	<description>
         processingLibs. ant build file.
     </description>
 
-	
+
 <!-- #### (1) where are your processing libraries located? edit location. #### -->
-	<property name="processing" location="/Users/michaelforrest/Documents/Processing/libraries"/>
+	<property name='processing' location='/Users/michaelforrest/Documents/Processing/libraries'/>
 
 
 <!-- #### (2) where are the jar files located that are required for compiling
@@ -42,10 +42,10 @@
 	<property name='copyright' value='(c) 2008'/>
 
 <!-- #### (7) give your library a name. edit value.  #### -->
-	<property name='libraryName' value='Grimonium'/>
+	<property name='libraryName' value='AnimataPlayback'/>
 
 <!-- #### (8) give your library a name. edit value.   #### -->
-	<property name='versionNumber' value='0.1.5'/>
+	<property name='versionNumber' value='0.1.8'/>
 
 <!-- #### (9) your contact url. edit value. #### -->
 	<property name='yourLink' value='http://grimaceworks.com'/>
@@ -74,231 +74,179 @@
 
 
 
-	
-	
-	
-	
+
+
+
+
 	<!-- no changes or adjustments required below -->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+
+
+
+
+
+
+
+
+
+
+	<taskdef resource='net/sf/antcontrib/antcontrib.properties'>
 		<classpath>
-			<pathelement location="./resources/code/ant-contrib-1.0b3.jar"/>
+			<pathelement location='./resources/code/ant-contrib-1.0b3.jar'/>
 		</classpath>
 	</taskdef>
-	<property name="jarFile" value="${libraryName}.jar"/>
-	<property name="src" location="src"/>
-	<property name="bin" location="bin"/>
-	<property name="reference" location="reference"/>
-	<property name="dist" location="distribution"/>
-	
-	
-	
-	<target name="init">
+	<property name='jarFile' value='${libraryName}.jar'/>
+	<property name='src' location='src'/>
+	<property name='bin' location='bin'/>
+	<property name='reference' location='reference'/>
+	<property name='dist' location='distribution'/>
+
+
+
+	<target name='init'>
 	<echo>Properties initialized.
 	src path			${src}
 	bin path 			${bin}
 	libraryClasspath		${libraryClasspath}
 	processing Libraries	${processing}
 	java version		${javaVersion}
-	</echo>		
+	</echo>
 	<echo>building library ...</echo>
 	<!-- Create the time stamp -->
-	<tstamp> 
-		<format property="date" pattern="MM/dd/yyyy" offset="0" unit="hour"/>
+	<tstamp>
+		<format property='date' pattern='MM/dd/yyyy' unit='hour' offset='0'/>
 	</tstamp>
-	<mkdir dir="${dist}"/>
+	<mkdir dir='${dist}'/>
   </target>
-  
+
 	<!-- compile the library -->
-  <target name="compile" depends="init" description="compile the source" >  	
-		<javac srcdir="${src}" destdir="${bin}" source="${javaVersion}">
+  <target name='compile' description='compile the source' depends='init'>
+		<javac srcdir='${src}' destdir='${bin}' source='${javaVersion}'>
 			<classpath>
-				<path refid="library-classpath"/>
+				<path refid='library-classpath'/>
 			</classpath>
 		</javac>
   </target>
 
 	<!-- build the distribution of the library -->
-  <target name="build" depends="compile" description="generate the distribution" >
+  <target name='build' description='generate the distribution' depends='compile'>
   	<!-- delete the previous content of the ${dist} folder -->
-  	<delete dir="${dist}" />
-  	
+  	<delete dir='${dist}'/>
+
   	<!-- build the structure for ${dist} -->
-  	<mkdir dir="${dist}" />
-  	<mkdir dir="${dist}/library" />
-  	<mkdir dir="${dist}/examples" />
-  	<mkdir dir="${dist}/reference" />
-  	<mkdir dir="${dist}/src" />
-  	<jar jarfile="${dist}/library/${jarFile}" basedir="${bin}"/>
-  	<copy todir="${dist}/examples">
-  		<fileset dir="examples"/>
+  	<mkdir dir='${dist}'/>
+  	<mkdir dir='${dist}/library'/>
+  	<mkdir dir='${dist}/examples'/>
+  	<mkdir dir='${dist}/reference'/>
+  	<mkdir dir='${dist}/src'/>
+  	<jar jarfile='${dist}/library/${jarFile}' basedir='${bin}'/>
+  	<copy todir='${dist}/examples'>
+  		<fileset dir='examples'/>
   	</copy>
-  	<copy todir="${dist}/src">
-  		<fileset dir="src"/>
-  	</copy> 
-  	
+  	<copy todir='${dist}/src'>
+  		<fileset dir='src'/>
+  	</copy>
+
 	<!-- create the java reference of the library -->
- 	<mkdir dir="${reference}" />
- 	<javadoc bottom="processing library ${libraryName} by ${author}. ${copyright}" 
- 			 classpath="${libraryClasspath}/core.jar" 
- 			 destdir="${reference}" 
- 			 verbose="false" 
- 			 stylesheetfile="resources/stylesheet.css" 
- 			 doctitle="Javadocs: ${libraryName}" 
- 			 public="true" version="false" 
- 			 windowtitle="Javadocs: ${libraryName}">
- 		<taglet name="ExampleTaglet" path="resources/code" />
- 		<fileset dir="${src}" defaultexcludes="yes">
+ 	<mkdir dir='${reference}'/>
+ 	<javadoc destdir='${reference}' doctitle='Javadocs: ${libraryName}' stylesheetfile='resources/stylesheet.css' bottom='processing library ${libraryName} by ${author}. ${copyright}' public='true' verbose='false' version='false' windowtitle='Javadocs: ${libraryName}' classpath='${libraryClasspath}/core.jar'>
+ 		<taglet name='ExampleTaglet' path='resources/code'/>
+ 		<fileset dir='${src}' defaultexcludes='yes'>
  			<!-- #### (9) add packages to be added to reference. #### -->
-			<include name="**/*"/>
+			<include name='**/*'/>
 		</fileset>
  	</javadoc>
- 	
-	<copy todir="${dist}/reference">
-		<fileset dir="${reference}" />
+
+	<copy todir='${dist}/reference'>
+		<fileset dir='${reference}'/>
 	</copy>
-  	
+
   	  	<!-- copy the jar file to processing's libraries -->
-  	  	<mkdir dir="${processing}/${libraryName}" />
-  		<copy todir="${processing}/${libraryName}">
-  			<fileset dir="${dist}"/>
-  		</copy> 
+  	  	<mkdir dir='${processing}/${libraryName}'/>
+  		<copy todir='${processing}/${libraryName}'>
+  			<fileset dir='${dist}'/>
+  		</copy>
 
   	<!-- zip the distribution of the library -->
-  	<zip destfile="${dist}/${libraryName}.zip"
-  	       basedir="${dist}"
-  	       excludes="**/_DS.Store"
-	/>
-  	
+  	<zip excludes='**/_DS.Store' basedir='${dist}' destfile='${dist}/${libraryName}.zip'/>
+
   	<!-- <rename src="${dist}/${libraryName}.zip" dest="${dist}/${libraryName}_${versionNumber}.zip" /> -->
- 	
+
   	<!-- organize the ${dist} folder -->
-  	<mkdir dir="${dist}/web" />
-  	<move todir="${dist}/web/reference">
-  		<fileset dir="${dist}/reference" />
+  	<mkdir dir='${dist}/web'/>
+  	<move todir='${dist}/web/reference'>
+  		<fileset dir='${dist}/reference'/>
   	</move>
-  	
-  	<move todir="${dist}/web/examples">
-  		<fileset dir="${dist}/examples" />
+
+  	<move todir='${dist}/web/examples'>
+  		<fileset dir='${dist}/examples'/>
   	</move>
-  	
-  	<delete dir="${dist}/library" />
-  	
-  	<copy todir="${dist}/web">
-  		<fileset dir="web" />
+
+  	<delete dir='${dist}/library'/>
+
+  	<copy todir='${dist}/web'>
+  		<fileset dir='web'/>
   	</copy>
-  	
+
   	<!--
-  	format the index.html file. 
-  	regular expressions are used to parse the web index.html file. 
-  	key words starting and ending with ## are replaced by values 
+  	format the index.html file.
+  	regular expressions are used to parse the web index.html file.
+  	key words starting and ending with ## are replaced by values
   	defined earlier in the beginning of this build file.
   	-->
-  	
-  	<replaceregexp file="${dist}/web/index.html"
-  	                         match="##yourLibrary##"
-  	                         replace="${libraryName}"
-  	                         flags="g" />
-  	
-  	<replaceregexp file="${dist}/web/index.html"
-							match="##author##"
-							replace="${author}"
-							flags="g" />
-  	
-  	<replaceregexp file="${dist}/web/index.html"
-							match="##versionNumber##"
-							replace="${versionNumber}"
-							flags="g" />
-  	
-	<replaceregexp file="${dist}/web/index.html"
-							match="##yourLink##"
-  							replace="${yourLink}"
-							flags="g" />
-  	
-  	<replaceregexp file="${dist}/web/index.html"
-  							match="##date##"
-  	  						replace="${date}"
-  	  						flags="g" />
-  	  						
-  	 <replaceregexp file="${dist}/web/index.html"
-  							match="##keywords##"
-  	  						replace="${keywords}"
-  	  						flags="g" />
-  	  						
-  	  						
-  	  						
-  	 <replaceregexp file="${dist}/web/index.html"
-  							match="##tested:platform##"
-  	  						replace="${tested:platform}"
-  	  						flags="g" />
-  	 <replaceregexp file="${dist}/web/index.html"
-  							match="##tested:processingVersion##"
-  	  						replace="${tested:processingVersion}"
-  	  						flags="g" />
-  	 <replaceregexp file="${dist}/web/index.html"
-  							match="##tested:dependencies##"
-  	  						replace="${tested:dependencies}"
-  	  						flags="g" />
-  	 <replaceregexp file="${dist}/web/index.html"
-  							match="##source:host##"
-  	  						replace="${source:host}"
-  	  						flags="g" />
-  	 <replaceregexp file="${dist}/web/index.html"
-  							match="##source:url##"
-  	  						replace="${source:url}"
-  	  						flags="g" />
-  	 <replaceregexp file="${dist}/web/index.html"
-  							match="##source:repository##"
-  	  						replace="${source:repository}"
-  	  						flags="g" />
 
-  	
+  	<replaceregexp replace='${libraryName}' flags='g' file='${dist}/web/index.html' match='##yourLibrary##'/>
+
+  	<replaceregexp replace='${author}' flags='g' file='${dist}/web/index.html' match='##author##'/>
+
+  	<replaceregexp replace='${versionNumber}' flags='g' file='${dist}/web/index.html' match='##versionNumber##'/>
+
+	<replaceregexp replace='${yourLink}' flags='g' file='${dist}/web/index.html' match='##yourLink##'/>
+
+  	<replaceregexp replace='${date}' flags='g' file='${dist}/web/index.html' match='##date##'/>
+
+  	 <replaceregexp replace='${keywords}' flags='g' file='${dist}/web/index.html' match='##keywords##'/>
+
+
+
+  	 <replaceregexp replace='${tested:platform}' flags='g' file='${dist}/web/index.html' match='##tested:platform##'/>
+  	 <replaceregexp replace='${tested:processingVersion}' flags='g' file='${dist}/web/index.html' match='##tested:processingVersion##'/>
+  	 <replaceregexp replace='${tested:dependencies}' flags='g' file='${dist}/web/index.html' match='##tested:dependencies##'/>
+  	 <replaceregexp replace='${source:host}' flags='g' file='${dist}/web/index.html' match='##source:host##'/>
+  	 <replaceregexp replace='${source:url}' flags='g' file='${dist}/web/index.html' match='##source:url##'/>
+  	 <replaceregexp replace='${source:repository}' flags='g' file='${dist}/web/index.html' match='##source:repository##'/>
+
+
   	<echo>---------------------</echo>
-  	<antcall target="processExamples" />
+  	<antcall target='processExamples'/>
   	<echo>---------------------</echo>
-  	
-  	<replaceregexp file="${dist}/web/index.html"
-  	  							match="##examples##"
-  	  	  						replace=""
-  	  	  						flags="g" />
-  	  	  						
-  	  	  						
+
+  	<replaceregexp replace='' flags='g' file='${dist}/web/index.html' match='##examples##'/>
+
+
   	<!-- finish organizating library's distribution -->
-  	<mkdir dir="${dist}/web/download" />
-  	<copy file="${dist}/${libraryName}.zip" todir="${dist}/web/download" />
-  	
-  	<copy todir="${processing}/${libraryName}/reference">
-		<fileset dir="${reference}" />
+  	<mkdir dir='${dist}/web/download'/>
+  	<copy todir='${dist}/web/download' file='${dist}/${libraryName}.zip'/>
+
+  	<copy todir='${processing}/${libraryName}/reference'>
+		<fileset dir='${reference}'/>
 	</copy>
-  	
+
   	<!-- done, finished. -->
   	<echo>done, finished.</echo>
  </target>
- 
- 
- 	
+
+
+
 	<!-- parsing the examples folder -->
-	<target name="processExamples">
-		<dirset id="examples.contents" dir="examples" excludes="*/*"/>
-		<property name="examples.list" refid="examples.contents"/>
-		<foreach list="${examples.list}" target="addExamples" param="exampleDir" delimiter=";">
+	<target name='processExamples'>
+		<dirset dir='examples' id='examples.contents' excludes='*/*'/>
+		<property name='examples.list' refid='examples.contents'/>
+		<foreach list='${examples.list}' param='exampleDir' target='addExamples' delimiter=';'>
 		</foreach>
 	</target>
-		
-	<target name="addExamples">
-		<replaceregexp file="${dist}/web/index.html"
-	  					match="(##examples##)"
-	  	  				replace="&lt;li&gt;&lt;a href=&quot;examples/${exampleDir}/${exampleDir}.pde&quot;&gt;${exampleDir}&lt;/a&gt;&lt;/li&gt; \1"
-	  	  				flags="g" />
+
+	<target name='addExamples'>
+		<replaceregexp replace='&lt;li&gt;&lt;a href=&quot;examples/${exampleDir}/${exampleDir}.pde&quot;&gt;${exampleDir}&lt;/a&gt;&lt;/li&gt; \1' flags='g' file='${dist}/web/index.html' match='(##examples##)'/>
 		</target>
 </project>
 
