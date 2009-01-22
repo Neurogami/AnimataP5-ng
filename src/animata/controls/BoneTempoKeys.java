@@ -21,6 +21,7 @@ public class BoneTempoKeys extends Control {
 		this.high = high;
 		this.bone = bone;
 		this.tempo = tempo;
+		Controller.getInstance().setBoneTempo(bone, 0f);
 	}
 
 	public BoneTempoKeys(XMLElement element, MidiInput in) {
@@ -41,14 +42,11 @@ public class BoneTempoKeys extends Control {
 		int pitch = n.getPitch();
 		if (pitch < low) return;
 		if (pitch > high) return;
-		float trigger = 0f;
 		Float newTempo = 1f;
 		keysPressed++;
 		newTempo = tempo;
 
 		Controller.getInstance().setBoneTempo(bone, newTempo);
-		// used for piano
-		Controller.getInstance().animateBone("trigger" + bone, trigger);
 	}
 
 	public void noteOffReceived(Note n) {
@@ -56,12 +54,9 @@ public class BoneTempoKeys extends Control {
 		int pitch = n.getPitch();
 		if (pitch < low) return;
 		if (pitch > high) return;
-		float trigger = 1f;
 		keysPressed--;
 		float newTempo = 1f;
 		if (keysPressed == 0) newTempo = 0f;
 		Controller.getInstance().setBoneTempo(bone, newTempo);
-		// used for piano
-		Controller.getInstance().animateBone("trigger" + bone, trigger);
 	}
 }

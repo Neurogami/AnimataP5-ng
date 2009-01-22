@@ -32,6 +32,16 @@ public class NoteBone extends Control implements Observer {
 		animator = new animata.Animator(off,this);
 		System.out.println("Created notebone for bone " + bone + " note="  +note);
 	}
+	public NoteBone(MidiInput in, int channel, String bone, float on, float off, int note){
+		super(channel, in);
+		this.on = on;
+		this.off = off;
+		this.note = note;
+		this.bone = bone;
+		// TODO: can I unrepeat this without a silly small method?
+		animator = new animata.Animator(off,this);
+	}
+
 	public void noteOnReceived(Note n){
 		if(n.getChannel() != channel) return;
 		if(n.getPitch() != note) return;

@@ -31,7 +31,7 @@ public class Animata {
 		OscMessage message = new OscMessage("/cameradeltazoom");
 		message.add(delta);
 		oscP5.send(message, net);
-		System.out.println("message:" + message + " to  " + net);
+//		System.out.println("message:" + message + " to  " + net);
 	}
 
 	public static void panLayer(Float deltaX) {
@@ -40,7 +40,7 @@ public class Animata {
 		message.add(deltaX);
 		message.add(0.0f);
 		oscP5.send(message, net);
-		System.out.println("message:" + message + " to  " + net);
+//		System.out.println("message:" + message + " to  " + net);
 	}
 
 	public static void setBone(String name, Float n) {
@@ -48,7 +48,7 @@ public class Animata {
 		OscMessage message = new OscMessage("/anibone");
 		message.add(name);
 		message.add((float) n);
-		PApplet.println("trying to send to " + net.address() + " = " + n + " to bone " + name);
+//		PApplet.println("trying to send to " + net.address() + " = " + n + " to bone " + name);
 		oscP5.send(message, net);
 	}
 
@@ -65,7 +65,7 @@ public class Animata {
 		OscMessage message = new OscMessage("/bonetempo");
 		message.add(bone);
 		message.add((float) tempo);
-		PApplet.println("trying to send to " + net.address() + " = " + tempo + " to bone " + bone);
+//		PApplet.println("trying to send to " + net.address() + " = " + tempo + " to bone " + bone);
 		oscP5.send(message, net);
 	}
 
