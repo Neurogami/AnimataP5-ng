@@ -46,7 +46,7 @@ public class Skeleton {
 
 			dst = vd;
 
-			float vdnorm = vd / (bone.attachRadiusMult * bone.dOrig * .5f);
+			float vdnorm = vd / (bone.radius * bone.size * .5f);
 
 			if (vdnorm >= 1)
 			{
@@ -74,23 +74,18 @@ public class Skeleton {
 
 	public class Bone {
 
-		private static final float BONE_DEFAULT_DAMP = 0.5f;
-		private Joint j0;
-		private Joint j1;
-		private float stiffness;
+		public Joint j0;
+		public Joint j1;
 		private float scale;
 		private float maxScale;
 		private float minScale;
 		public Float tempo;
-		private float radius;
-		private boolean selected;
-		private float size;
 		private float time;
 		private AttachedVertex[] attachedVertices;
 		private String name;
-		private float damp;
-		public float dOrig;
-		private float attachRadiusMult;
+		private float stiffness;
+		public float size;
+		private float radius;
 		private float falloff;
 
 		public Bone(XMLElement element) {
@@ -102,17 +97,6 @@ public class Skeleton {
 		}
 
 		private void setInitialConditions() {
-			damp = BONE_DEFAULT_DAMP;
-
-			float x0 = j0.x;
-			float y0 = j0.y;
-			float x1 = j1.x;
-			float y1 = j1.y;
-
-			dOrig = PApplet.sqrt((x1-x0)*(x1-x0) + (y1-y0)*(y1-y0));
-
-
-			attachRadiusMult = 1.0f;
 			falloff = 1.0f;
 
 		}
@@ -128,7 +112,6 @@ public class Skeleton {
 			tempo = element.getFloatAttribute("tempo");
 			time = element.getFloatAttribute("time");
 			size = element.getFloatAttribute("size");
-			selected = element.getIntAttribute("selected") == 1;
 			radius = element.getFloatAttribute("radius");
 		}
 
@@ -148,23 +131,15 @@ public class Skeleton {
 				time += tempo / AnimataPlayback.timeDivision;	// FIXME
 				animateScale(0.5f + PApplet.sin(time) * 0.5f);
 			}
-
-			float x0 = j0.x;
-			float y0 = j0.y;
-			float x1 = j1.x;
-			float y1 = j1.y;
-
-			float dx = (x1 - x0);
-			float dy = (y1 - y0);
+			float dx = (j1.x - j0.x);
+			float dy = (j1.y - j0.y);
 			float dCurrent = PApplet.sqrt(dx*dx + dy*dy);
 
-//			if (dCurrent > FLT_EPSILON)
-//			{
-				dx /= dCurrent;
-				dy /= dCurrent;
-//			}
+			dx /= dCurrent;
+			dy /= dCurrent;
 
-			float m = ((dOrig * scale) - dCurrent) * damp;
+
+			float m = ((size * scale) - dCurrent) * stiffness;
 
 			if (!j0.fixed )
 			{
@@ -234,11 +209,11 @@ public class Skeleton {
 
 	public class Joint {
 
-		private float x;
-		private float y;
-		private boolean fixed;
+		public float x;
+		public float y;
+		public boolean fixed;
 		private boolean selected;
-		private String name;
+		public String name;
 
 		public Joint(XMLElement element) {
 			name = element.getStringAttribute("name","");
@@ -256,8 +231,8 @@ public class Skeleton {
 
 	}
 
-	private Joint[] joints;
-	private Bone[] bones;
+	public Joint[] joints;
+	public Bone[] bones;
 	private final Mesh mesh;
 
 	private static ArrayList<Bone> allBones = new ArrayList<Bone>();

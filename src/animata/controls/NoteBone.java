@@ -1,18 +1,23 @@
 package animata.controls;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import processing.xml.XMLElement;
 import rwmidi.MidiInput;
 import rwmidi.Note;
+import animata.Animator;
 import animata.NoteParser;
 import animata.NoteParser.BadNoteFormatException;
 
-public class NoteBone extends Control {
+public class NoteBone extends Control implements Observer {
 
 	private String bone;
 	private Integer note;
 
 	private float on;
 	private float off;
+	private Animator animator;
 
 	public NoteBone(XMLElement element, MidiInput in) {
 		super(element, in);
@@ -24,19 +29,21 @@ public class NoteBone extends Control {
 		} catch (BadNoteFormatException e) {
 			e.printStackTrace();
 		}
-
-		in.plug(this);
+		animator = new animata.Animator(off,this);
 		System.out.println("Created notebone for bone " + bone + " note="  +note);
 	}
 	public void noteOnReceived(Note n){
 		if(n.getChannel() != channel) return;
 		if(n.getPitch() != note) return;
-		controller.animateBone(bone, on);
+		animator.set(on,3);
 	}
 	public void noteOffReceived(Note n){
 		if(n.getChannel() != channel) return;
 		if(n.getPitch() != note) return;
-		controller.animateBone(bone, off);
+		animator.set(off,10);
+	}
+	public void update(Observable o, Object arg) {
+		controller.animateBone(bone, animator.currentValue);
 	}
 
 }

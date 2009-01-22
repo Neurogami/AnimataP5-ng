@@ -33,9 +33,14 @@ public class AnimataPlayback {
 			x += delta;
 			targetX += delta;
 		}
+		public void panYBy(float delta) {
+			y += delta;
+			targetY += delta;
+		}
 	}
 	public static final float timeDivision = 42f;
 	public static float gravity = 0;
+	private static boolean debug;
 	private  PApplet applet;
 	private Layer root;
 	private LayerView layersView;
@@ -52,6 +57,7 @@ public class AnimataPlayback {
 	}
 	private void setup(PApplet applet) {
 		this.applet = applet;
+		Animator.init(applet);
 		camera = new Camera(applet);
 		this.applet.hint(PApplet.ENABLE_OPENGL_2X_SMOOTH);
 		root = new Layer();
@@ -105,6 +111,16 @@ public class AnimataPlayback {
 	}
 	public void panCameraX(float delta) {
 		camera.panXBy(delta);
+	}
+	public void panCameraY(float delta){
+		camera.panYBy(delta);
+	}
+	public void debug() {
+		debug = true;
+
+	}
+	public static boolean debugging() {
+		return debug;
 	}
 
 }

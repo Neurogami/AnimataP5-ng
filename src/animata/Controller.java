@@ -43,6 +43,8 @@ public class Controller {
 		for (Bone bone : bones) {
 			bone.setTempo(tempo);
 		}
+		// TODO: extract interface for Animata calls
+		Animata.setBoneTempo(name, tempo);
 		return true;
 	}
 
@@ -51,6 +53,8 @@ public class Controller {
 		for (Bone bone : bones) {
 			bone.setScale(scale);
 		}
+		// TODO: extract interface for Animata calls
+		Animata.setBone(name, scale);
 		return true;
 	}
 

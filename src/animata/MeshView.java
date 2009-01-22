@@ -16,6 +16,7 @@ public class MeshView extends ViewBase {
 		this.layer = layer;
 	}
 	public void draw() {
+		applet.noStroke();
 		drawFaces(layer.mesh.faces);
 //		applet.textFont(font);
 //		applet.fill(0);
