@@ -28,13 +28,19 @@ public class NoteParser {
 		return getNote(noteName);
 	}
 
-	public static Integer getNote(String noteName) throws BadNoteFormatException{
+	public static Integer getNote(String noteName){
 		try {
 			return Integer.parseInt(noteName);
 
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {}
+
+		try {
 			return convertStringToNoteNumber(noteName);
+		} catch (BadNoteFormatException e) {
+			e.printStackTrace();
 		}
+		System.out.println("Note xml - error parsing " + noteName);
+		return null;
 	}
 	/*
 	 * C0 = 0

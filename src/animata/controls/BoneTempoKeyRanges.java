@@ -15,11 +15,7 @@ public class BoneTempoKeyRanges extends Control {
 	private int step;
 	public BoneTempoKeyRanges(XMLElement element, MidiInput in) {
 		super(element, in);
-		try {
-			low = NoteParser.getNote(element.getStringAttribute("low", "1"));
-		} catch (BadNoteFormatException e) {
-			System.out.println(e.getMessage());
-		}
+		low = NoteParser.getNote(element.getStringAttribute("low", "1"));
 		channel = element.getIntAttribute("channel", 16) - 1;
 		step = element.getIntAttribute("step");
 		boneRoot = element.getStringAttribute("bone");

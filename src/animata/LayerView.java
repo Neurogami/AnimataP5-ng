@@ -28,7 +28,7 @@ public class LayerView extends ViewBase {
 	}
 
 	public void draw() {
-		if(!layer.visible) return;
+		//if(!layer.visible) return;
 		applet.pushMatrix();
 		doTransformation();
 		applet.pushMatrix();

@@ -24,6 +24,9 @@ public class TestScene extends PApplet {
 		if (keyPressed) {
 			if (keyCode == DOWN) playback.panCameraY(10);
 			if (keyCode == UP) playback.panCameraY(-10);
+			if (keyCode == LEFT) playback.panCameraX(-10);
+			if (keyCode == RIGHT) playback.panCameraX(10);
+			if( key == 'c') System.out.println("HASHS" + playback.camera);
 		}
 		playback.panCameraX(mk.joystick.getX() * 30);
 		playback.zoomCamera(mk.joystick.getY() * 30);

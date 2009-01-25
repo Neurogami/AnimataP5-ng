@@ -66,8 +66,8 @@ public class Layer{
 		x = element.getFloatAttribute("x");
 		y = element.getFloatAttribute("y");
 		z = - element.getFloatAttribute("z");
-		alpha = element.getFloatAttribute("alpha");
-		scale = element.getFloatAttribute("scale");
+		alpha = element.getFloatAttribute("alpha",1);
+		scale = element.getFloatAttribute("scale",1);
 		visible = element.getIntAttribute("vis") == 1;
 	}
 
@@ -82,8 +82,14 @@ public class Layer{
 	public void addLayers(XMLElement[] children, String folder) {
 		for (int i = 0; i < children.length; i++) {
 			XMLElement element = children[i];
-			layers.add(new Layer(element,folder));
+			addLayer(folder, element);
 		}
+	}
+
+	public Layer addLayer(String folder, XMLElement element) {
+		Layer layer = new Layer(element,folder);
+		layers.add(layer);
+		return layer;
 	}
 
 	public void simulate() {

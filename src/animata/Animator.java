@@ -62,6 +62,7 @@ public class Animator extends Observable implements Observer {
 	}
 
 	public void stop() {
+		frame = 1;
 		// engine.deleteObserver(this);
 	}
 

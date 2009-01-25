@@ -26,19 +26,15 @@ public class BoneTempoKeys extends Control {
 
 	public BoneTempoKeys(XMLElement element, MidiInput in) {
 		super(element, in);
-		try {
-			low = NoteParser.getNote(element.getStringAttribute("low", "1"));
-			high = NoteParser.getNote(element.getStringAttribute("high", "100"));
-		} catch (BadNoteFormatException e) {
-			System.out.println(e.getMessage());
-		}
+		low = NoteParser.getNote(element.getStringAttribute("low", "1"));
+		high = NoteParser.getNote(element.getStringAttribute("high", "100"));
 		bone = element.getStringAttribute("bone");
 		tempo = element.getFloatAttribute("tempo");
 		Controller.getInstance().setBoneTempo(bone, 0f);
 	}
 
 	public void noteOnReceived(Note n) {
-		if(n.getChannel()!= channel) return;
+		if (n.getChannel() != channel) return;
 		int pitch = n.getPitch();
 		if (pitch < low) return;
 		if (pitch > high) return;
@@ -50,7 +46,7 @@ public class BoneTempoKeys extends Control {
 	}
 
 	public void noteOffReceived(Note n) {
-		if(n.getChannel()!= channel) return;
+		if (n.getChannel() != channel) return;
 		int pitch = n.getPitch();
 		if (pitch < low) return;
 		if (pitch > high) return;

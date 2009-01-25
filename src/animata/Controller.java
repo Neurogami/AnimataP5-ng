@@ -3,6 +3,7 @@ package animata;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import animata.controls.CameraPosition;
 import animata.model.Layer;
 import animata.model.Skeleton;
 import animata.model.Skeleton.Bone;
@@ -11,6 +12,7 @@ public class Controller {
 
 	private static Controller instance;
 	private final AnimataPlayback animataPlayback;
+	public String currentSong;
 
 	public Controller(PApplet applet, Layer root, AnimataPlayback animataPlayback) {
 		this.animataPlayback = animataPlayback;
@@ -64,6 +66,16 @@ public class Controller {
 
 	public static void init(PApplet applet, Layer root, AnimataPlayback animataPlayback) {
 		instance = new Controller(applet,root,animataPlayback);
+
+	}
+
+	public void moveCameraTo(CameraPosition p, int frames) {
+		animataPlayback.camera.moveTo(p.x, p.y,p.z, frames);
+
+	}
+
+	public void shakeCamera() {
+		animataPlayback.camera.shake();
 
 	}
 

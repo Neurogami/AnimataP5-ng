@@ -1,12 +1,7 @@
-package animata;
+package animata.controls;
 
 import processing.xml.XMLElement;
 import rwmidi.MidiInput;
-import animata.controls.BoneTempoKeyRanges;
-import animata.controls.BoneTempoKeys;
-import animata.controls.Control;
-import animata.controls.NoteBone;
-import animata.controls.NoteRangeBone;
 
 public class ControlFactory {
 
@@ -18,7 +13,8 @@ public class ControlFactory {
 		if(name.equals("noterangebone")) return new NoteRangeBone(element,in);
 		if(name.equals("bonetempokeys")) return new BoneTempoKeys(element,in);
 		if(name.equals("bonetempokeyranges")) return new BoneTempoKeyRanges(element, in);
-
+		if(name.equals("camera")) return new CameraPosition(element, in);
+		if(name.equals("camerashake")) return new CameraShake(element,in);
 		return new Control(element, in);
 
 	}
