@@ -1,3 +1,5 @@
+import rwmidi.*;
+
 import oscP5.*;
 import netP5.*;
 
@@ -10,7 +12,7 @@ void setup() {
   size(950,614,OPENGL);
   hint(ENABLE_OPENGL_4X_SMOOTH);
   playback = new AnimataPlayback(this);
-  playback.addScene("forest.nmt");
+  playback.loadSet("set.xml");
 }
 
 void draw() {

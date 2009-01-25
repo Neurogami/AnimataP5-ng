@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layers>
+	<layer id="forest" nmt="forest/forest.nmt" channel="3" vis="true">
+		<bonetempokeys tempo="0.15" low="40" high="F3" bone="cello"/>
+		<bonetempokeys tempo="0.2" low="F#3" high="100" bone="viola"/>
+		<noterangebone low="40" high="F3" bone="cellopitch"/>
+		<noterangebone low="F#3" high="100" bone="violapitch"/>
+		<bonetempokeyranges tempo="1" low="48" step="2" bone="piano" bonecount="23" channel="3"/>
+		<camera x="65.625" y="487.0" z="251.25" id="birds_left"/>
+		<camera x="867.8125" y="467.0" z="377.8125" id="birds_right"/>
+		<camera x="255.0" y="677.0" z="362.65625" id="viola"/>
+		<camera x="-51.09375" y="647.0" z="292.8125"  id="cello"/>
+		<camera x="100.78125" y="477.0" z="257.65625" id="birds"/>
+		<camera x="731.25" y="527.0" z="217.8125" id="birds"/>
+		<camera x="1069.6875" y="527.0" z="198.125" id="birds"/>
+	</layer>
+</layers>
