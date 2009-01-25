@@ -45,7 +45,7 @@
 	<property name='libraryName' value='AnimataPlayback'/>
 
 <!-- #### (8) give your library a name. edit value.   #### -->
-	<property name='versionNumber' value='0.1.8'/>
+	<property name='versionNumber' value='0.1.9'/>
 
 <!-- #### (9) your contact url. edit value. #### -->
 	<property name='yourLink' value='http://grimaceworks.com'/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layers>
-	<layer id="forest" nmt="forest/forest.nmt" channel="3" vis="true">
+	<layer id="forest" nmt="forest/forest.nmt" channel="3">
 		<bonetempokeys tempo="0.15" low="40" high="F3" bone="cello"/>
 		<bonetempokeys tempo="0.2" low="F#3" high="100" bone="viola"/>
 		<noterangebone low="40" high="F3" bone="cellopitch"/>
