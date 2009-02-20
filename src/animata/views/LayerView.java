@@ -1,8 +1,10 @@
-package animata;
+package animata.views;
 
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import animata.AnimataPlayback;
+import animata.ViewBase;
 import animata.model.Layer;
 import animata.model.Skeleton.Bone;
 import animata.model.Skeleton.Joint;

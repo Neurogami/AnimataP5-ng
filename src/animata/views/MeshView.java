@@ -1,6 +1,7 @@
-package animata;
+package animata.views;
 
 import processing.core.PApplet;
+import animata.ViewBase;
 import animata.model.Layer;
 import animata.model.Mesh.Face;
 import animata.model.Mesh.Vertex;

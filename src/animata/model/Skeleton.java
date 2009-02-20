@@ -19,9 +19,7 @@ public class Skeleton {
 		private float sa;
 		public float weight;
 		private final Bone bone;
-		private float dst;
-
-		public AttachedVertex(XMLElement element, Bone bone) {
+			public AttachedVertex(XMLElement element, Bone bone) {
 			this.bone = bone;
 			assignAttributes(element);
 			setInitialConditions();
@@ -43,8 +41,6 @@ public class Skeleton {
 			float vx = vertex.x;
 			float vy = vertex.y;
 			float vd = PApplet.sqrt((x - vx) * (x - vx) + (y - vy) * (y - vy));
-
-			dst = vd;
 
 			float vdnorm = vd / (bone.radius * bone.size * .5f);
 
@@ -212,7 +208,6 @@ public class Skeleton {
 		public float x;
 		public float y;
 		public boolean fixed;
-		private boolean selected;
 		public String name;
 
 		public Joint(XMLElement element) {
@@ -220,7 +215,6 @@ public class Skeleton {
 			x = element.getFloatAttribute("x");
 			y = element.getFloatAttribute("y");
 			fixed = element.getIntAttribute("fixed") == 1;
-			selected = element.getIntAttribute("selected") == 1;
 		}
 
 		public void simulate() {

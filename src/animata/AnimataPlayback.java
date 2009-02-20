@@ -8,6 +8,7 @@ import rwmidi.MidiInput;
 import rwmidi.RWMidi;
 import animata.controls.ClockBobber;
 import animata.model.Layer;
+import animata.views.LayerView;
 
 public class AnimataPlayback {
 
@@ -80,7 +81,7 @@ public class AnimataPlayback {
 	}
 	public void draw(){
 		applet.camera(camera.x, camera.y, camera.z, camera.targetX, camera.targetY,camera.targetZ, 0f, 1f, 0f);
-		root.simulate();
+		//root.simulate();
 		applet.textureMode(PApplet.NORMAL);
 		applet.noStroke();
 		applet.fill(0,0);
