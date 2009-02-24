@@ -15,10 +15,10 @@ public class Layer {
     public class Texture {
 
         private String location;
-        public float x;
-        public float y;
-        public float scale;
-        public PImage image;
+        private float x;
+        private float y;
+        private float scale;
+        private PImage image;
 
         public Texture(XMLElement child, String folder) {
             location = folder + File.separator + child.getStringAttribute("location");
@@ -68,7 +68,7 @@ public class Layer {
         x = element.getFloatAttribute("x");
         y = element.getFloatAttribute("y");
         z = -element.getFloatAttribute("z");
-        alpha = element.getFloatAttribute("alpha", 1);
+        alpha = element.getFloatAttribute("alpha", 255);
         scale = element.getFloatAttribute("scale", 1);
         visible = element.getIntAttribute("vis") == 1;
     }
@@ -83,7 +83,7 @@ public class Layer {
         skeleton = new Skeleton(skeletonElement, mesh);
     }
 
-    public void addLayers(XMLElement[] children, String folder) {
+    private void addLayers(XMLElement[] children, String folder) {
         for (int i = 0; i < children.length; i++) {
             XMLElement element = children[i];
             addLayer(folder, element);
@@ -100,54 +100,76 @@ public class Layer {
         if (skeleton != null) {
             skeleton.simulate(40);
         }
-        for (Layer layer : layers)
+        for (Layer layer : layers) {
             layer.simulate();
+        }
     }
-    
+
     public void moveJointX(String name, float x) {
         if (skeleton != null) {
             for (Joint joint : skeleton.allJoints) {
-                if (joint.name.equals(name))
+                if (joint.name.equals(name)) {
                     joint.x = x;
+                }
             }
         }
-        for (Layer llayer : layers)
+        for (Layer llayer : layers) {
             llayer.moveJointX(name, x);
+        }
     }
 
     public void moveJointY(String name, float y) {
         if (skeleton != null) {
             for (Joint joint : skeleton.allJoints) {
-                if (joint.name.equals(name))
+                if (joint.name.equals(name)) {
                     joint.y = y;
+                }
             }
         }
-        for (Layer llayer : layers)
+        for (Layer llayer : layers) {
             llayer.moveJointY(name, y);
+        }
     }
 
     public void setLayerAlpha(String name, float a) {
-        if (this != null) this.alpha=a;
-        for (Layer llayer : layers)
-            llayer.setLayerAlpha(name,a);
+        if (this != null) {
+            this.alpha = a;
+        }
+        for (Layer llayer : layers) {
+            llayer.setLayerAlpha(name, a);
+        }
+    }
+
+    public void setLayerScale(String name, float s) {
+        if (this != null) {
+            this.scale = s;
+        }
+        for (Layer llayer : layers) {
+            llayer.setLayerScale(name, s);
+        }
     }
 
     public void setLayerPos(String name, float _x, float _y) {
-        if (this != null) {x=_x;y=_y;}
-        for (Layer llayer : layers)
-            llayer.setLayerPos(name,_x,_y);
+        if (this != null) {
+            x = _x;
+            y = _y;
+        }
+        for (Layer llayer : layers) {
+            llayer.setLayerPos(name, _x, _y);
+        }
     }
-
 
     public void setBoneTempo(String name, float t) {
         if (skeleton != null) {
             for (Bone bone : skeleton.allBones) {
-                if (bone.name.equals(name))
+                if (bone.name.equals(name)) {
                     bone.tempo = t;
+                }
             }
         }
-        for (Layer llayer : layers)
+        for (Layer llayer : layers) {
             llayer.setBoneTempo(name, t);
+        }
     }
 
     public void setBoneRange(String name, float min, float max) {
@@ -159,7 +181,8 @@ public class Layer {
                 }
             }
         }
-        for (Layer llayer : layers)
+        for (Layer llayer : layers) {
             llayer.setBoneRange(name, min, max);
+        }
     }
 }
