@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.xml.XMLElement;
-import animata.AnimataPlayback;
+import animata.AnimataP5;
 import animata.model.Mesh.Vertex;
 
 public class Skeleton {
 
 	public class AttachedVertex {
-
 		private static final float BONE_MINIMAL_WEIGHT = 0.1f;
 		private Vertex vertex;
 		private float d;
@@ -19,7 +18,9 @@ public class Skeleton {
 		private float sa;
 		public float weight;
 		private final Bone bone;
-			public AttachedVertex(XMLElement element, Bone bone) {
+		private float dst;
+
+		public AttachedVertex(XMLElement element, Bone bone) {
 			this.bone = bone;
 			assignAttributes(element);
 			setInitialConditions();
@@ -41,6 +42,8 @@ public class Skeleton {
 			float vx = vertex.x;
 			float vy = vertex.y;
 			float vd = PApplet.sqrt((x - vx) * (x - vx) + (y - vy) * (y - vy));
+
+			dst = vd;
 
 			float vdnorm = vd / (bone.radius * bone.size * .5f);
 
@@ -73,12 +76,12 @@ public class Skeleton {
 		public Joint j0;
 		public Joint j1;
 		private float scale;
-		private float maxScale;
-		private float minScale;
-		public Float tempo;
+		public float maxScale;
+		public float minScale;
+		public float tempo;
 		private float time;
 		private AttachedVertex[] attachedVertices;
-		private String name;
+		public String name;
 		private float stiffness;
 		public float size;
 		private float radius;
@@ -124,7 +127,7 @@ public class Skeleton {
 		public void simulate() {
 			if (tempo > 0)
 			{
-				time += tempo / AnimataPlayback.timeDivision;	// FIXME
+				time += tempo / AnimataP5.timeDivision;	// FIXME
 				animateScale(0.5f + PApplet.sin(time) * 0.5f);
 			}
 			float dx = (j1.x - j0.x);
@@ -188,19 +191,6 @@ public class Skeleton {
 
 			}
 		}
-
-		public void setTempo(float value) {
-			tempo = value;
-		}
-
-		public void setScale(Float value) {
-			setTempo(0);
-			value = PApplet.constrain(value, 0f, 1f);
-			animateScale(value);
-		}
-
-
-
 	}
 
 	public class Joint {
@@ -208,28 +198,30 @@ public class Skeleton {
 		public float x;
 		public float y;
 		public boolean fixed;
+		private boolean selected;
 		public String name;
-
+        
 		public Joint(XMLElement element) {
 			name = element.getStringAttribute("name","");
 			x = element.getFloatAttribute("x");
 			y = element.getFloatAttribute("y");
 			fixed = element.getIntAttribute("fixed") == 1;
+			selected = element.getIntAttribute("selected") == 1;
 		}
 
 		public void simulate() {
 			if(!fixed){
-				y += AnimataPlayback.gravity;
+				y += AnimataP5.gravity;
 			}
 		}
-
 	}
 
 	public Joint[] joints;
 	public Bone[] bones;
 	private final Mesh mesh;
 
-	private static ArrayList<Bone> allBones = new ArrayList<Bone>();
+	public ArrayList<Bone> allBones = new ArrayList<Bone>();
+    public ArrayList<Joint> allJoints = new ArrayList<Joint>();
 
 	public Skeleton(XMLElement child, Mesh mesh) {
 		this.mesh = mesh;
@@ -253,8 +245,8 @@ public class Skeleton {
 			XMLElement element = children[i];
 			Joint joint =  new Joint(element);
 			joints[i] = joint;
+            allJoints.add(joint);
 		}
-
 	}
 
 	public void simulate(int times) {
@@ -267,16 +259,5 @@ public class Skeleton {
 				bone.translateVertices();
 			}
 		}
-
 	}
-
-	public static ArrayList<Bone> findBones(String name) {
-		ArrayList<Bone> result = new ArrayList<Bone>();
-		for (Bone bone : allBones) {
-			if(bone.name.equals(name)) result.add(bone);
-		}
-		if(result.size() == 0) System.out.println("sorry, couldn't find a bone called " + name);
-		return result;
-	}
-
 }

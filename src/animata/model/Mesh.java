@@ -55,6 +55,4 @@ public class Mesh {
 			faces[i] = face;
 		}
 	}
-
-
 }
