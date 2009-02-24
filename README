@@ -1,4 +1,4 @@
-Not sure how far I'll get, but it feels vaguely possible to take the view stuff from Animata (http://animata.kibu.hu) and render it as part of a wider scene using Processing. I'm having a go anyway.
+A library for processing (processing.org) to render/control Animata (http://animata.kibu.hu) scenes.
 
 Usage will be something like:
 
@@ -8,5 +8,5 @@ void setup(){
 	 playback.addScene("myscene.nmt");
 }
 void draw(){
-	// drawn automatically or called manually, we'll see
+	// drawn called manually
 }
