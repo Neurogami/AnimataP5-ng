@@ -1,12 +1,11 @@
 A library for processing (processing.org) to render/control Animata (http://animata.kibu.hu) scenes.
 
-Usage will be something like:
+Usage is something like:
 
-AnimataPlayback playback;
+AnimataP5 playback;
 void setup(){
-	 playback = new AnimataPlayback(this);
-	 playback.addScene("myscene.nmt");
+	 playback = new AnimataP5(this,"myscene.nmt");
 }
 void draw(){
-	// drawn called manually
+	playback.draw(0,0); // draw at position (0,0)
 }
