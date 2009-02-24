@@ -1,11 +1,21 @@
-A library for processing (processing.org) to render/control Animata (http://animata.kibu.hu) scenes.
+A library for processing (http://processing.org) to render/control Animata (http://animata.kibu.hu) scenes.
 
-Usage is something like:
+Usage:
 
+// --------------------------------------------------------------------------------------------
 AnimataP5 playback;
 void setup(){
+     // The nmt file must be in your data folder with the related images
 	 playback = new AnimataP5(this,"myscene.nmt");
 }
 void draw(){
 	playback.draw(0,0); // draw at position (0,0)
+	playback.moveJointX("myjoint",100); // set x-coordinate of "myjoint" to 100
+	playback.moveJointY("myjoint",10); // set y-coordinate of "myjoint" to 10
+	playback.setBoneTempo("mybone",.5); // set tempo of "mybone" to .5
+	playback.setBoneRange("mybone",.2,.6); // set the range of "mybone" between .2 and .6
 }
+// --------------------------------------------------------------------------------------------
+
+More to come soon !
+You can have several instances of the same Animata scene (same file) and control each joint/bone individually.
