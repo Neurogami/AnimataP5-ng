@@ -26,6 +26,7 @@ public class MeshView extends ViewBase {
 	private void drawFace(Vertex[] vertices) {
 		applet.beginShape();
 		applet.texture(layer.texture.getImage(applet));
+        applet.tint(255,255-layer.alpha);
 		for (int i = 0; i < vertices.length; i++) {
 			Vertex vertex = vertices[i];
 			applet.vertex(vertex.x,vertex.y,vertex.u, vertex.v);

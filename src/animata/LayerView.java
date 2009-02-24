@@ -7,9 +7,9 @@ import animata.model.Layer;
 
 public class LayerView extends ViewBase {
 
-	public final Layer layer;
+	private final Layer layer;
 	private MeshView mesh;
-	public ArrayList<LayerView> layers;
+	private ArrayList<LayerView> layers;
 
 	public LayerView(Layer layer, PApplet applet) {
 		super(applet);
@@ -20,11 +20,9 @@ public class LayerView extends ViewBase {
 
 	private void addChildLayers(ArrayList<Layer> layers) {
 		this.layers = new ArrayList<LayerView>();
-		for (Layer llayer : layers) {
+		for (Layer llayer : layers)
 			this.layers.add(new LayerView(llayer, applet));
-		}
 	}
-
 
 	public void draw(float x,float y) {
 		applet.pushMatrix();
@@ -35,14 +33,12 @@ public class LayerView extends ViewBase {
 	}
 
 	private void drawChildLayers(float x,float y) {
-		for (LayerView layerView : layers) {
+		for (LayerView layerView : layers)
 			layerView.draw(x,y);
-		}
 	}
 
-	// this is like the calcTransformationMatrix method from the original, but called during draw
-	private void doTransformation(float x,float y) {
-		applet.translate(x,y,layer.z);
+	private void doTransformation(float _x,float _y) {
+		applet.translate(layer.x+_x,layer.y+_y,layer.z);
 		applet.scale(layer.scale,layer.scale,1);
 	}
 }

@@ -171,10 +171,7 @@ public class Skeleton {
 			float y = y0 + dy * 0.5f;
 
 			float dCurrent = PApplet.sqrt(dx*dx + dy*dy);
-//			if (dCurrent < FLT_EPSILON)
-//			{
-//				dCurrent = FLT_EPSILON;
-//			}
+
 			dx /= dCurrent;
 			dy /= dCurrent;
 
@@ -216,8 +213,8 @@ public class Skeleton {
 		}
 	}
 
-	public Joint[] joints;
-	public Bone[] bones;
+	private Joint[] joints;
+	private Bone[] bones;
 	private final Mesh mesh;
 
 	public ArrayList<Bone> allBones = new ArrayList<Bone>();

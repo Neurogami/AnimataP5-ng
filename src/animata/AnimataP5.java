@@ -1,21 +1,17 @@
 package animata;
 
 import java.io.File;
-
 import processing.core.PApplet;
 import processing.xml.XMLElement;
 import animata.model.Layer;
-import java.util.ArrayList;
 
 public class AnimataP5 {
 
 	public static final float timeDivision = 42f;
 	public static float gravity = 0;
-	private static boolean debug;
 	public  PApplet applet;
 	public Layer root;
 	public LayerView layersView;
-    public ArrayList<Layer>allLayers = new ArrayList<Layer>();
 
 	public AnimataP5(PApplet applet, String nmtFile){
 		setup(applet);
@@ -27,7 +23,7 @@ public class AnimataP5 {
 		root = new Layer();
 	}
     
-	public void addScene(String xml){
+	private void addScene(String xml){
 		String folder = new File(xml).getParent();
 		if(folder == null) folder = ".";
 		XMLElement element = new XMLElement(applet, xml);
@@ -38,7 +34,7 @@ public class AnimataP5 {
 		root.simulate();
 		applet.textureMode(PApplet.NORMAL);
 		applet.noStroke();
-		applet.fill(0,0);
+		applet.fill(0);
 		layersView.draw(x,y);
 	}
 
@@ -48,6 +44,16 @@ public class AnimataP5 {
 
     public void moveJointX(String name, float value) {
         root.moveJointX(name, value);
+	}
+
+    public void setLayerAlpha(String name, float value) {
+        if(value>255) value=255;
+        if(value<0) value=0;
+        root.setLayerAlpha(name, value);
+	}
+
+    public void setLayerPos(String name, float x,float y) {
+        root.setLayerPos(name, x,y);
 	}
 
     public void setBoneTempo(String name, float value) {

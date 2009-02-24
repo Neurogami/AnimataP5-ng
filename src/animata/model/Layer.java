@@ -34,11 +34,10 @@ public class Layer {
             return image;
         }
     }
-    private static ArrayList<Joint> allJoints = new ArrayList<Joint>();
     public ArrayList<Layer> layers = new ArrayList<Layer>();
     public Texture texture;
     public Mesh mesh;
-    public Skeleton skeleton;
+    private Skeleton skeleton;
     public String name = "root";
     public float x = 0;
     public float y = 0;
@@ -101,48 +100,54 @@ public class Layer {
         if (skeleton != null) {
             skeleton.simulate(40);
         }
-        for (Layer layer : layers) {
+        for (Layer layer : layers)
             layer.simulate();
-        }
     }
     
     public void moveJointX(String name, float x) {
         if (skeleton != null) {
             for (Joint joint : skeleton.allJoints) {
-                if (joint.name.equals(name)) {
+                if (joint.name.equals(name))
                     joint.x = x;
-                }
             }
         }
-        for (Layer llayer : layers) {
+        for (Layer llayer : layers)
             llayer.moveJointX(name, x);
-        }
     }
 
     public void moveJointY(String name, float y) {
         if (skeleton != null) {
             for (Joint joint : skeleton.allJoints) {
-                if (joint.name.equals(name)) {
+                if (joint.name.equals(name))
                     joint.y = y;
-                }
             }
         }
-        for (Layer llayer : layers) {
+        for (Layer llayer : layers)
             llayer.moveJointY(name, y);
-        }
     }
+
+    public void setLayerAlpha(String name, float a) {
+        if (this != null) this.alpha=a;
+        for (Layer llayer : layers)
+            llayer.setLayerAlpha(name,a);
+    }
+
+    public void setLayerPos(String name, float _x, float _y) {
+        if (this != null) {x=_x;y=_y;}
+        for (Layer llayer : layers)
+            llayer.setLayerPos(name,_x,_y);
+    }
+
 
     public void setBoneTempo(String name, float t) {
         if (skeleton != null) {
             for (Bone bone : skeleton.allBones) {
-                if (bone.name.equals(name)) {
+                if (bone.name.equals(name))
                     bone.tempo = t;
-                }
             }
         }
-        for (Layer llayer : layers) {
+        for (Layer llayer : layers)
             llayer.setBoneTempo(name, t);
-        }
     }
 
     public void setBoneRange(String name, float min, float max) {
@@ -154,8 +159,7 @@ public class Layer {
                 }
             }
         }
-        for (Layer llayer : layers) {
+        for (Layer llayer : layers)
             llayer.setBoneRange(name, min, max);
-        }
     }
 }
