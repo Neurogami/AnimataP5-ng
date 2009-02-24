@@ -17,8 +17,8 @@ void draw(){
 	playback.setLayerPos("mylayer",66,99); // set the position of "mylayer" to (66,99)
 }
 // --------------------------------------------------------------------------------------------
-You can have several instances of the same Animata scene (same file) and control each joint/bone individually.
+You can have several instances of the same Animata scene (same file) and control each joint/bone/layer individually.
 To compile you need the Processing library (core.jar).
-More methods and examples to come soon.
+Examples to come soon.
 // --------------------------------------------------------------------------------------------
 
