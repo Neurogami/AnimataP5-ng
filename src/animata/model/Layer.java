@@ -64,7 +64,7 @@ public class Layer {
     }
 
     private void setupAttributes(XMLElement element) {
-        name = element.getStringAttribute("name");
+        name = element.getStringAttribute("name","null");
         x = element.getFloatAttribute("x");
         y = element.getFloatAttribute("y");
         z = -element.getFloatAttribute("z");
@@ -131,31 +131,37 @@ public class Layer {
         }
     }
 
-    public void setLayerAlpha(String name, float a) {
+    public void setLayerAlpha(String _name, float a) {
         if (this != null) {
-            this.alpha = a;
+            if (this.name.equals(_name)) {
+                this.alpha = a;
+            }
         }
         for (Layer llayer : layers) {
-            llayer.setLayerAlpha(name, a);
+            llayer.setLayerAlpha(_name, a);
         }
     }
 
-    public void setLayerScale(String name, float s) {
+    public void setLayerScale(String _name, float s) {
         if (this != null) {
-            this.scale = s;
+            if (this.name.equals(_name)) {
+                this.scale = s;
+            }
         }
         for (Layer llayer : layers) {
-            llayer.setLayerScale(name, s);
+            llayer.setLayerScale(_name, s);
         }
     }
 
-    public void setLayerPos(String name, float _x, float _y) {
+    public void setLayerPos(String _name, float _x, float _y) {
         if (this != null) {
-            x = _x;
-            y = _y;
+            if (this.name.equals(_name)) {
+                x = _x;
+                y = _y;
+            }
         }
         for (Layer llayer : layers) {
-            llayer.setLayerPos(name, _x, _y);
+            llayer.setLayerPos(_name, _x, _y);
         }
     }
 
