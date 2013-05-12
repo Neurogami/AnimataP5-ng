@@ -1,40 +1,57 @@
 # AnimataP5 #
 
-
-Forked from zeni/animatap5 with the goal of updating it to work with Processing 2.
-
-
+Forked from zeni/animatap5 and updated to work with Processing 2.
 
 ## Building ##
 
-If this repo does not already contain a compiled, working jar file then you need to build that yourself.
+If this repo does not already contain a compiled working jar file then you need to build that yourself.
 
+You should be able to do this just by running `rake`
+
+That assumes that you have Ruby installed.
+
+You can also look at the file `Rakefile` to see how it invokes `ant` to do the build.
+
+There is currently no `clean` target for ant, so if you are mucking with the code and rebuilding make sure you clean out the existing binaries.
 
 
 ## Installation ##
 
 When installing a library in Processing you need to place the folder in the `libraries` directory of your `sketchbook` folder.
 
-
     <sketchbook-path>/libraries/AnimataP5
-
 
 The library folder needs it's own subdirectory named `library` that holds `AnimataP5.jar`
 
-
     sketchbook-path>/libraries/AnimataP5/library/AnimataP5.jar
-
 
 Examples go in an `examples` directory
 
-
     sketchbook-path>/libraries/AnimataP5/examples
 
+The build processing should be giving you an `AnimataP5.zip` that bundles up the needed files in the proper folders.  
 
+Copy that file into your sketchbook libraries folder and unzip it.
 
+You should them be able to try out the example sketch: 
 
+   `File -> Examples -> Contributed Libraries -> AnimataP5 -> AnimataSimple`
 
-### Original README ###
+If all goes well you should see a smallish screen with two arms, one overlaid on the other, each moving.  
+
+It's kind of creepy, but very cool.
+
+## License ##
+
+Sadly, the original Animata source has been released under the GNU GPL v3, and if this code is based on that code then the GPL extends to this code as well.  
+
+I would much prefer the MIT license, but such is life.  
+
+In any event, thanks to the original devs for their work and for making it available.
+
+The original Animata source can be found at [http://code.google.com/p/animata/](http://code.google.com/p/animata)
+
+### Original README from zeni/animatap5 ###
 
 A library for processing (http://processing.org) to render/control Animata (http://animata.kibu.hu) scenes.
 
