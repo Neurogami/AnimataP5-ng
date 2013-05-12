@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.core.PImage;
-import processing.xml.XMLElement;
+import processing.data.XML;
 
 import animata.model.Skeleton.Joint;
 import animata.model.Skeleton.Bone;
@@ -20,11 +20,11 @@ public class Layer {
         private float scale;
         private PImage image;
 
-        public Texture(XMLElement child, String folder) {
-            location = folder + File.separator + child.getStringAttribute("location");
-            x = child.getFloatAttribute("x");
-            y = child.getFloatAttribute("y");
-            scale = child.getFloatAttribute("scale");
+        public Texture(XML child, String folder) {
+            location = folder + File.separator + child.getString("location");
+            x = child.getFloat("x");
+            y = child.getFloat("y");
+            scale = child.getFloat("scale");
         }
 
         public PImage getImage(PApplet applet) {
@@ -49,13 +49,13 @@ public class Layer {
     public Layer() {
     }
 
-    public Layer(XMLElement element, String folder) {
+    public Layer(XML element, String folder) {
         setupAttributes(element);
         addChildLayersIfPresent(element, folder);
     }
 
-    private void addChildLayersIfPresent(XMLElement element, String folder) {
-        XMLElement[] innerLayers = element.getChildren("layer");
+    private void addChildLayersIfPresent(XML element, String folder) {
+        XML[] innerLayers = element.getChildren("layer");
         if (innerLayers.length > 0) {
             addLayers(innerLayers, folder);
         } else {
@@ -63,34 +63,34 @@ public class Layer {
         }
     }
 
-    private void setupAttributes(XMLElement element) {
-        name = element.getStringAttribute("name","null");
-        x = element.getFloatAttribute("x");
-        y = element.getFloatAttribute("y");
-        z = -element.getFloatAttribute("z");
-        alpha = element.getFloatAttribute("alpha", 255);
-        scale = element.getFloatAttribute("scale", 1);
-        visible = element.getIntAttribute("vis") == 1;
+    private void setupAttributes(XML element) {
+        name = element.getString("name","null");
+        x = element.getFloat("x");
+        y = element.getFloat("y");
+        z = -element.getFloat("z");
+        alpha = element.getFloat("alpha", 255);
+        scale = element.getFloat("scale", 1);
+        visible = element.getInt("vis") == 1;
     }
 
-    private void setupLayerContents(XMLElement element, String folder) {
+    private void setupLayerContents(XML element, String folder) {
         texture = new Texture(element.getChild("texture"), folder);
         mesh = new Mesh(element.getChild("mesh"));
-        XMLElement skeletonElement = element.getChild("skeleton");
+        XML skeletonElement = element.getChild("skeleton");
         if (skeletonElement == null) {
             return;
         }
         skeleton = new Skeleton(skeletonElement, mesh);
     }
 
-    private void addLayers(XMLElement[] children, String folder) {
+    private void addLayers(XML[] children, String folder) {
         for (int i = 0; i < children.length; i++) {
-            XMLElement element = children[i];
+            XML element = children[i];
             addLayer(folder, element);
         }
     }
 
-    public Layer addLayer(String folder, XMLElement element) {
+    public Layer addLayer(String folder, XML element) {
         Layer layer = new Layer(element, folder);
         layers.add(layer);
         return layer;

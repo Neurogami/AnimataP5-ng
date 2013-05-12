@@ -3,7 +3,7 @@ package animata.model;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
-import processing.xml.XMLElement;
+import processing.data.XML;
 import animata.AnimataP5;
 import animata.model.Mesh.Vertex;
 
@@ -21,7 +21,7 @@ public class Skeleton {
         private final Bone bone;
         private float dst;
 
-        private AttachedVertex(XMLElement element, Bone bone) {
+        private AttachedVertex(XML element, Bone bone) {
             this.bone = bone;
             assignAttributes(element);
             setInitialConditions();
@@ -52,12 +52,12 @@ public class Skeleton {
             ca = vd * (PApplet.cos(a));
         }
 
-        private void assignAttributes(XMLElement element) {
-            vertex = mesh.vertices[element.getIntAttribute("id")];
-            d = element.getFloatAttribute("d");
-            w = element.getFloatAttribute("w");
-            ca = element.getFloatAttribute("ca");
-            sa = element.getFloatAttribute("sa");
+        private void assignAttributes(XML element) {
+            vertex = mesh.vertices[element.getInt("id")];
+            d = element.getFloat("d");
+            w = element.getFloat("w");
+            ca = element.getFloat("ca");
+            sa = element.getFloat("sa");
         }
     }
 
@@ -77,7 +77,7 @@ public class Skeleton {
         private float radius;
         private float falloff;
 
-        public Bone(XMLElement element) {
+        public Bone(XML element) {
             assignAttributes(element);
             setInitialConditions();
             if (element.getChild("attached") != null) {
@@ -89,24 +89,24 @@ public class Skeleton {
             falloff = 1.0f;
         }
 
-        private void assignAttributes(XMLElement element) {
-            name = element.getStringAttribute("name", "");
-            j0 = joints[element.getIntAttribute("j0")];
-            j1 = joints[element.getIntAttribute("j1")];
-            stiffness = element.getFloatAttribute("stiffness");
-            scale = element.getFloatAttribute("lm");
-            maxScale = element.getFloatAttribute("lmmax");
-            minScale = element.getFloatAttribute("lmmin");
-            tempo = element.getFloatAttribute("tempo");
-            time = element.getFloatAttribute("time");
-            size = element.getFloatAttribute("size");
-            radius = element.getFloatAttribute("radius");
+        private void assignAttributes(XML element) {
+            name = element.getString("name", "");
+            j0 = joints[element.getInt("j0")];
+            j1 = joints[element.getInt("j1")];
+            stiffness = element.getFloat("stiffness");
+            scale = element.getFloat("lm");
+            maxScale = element.getFloat("lmmax");
+            minScale = element.getFloat("lmmin");
+            tempo = element.getFloat("tempo");
+            time = element.getFloat("time");
+            size = element.getFloat("size");
+            radius = element.getFloat("radius");
         }
 
-        private void addVertices(XMLElement[] children) {
+        private void addVertices(XML[] children) {
             attachedVertices = new AttachedVertex[children.length];
             for (int i = 0; i < children.length; i++) {
-                XMLElement element = children[i];
+                XML element = children[i];
                 AttachedVertex attachedVertex = new AttachedVertex(element, this);
                 attachedVertices[i] = attachedVertex;
             }
@@ -175,12 +175,12 @@ public class Skeleton {
         private boolean selected;
         public String name;
 
-        public Joint(XMLElement element) {
-            name = element.getStringAttribute("name", "");
-            x = element.getFloatAttribute("x");
-            y = element.getFloatAttribute("y");
-            fixed = element.getIntAttribute("fixed") == 1;
-            selected = element.getIntAttribute("selected") == 1;
+        public Joint(XML element) {
+            name = element.getString("name", "");
+            x = element.getFloat("x");
+            y = element.getFloat("y");
+            fixed = element.getInt("fixed") == 1;
+            selected = element.getInt("selected") == 1;
         }
 
         public void simulate() {
@@ -195,26 +195,26 @@ public class Skeleton {
     public ArrayList<Bone> allBones = new ArrayList<Bone>();
     public ArrayList<Joint> allJoints = new ArrayList<Joint>();
 
-    public Skeleton(XMLElement child, Mesh mesh) {
+    public Skeleton(XML child, Mesh mesh) {
         this.mesh = mesh;
         addJoints(child.getChildren("joints/joint"));
         addBones(child.getChildren("bones/bone"));
     }
 
-    private void addBones(XMLElement[] children) {
+    private void addBones(XML[] children) {
         bones = new Bone[children.length];
         for (int i = 0; i < children.length; i++) {
-            XMLElement element = children[i];
+            XML element = children[i];
             Bone bone = new Bone(element);
             bones[i] = bone;
             allBones.add(bone);
         }
     }
 
-    private void addJoints(XMLElement[] children) {
+    private void addJoints(XML[] children) {
         joints = new Joint[children.length];
         for (int i = 0; i < children.length; i++) {
-            XMLElement element = children[i];
+            XML element = children[i];
             Joint joint = new Joint(element);
             joints[i] = joint;
             allJoints.add(joint);

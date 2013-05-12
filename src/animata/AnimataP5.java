@@ -1,8 +1,9 @@
 package animata;
 
 import java.io.File;
+import java.io.IOException;
 import processing.core.PApplet;
-import processing.xml.XMLElement;
+import processing.data.XML;
 import animata.model.Layer;
 
 public class AnimataP5 {
@@ -28,9 +29,23 @@ public class AnimataP5 {
         if (folder == null) {
             folder = ".";
         }
-        XMLElement element = new XMLElement(applet, xml);
-        layersView = new LayerView(root.addLayer(folder, element), applet);
-    }
+        try {
+          // XML element = new XML(applet, xml);
+          XML element = new XML(xml);
+          layersView = new LayerView(root.addLayer(folder, element), applet);
+        } 
+        
+ //       catch(IOException e) {
+   //       // ??
+     //   }
+        catch(javax.xml.parsers.ParserConfigurationException e2) {
+        // ??
+        }
+
+       // catch(org.xml.sax.SAXException e3) {
+       // // ???
+        //}
+  }
 
     public void draw(float x, float y) {
         root.simulate();

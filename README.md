@@ -1,6 +1,36 @@
 # AnimataP5 #
 
-Forked from zeni/animatap5
+
+Forked from zeni/animatap5 with the goal of updating it to work with Processing 2.
+
+
+
+## Building ##
+
+If this repo does not already contain a compiled, working jar file then you need to build that yourself.
+
+
+
+## Installation ##
+
+When installing a library in Processing you need to place the folder in the `libraries` directory of your `sketchbook` folder.
+
+
+    <sketchbook-path>/libraries/AnimataP5
+
+
+The library folder needs it's own subdirectory named `library` that holds `AnimataP5.jar`
+
+
+    sketchbook-path>/libraries/AnimataP5/library/AnimataP5.jar
+
+
+Examples go in an `examples` directory
+
+
+    sketchbook-path>/libraries/AnimataP5/examples
+
+
 
 
 

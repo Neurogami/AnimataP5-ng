@@ -1,6 +1,6 @@
 package animata.model;
 
-import processing.xml.XMLElement;
+import processing.data.XML;
 
 public class Mesh {
 
@@ -8,10 +8,10 @@ public class Mesh {
 
         public Vertex[] vertices = new Vertex[3];
 
-        public Face(XMLElement element, Vertex[] vertices) {
-            this.vertices[0] = vertices[element.getIntAttribute("v0")];
-            this.vertices[1] = vertices[element.getIntAttribute("v1")];
-            this.vertices[2] = vertices[element.getIntAttribute("v2")];
+        public Face(XML element, Vertex[] vertices) {
+            this.vertices[0] = vertices[element.getInt("v0")];
+            this.vertices[1] = vertices[element.getInt("v1")];
+            this.vertices[2] = vertices[element.getInt("v2")];
         }
     }
 
@@ -23,35 +23,35 @@ public class Mesh {
         public float v;
         public int selected;
 
-        public Vertex(XMLElement element) {
-            x = element.getFloatAttribute("x");
-            y = element.getFloatAttribute("y");
-            u = element.getFloatAttribute("u");
-            v = element.getFloatAttribute("v");
-            selected = element.getIntAttribute("selected");
+        public Vertex(XML element) {
+            x = element.getFloat("x");
+            y = element.getFloat("y");
+            u = element.getFloat("u");
+            v = element.getFloat("v");
+            selected = element.getInt("selected");
         }
     }
     protected Vertex[] vertices;
     public Face[] faces;
 
-    public Mesh(XMLElement child) {
+    public Mesh(XML child) {
         addVertices(child.getChildren("vertices/vertex"));
         addFaces(child.getChildren("faces/face"));
     }
 
-    private void addVertices(XMLElement[] children) {
+    private void addVertices(XML[] children) {
         vertices = new Vertex[children.length];
         for (int i = 0; i < children.length; i++) {
-            XMLElement element = children[i];
+            XML element = children[i];
             Vertex vertex = new Vertex(element);
             vertices[i] = vertex;
         }
     }
 
-    private void addFaces(XMLElement[] children) {
+    private void addFaces(XML[] children) {
         faces = new Face[children.length];
         for (int i = 0; i < children.length; i++) {
-            XMLElement element = children[i];
+            XML element = children[i];
             Face face = new Face(element, vertices);
             faces[i] = face;
         }
