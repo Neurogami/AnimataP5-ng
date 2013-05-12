@@ -74,6 +74,7 @@ public class Layer {
     }
 
     private void setupLayerContents(XML element, String folder) {
+        System.err.println("setupLayerContents has folder '" + folder + "' and element " + element );
         texture = new Texture(element.getChild("texture"), folder);
         mesh = new Mesh(element.getChild("mesh"));
         XML skeletonElement = element.getChild("skeleton");
@@ -91,6 +92,7 @@ public class Layer {
     }
 
     public Layer addLayer(String folder, XML element) {
+        System.err.println("addLayer has folder '" + folder + "' and element " + element );
         Layer layer = new Layer(element, folder);
         layers.add(layer);
         return layer;
