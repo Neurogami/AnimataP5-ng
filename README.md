@@ -14,6 +14,8 @@ You can also look at the file `Rakefile` to see how it invokes `ant` to do the b
 
 There is currently no `clean` target for ant, so if you are mucking with the code and rebuilding make sure you clean out the existing binaries.
 
+`build.xml` requires a `build.properties` file that defines some user-specific properties.  There is a sample file included; you need to modify this and change the name.
+
 
 ## Installation ##
 
