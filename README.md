@@ -2,6 +2,8 @@
 
 Forked from zeni/animatap5 and updated to work with Processing 2.
 
+Added code to allow run-time altering of the Joint `fixed` property.
+
 ## Building ##
 
 If this repo does not already contain a compiled working jar file then you need to build that yourself.
@@ -11,8 +13,6 @@ You should be able to do this just by running `rake`
 That assumes that you have Ruby installed.
 
 You can also look at the file `Rakefile` to see how it invokes `ant` to do the build.
-
-There is currently no `clean` target for ant, so if you are mucking with the code and rebuilding make sure you clean out the existing binaries.
 
 `build.xml` requires a `build.properties` file that defines some user-specific properties.  There is a sample file included; you need to modify this and change the name.
 
@@ -42,6 +42,9 @@ You should them be able to try out the example sketch:
 If all goes well you should see a smallish screen with two arms, one overlaid on the other, each moving.  
 
 It's kind of creepy, but very cool.
+
+The example also allows you to play with the `fixed` property of the shoulder joints as well as use the mouse to move the location of the wrist joint.
+
 
 ## License ##
 
