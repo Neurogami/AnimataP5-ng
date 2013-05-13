@@ -28,6 +28,25 @@ void draw() {
   armA.draw(10,30); // draw scene translated of (10,30)
 }
 
+// An experiment in altering the "fixed" state for the shoulder joints (there are 3 that make up
+// the shoulder structure).
+ void keyPressed() {
+  if (key == 'f') {
+   armB.toggleJointFixed("shoulder1"); 
+   armB.toggleJointFixed("shoulder2"); 
+   armB.toggleJointFixed("shoulder3");    
+  }
+
+  if (key == 'F') {
+   armB.setJointFixed("shoulder1", true); 
+   armB.setJointFixed("shoulder2", true); 
+   armB.setJointFixed("shoulder3", true);    
+  }
+ 
+ }
+
+
+
 void mouseDragged(){
   poigneeBX =  mouseX;
   poigneeBY =  mouseY;
@@ -88,7 +107,26 @@ void mouseDragged(){
    bones and joints, with the shoulder location fixed.  In other words, you cannot just drag the arm around.
 
 
-   After adding the code for mouseDragged() I wondered why the shoulder stayed fixed.
+   After adding the code for mouseDragged() I wondered why the shoulder stayed fixed.  The reason is simple:
+   that's how it's defined in the XML.  The assorted joints that comprise the shoulder are not named, but
+   they have the "fixed" attribute set to 1; free-moving joints need to have "fixed" set to 0.
+
+   "fixed" is a property of the Joint class, and is set when the nmt XML is loaded. The original code had
+   no way to change this at runtime.
+
+   As an experiment I added code to allow changing fixed-state at runtime.  You can play with this by pressing
+   'f' or "F" (see the code above).
+
+   To be honest this addition was motivated by curiosity and "I wonder how hard this could be?"  It wasn't 
+   hard, which is encouraging if you are inclined to hack about and add features.
+
+   After adding the code I realised that being able to manipulate the "fixed" property of any joint could allow
+   for some interesting motion and mechanics that (as best I can tell) you can't get in Animata itself.
+
+  
+
+
+  
 
 
 

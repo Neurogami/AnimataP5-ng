@@ -175,9 +175,9 @@
                 </mesh>
                 <skeleton>
                     <joints>
-                        <joint x="599.000000" y="107.040367" fixed="1" selected="0" />
-                        <joint x="638.000000" y="199.000000" fixed="1" selected="0" />
-                        <joint x="563.000000" y="163.000000" fixed="1" selected="0" />
+                        <joint name="shoulder1"  x="599.000000" y="107.040367" fixed="1" selected="0" />
+                        <joint name="shoulder2" x="638.000000" y="199.000000" fixed="1" selected="0" />
+                        <joint name="shoulder3"  x="563.000000" y="163.000000" fixed="1" selected="0" />
                         <joint x="353.248627" y="283.374908" fixed="0" selected="0" />
                         <joint name="poignee" x="333.762573" y="51.513252" fixed="0" selected="0" />
                         <joint name="doigts" x="173.951355" y="-28.263435" fixed="0" selected="0" />

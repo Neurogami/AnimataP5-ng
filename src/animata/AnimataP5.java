@@ -60,6 +60,16 @@ public class AnimataP5 {
     root.moveJointX(name, value);
   }
 
+  public void toggleJointFixed(String name) {
+    System.err.println("AnimataP5: toggle fixed for '"+name+"'." );
+    root.toggleJointFixed(name);
+  }
+
+  public void setJointFixed(String name, boolean b) {
+    root.setJointFixed(name, b);
+  }
+
+
   public void setLayerAlpha(String name, float value) {
     if (value > 255) {
       value = 255;

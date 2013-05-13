@@ -68,12 +68,13 @@
 
 	<target name='init'>
 		<echo>Properties initialized.
-			src path			${src}
-			bin path 			${bin}
-			libraryClasspath		${libraryClasspath}
+			src path			        ${src}
+			bin path 			        ${bin}
+			dist path 		        ${dist}
+			libraryClasspath		  ${libraryClasspath}
 			processing Libraries	${processing}
-			java version		${javaVersion}
-			java target		${javaTarget}
+			java version		      ${javaVersion}
+			java target		        ${javaTarget}
 		</echo>
 		<echo>building library ...</echo>
 		<!-- Create the time stamp -->
@@ -86,6 +87,10 @@
 	<!-- compile the library -->
 	<target depends='init' description='compile the source' name='compile'>
 		<!-- javac destdir='${bin}' includeantruntime='false' source='${javaVersion}' srcdir='${src}' target='${javaTarget}' -->
+		<!-- delete and recreate the  ${bin} folder -->
+		<delete dir='${bin}'/>
+		<mkdir dir='${bin}'/>
+
 		<javac destdir='${bin}' includeantruntime='false' source='1.6' srcdir='${src}' target='1.6'>
 			<classpath>
 				<path refid='library-classpath'/>
@@ -97,6 +102,7 @@
 	<target depends='compile' description='generate the distribution' name='build'>
 		<!-- delete the previous content of the ${dist} folder -->
 		<delete dir='${dist}'/>
+
 
 		<!-- build the structure for ${dist} -->
 		<mkdir dir='${dist}'/>
@@ -133,13 +139,10 @@
 		</copy>
 
 		<!-- zip the distribution of the library -->
-		<!-- <zip basedir='${dist}' destfile='${dist}/${libraryName}.zip' excludes='**/_DS.Store'/>  -->
-    <!-- <zip basedir='${dist}' destfile='${dist}/${libraryName}.zip'/>  -->
 		
 		<zip destfile='${dist}/${libraryName}.zip'>
       <zipfileset dir='${dist}' excludes='*.zip' includes='**/*.*' prefix='${libraryName}'/>
     </zip>
-
 
 
 		<!-- organize the ${dist} folder -->
@@ -152,7 +155,7 @@
 			<fileset dir='${dist}/examples'/>
 		</move>
 
-		<delete dir='${dist}/library'/>
+		<!--		<delete dir='${dist}/library'/> -->
 
 		<copy todir='${dist}/web'>
 			<fileset dir='web'/>

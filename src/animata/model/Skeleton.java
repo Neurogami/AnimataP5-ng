@@ -124,11 +124,11 @@ public class Skeleton {
             dx /= dCurrent;
             dy /= dCurrent;
             float m = ((size * scale) - dCurrent) * stiffness;
-            if (!j0.fixed) {
+            if (!j0.getFixed()) {
                 j0.x -= m * dx;
                 j0.y -= m * dy;
             }
-            if (!j1.fixed) {
+            if (!j1.getFixed()) {
                 j1.x += m * dx;
                 j1.y += m * dy;
             }
@@ -184,11 +184,27 @@ public class Skeleton {
         }
 
         public void simulate() {
-            if (!fixed) {
+            if (!getFixed()) {
                 y += AnimataP5.gravity;
             }
         }
+
+        public boolean getFixed() {
+          return fixed;
+        }
+
+      public void setFixed(boolean b) {
+          fixed = b;
+        }
+
+      public void toggleFixed(){
+        System.err.println("Toggle fixed for '"+name+"'." );
+        setFixed(!getFixed());
+        System.err.println("Fixed for '"+name+"' is now " +  getFixed());
+      }
+
     }
+
     private Joint[] joints;
     private Bone[] bones;
     private final Mesh mesh;
