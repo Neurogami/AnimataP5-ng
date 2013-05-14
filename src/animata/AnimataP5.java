@@ -73,6 +73,10 @@ public class AnimataP5 {
     root.moveJointX(name, value);
   }
 
+  public void moveJoint(String name, float x,  float y) {
+    root.moveJoint(name, x, y);
+  }
+
   public void toggleJointFixed(String name) {
     root.toggleJointFixed(name);
   }

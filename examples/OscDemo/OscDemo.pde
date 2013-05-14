@@ -46,7 +46,7 @@ void setup() {
   prepJointLocations();
   loadData();
   setupOsc();
-  
+
 }
 
 //-----------------------------------------------------------
@@ -257,5 +257,26 @@ void moveLayerJoint(String layerName, String jointName, float x, float y) {
 void setTextureImage(String imageName, String layerName) {
   println("setTextureImage: " + imageName  + " for " + layerName );
   Doll.setNewMeshImage( imageName,  layerName); 
+}
+
+
+// These are to handle the OSC commands offered by regular Animata
+void animataOscJoint(String jointName, float x, float y) {
+    Doll.moveJointX(jointName, x ); 
+    Doll.moveJointY(jointName, y ); 
+}
+
+void animataOscAnibone(String boneName, float length){
+
+}
+
+void animataOscLayervis(String layerName, int state) {
+
+}
+void animataOscLayeralpha(String layerName, float value) {
+
+}
+
+void animataOscLayerpos(String layerName, float x, float y) {
 
 }

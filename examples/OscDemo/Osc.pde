@@ -105,6 +105,59 @@ void oscEvent(OscMessage oscMsg) {
       }
     }
   } 
+
+
+  // The OSC stuff Animata itself would handle
+
+
+//    To move a joint, x and y are float values:	 /joint name x y
+  
+  if ( parts[realm].equals("joint") ){
+          String jointName = (oscMsg.arguments()[0]).toString();
+         Float x = parseFloat( (oscMsg.arguments()[1]).toString() );
+         Float y = parseFloat( (oscMsg.arguments()[2]).toString() );
+        animataOscJoint(jointName, x, y);
+  
+  }
+//  Control the length of a bone, value is a float between 0 and 2:	 /anibone name value
+    if ( parts[realm].equals("anibone") ){
+  
+        String boneName = (oscMsg.arguments()[0]).toString();
+         Float length = parseFloat( (oscMsg.arguments()[1]).toString() );
+        animataOscAnibone(boneName, length);
+  
+  
+  }
+//  Switch on and off a layer, on_off is 0 or 1:	 /layervis name on_off
+    if ( parts[realm].equals("layervis") ){
+  
+        String layerName = (oscMsg.arguments()[0]).toString();
+         Float state = parseInt( (oscMsg.arguments()[1]).toString() );
+        animataOscLayervis(layerName, state);
+  
+  }
+//  Set the transparency of the layer, value is a float between 0 and 1:	/layeralpha name value
+  if ( parts[realm].equals("layeralpha") ){
+  
+        String layerName = (oscMsg.arguments()[0]).toString();
+         Float value = parseFloat( (oscMsg.arguments()[1]).toString() );
+        animataOscLayeralpha(layerName, value);
+  
+  }
+//    Moving a layer, x and y are the position coordinates as float values:	/layerpos name x y
+  
+  if ( parts[realm].equals("layerpos") ){
+  
+       String layerName = (oscMsg.arguments()[0]).toString();
+         Float x = parseFloat( (oscMsg.arguments()[1]).toString() );
+         Float y = parseFloat( (oscMsg.arguments()[2]).toString() );
+        animataOscJoint(jointName, x, y);
+  }
+//  Moving a layer, x and y control the speed that the layer is moving:	/layerdeltapos name x y
+  if ( parts[realm].equals("layerdeltapos") ){
+  
+  
+  }
 }
 
 /*
@@ -192,6 +245,40 @@ There's also this:
 
 
    Assume that a  server that behaves differently  based on number and type of args is OK
+
+   If we want a more hierarchacal pattern, then perhaps:
+
+   <realm>/<itemOfInterest>/<itemIdentifier>/<propertyOrAction>
+
+   Some examples:
+
+     /animata/layer/layer_001/image s
+     /animata/joint/head/move f,f
+     /animata/scene/load s
+
+
+  This really depends on having a full picture of how a scene can be structured
+
+  It might also be good to follow whatever OCS Animata itself supports, and build on it.
+
+    http://mansteri.com/2008/12/animata-osc/
+    http://usinganimata.wikia.com/wiki/Animata_OSC_Commands
+
+
+   However, it seems that the naming of the patterns is not ideal. They seem very targeted.
+
+
+
+    To move a joint, x and y are float values:	 /joint name x y
+    Control the length of a bone, value is a float between 0 and 2:	 /anibone name value
+    Switch on and off a layer, on_off is 0 or 1:	 /layervis name on_off
+    Set the transparency of the layer, value is a float between 0 and 1:	/layeralpha name value
+
+    The next two messages require the svn version:
+    Moving a layer, x and y are the position coordinates as float values:	/layerpos name x y
+    Moving a layer, x and y control the speed that the layer is moving:	/layerdeltapos name x y
+
+
 
 
  */

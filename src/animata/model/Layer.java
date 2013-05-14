@@ -180,6 +180,22 @@ public class Layer {
     }
   }
 
+  public void moveJoint(String name, float x, float y) {
+    if (skeleton != null) {
+      for (Joint joint : skeleton.allJoints) {
+        if (joint.name.equals(name)) {
+          joint.x = x;
+          joint.y = y;
+        }
+      }
+    }
+
+    for (Layer llayer : layers) {
+      llayer.moveJoint(name, x, y);
+    }
+  }
+
+
 
   public void toggleJointFixed(String name) {
     if (skeleton != null) {
