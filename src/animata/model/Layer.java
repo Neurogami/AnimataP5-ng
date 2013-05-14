@@ -71,12 +71,14 @@ public class Layer {
   // lack of any way to target a layer is a Bad Idea.
   // Basically it ends up trying to update the texture image
   // for any  layer it can.
-  public void setNewTextureImage(PApplet applet, String imageName) {
-    System.err.println("Layer#setNewTextureImage: " + imageName );
+  public void setNewTextureImage(PApplet applet, String imageName, String layerName) {
+    System.err.println("Layer named '" + name + "' executing  setNewTextureImage: " + imageName + " for " + layerName );
+    if (name.equals(layerName) ) {
     if (texture != null ) { 
       texture.loadImage(applet, imageName);
     } else {
       System.err.println("Layer#setNewTextureImage: texture is null!"  );
+    }
     }
   }
 

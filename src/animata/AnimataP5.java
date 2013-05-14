@@ -61,8 +61,8 @@ public class AnimataP5 {
 
   // This seems to work OK under simple conditions but the
   // lack of any way to target a layer is a Bad Idea.
-  public void setNewMeshImage(String imageName) {
-   layersView.setNewMeshImage(imageName);
+  public void setNewMeshImage(String imageName, String layerName) {
+   layersView.setNewMeshImage(imageName, layerName);
   }
 
   public void moveJointY(String name, float value) {

@@ -254,8 +254,8 @@ void moveLayerJoint(String layerName, String jointName, float x, float y) {
 }
 
 
-void setTextureImage(String imageName) {
-  println("setTextureImage: " + imageName );
-  Doll.setNewMeshImage( imageName );
+void setTextureImage(String imageName, String layerName) {
+  println("setTextureImage: " + imageName  + " for " + layerName );
+  Doll.setNewMeshImage( imageName,  layerName); 
 
 }

@@ -23,16 +23,20 @@ public class LayerView {
 
   // This seems to work OK under simple conditions but the
   // lack of any way to target a layer is a Bad Idea.
-  public void setNewMeshImage(String imageName) {
-    System.err.println("LayerView#setNewMeshImage: " + imageName );
-    if (mesh != null ) { 
-      mesh.setNewImageName(imageName);
-    } else {
-      System.err.println("LayerView#setNewMeshImage: mesh is null!"  );
+  public void setNewMeshImage(String imageName, String layerName ) {
+    
+    System.err.println("LayerView#setNewMeshImage: " + imageName + " for " + layerName ); // DEBUG
+
+    // The goal is to check that the layer
+//    if (mesh != null ) { 
+  //    mesh.setNewImageName(imageName);
+    //} else {
+      
+    // System.err.println("LayerView#setNewMeshImage: mesh is null!"  );
       for (Layer llayer : layer.layers) {
-        llayer.setNewTextureImage(applet, imageName);
+        llayer.setNewTextureImage(applet, imageName, layerName);
       }
-    }
+    //}
   }
 
   private void addChildLayers(ArrayList<Layer> layers) {
