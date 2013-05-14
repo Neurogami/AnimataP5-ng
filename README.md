@@ -8,7 +8,10 @@ Forked from zeni/animatap5 and updated to work with Processing 2.
 
 * Added code for referencing joints by name and reading location values
 
-See the sample application for usage and some docs about Animata in general.
+* Added an example showing the use of OSc to manipulate joints
+
+
+See the sample applications for usage and some docs about Animata in general.
 
 
 ## Building ##
