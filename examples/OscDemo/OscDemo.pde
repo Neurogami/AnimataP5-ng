@@ -46,6 +46,7 @@ void setup() {
   prepJointLocations();
   loadData();
   setupOsc();
+  
 }
 
 //-----------------------------------------------------------
@@ -250,4 +251,11 @@ void moveLayerJoint(String layerName, String jointName, float x, float y) {
   // Since the `draw` method renders the joints based on the jointTable we need
   // to update values there.
   jointTable.put(jointName, new Point(x, y) );
+}
+
+
+void setTextureImage(String imageName) {
+  println("setTextureImage: " + imageName );
+  Doll.setNewMeshImage( imageName );
+
 }

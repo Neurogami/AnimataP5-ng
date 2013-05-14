@@ -65,7 +65,9 @@ void oscEvent(OscMessage oscMsg) {
   int realm  = 1;
   int action = 2;
   int layer = 3;
+  int imageRecipient = 3;
   int joint = 4;
+  int image = 4;
 
   String[] parts = split(oscMsg.addrPattern(), "/");
   println("parts[realm]: '" + parts[realm]  + "'" );
@@ -88,6 +90,16 @@ void oscEvent(OscMessage oscMsg) {
 
       println("new location: " + x + ", " + y);
       moveLayerJoint(parts[layer], parts[joint],   x, y);
+    }
+
+        //  If we got this:   /animata/image/texture  s
+      
+    if (parts[action].equals("image") ) {
+      println("Load an image into'" + parts[imageRecipient] + "' ...");
+
+      String s =  (oscMsg.arguments()[0]).toString();
+
+      setTextureImage(s);
     }
   } 
 }

@@ -59,6 +59,12 @@ public class AnimataP5 {
     return root.getJoint(name);
   }
 
+  // This seems to work OK under simple conditions but the
+  // lack of any way to target a layer is a Bad Idea.
+  public void setNewMeshImage(String imageName) {
+   layersView.setNewMeshImage(imageName);
+  }
+
   public void moveJointY(String name, float value) {
     root.moveJointY(name, value);
   }

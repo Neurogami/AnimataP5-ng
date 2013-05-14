@@ -9,7 +9,8 @@ public class MeshView {
 
     private final Layer layer;
     protected final PApplet applet;
-
+    private String newImageName = null;
+    
     public MeshView(PApplet applet, Layer layer) {
         this.applet = applet;
         this.layer = layer;
@@ -18,6 +19,16 @@ public class MeshView {
     public void draw() {
         applet.noStroke();
         drawFaces(layer.mesh.faces);
+    }
+
+
+    public void setNewImageName(String imageName) {
+      System.err.println("MeshView#setNewImageName: " + imageName );
+      if (this.applet != null ) {
+      this.layer.texture.loadImage(this.applet, imageName);
+      } else {
+      System.err.println("MeshView#setNewImageName: " + imageName + ": this.applet  is null!" );
+      }
     }
 
     private void drawFaces(Face[] faces) {
