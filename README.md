@@ -4,9 +4,11 @@ A library for processing (http://processing.org) to render/control Animata (http
 
 Forked from zeni/animatap5 and updated to work with Processing 2.
 
-Added code to allow run-time altering of the Joint `fixed` property.
+* Added code to allow run-time altering of the Joint `fixed` property.
 
-See the sample applicatin for usage and some docs about Animata in general.
+* Added code for referencing joints by name and reading location values
+
+See the sample application for usage and some docs about Animata in general.
 
 
 ## Building ##

@@ -6,6 +6,9 @@ import processing.core.PApplet;
 import processing.data.XML;
 import animata.model.Layer;
 
+import animata.model.Skeleton.Joint;
+
+
 public class AnimataP5 {
 
   public static final float timeDivision = 42f;
@@ -52,6 +55,10 @@ public class AnimataP5 {
     layersView.draw(x, y);
   }
 
+  public Joint getJoint(String name) {
+    return root.getJoint(name);
+  }
+
   public void moveJointY(String name, float value) {
     root.moveJointY(name, value);
   }
@@ -61,7 +68,6 @@ public class AnimataP5 {
   }
 
   public void toggleJointFixed(String name) {
-    System.err.println("AnimataP5: toggle fixed for '"+name+"'." );
     root.toggleJointFixed(name);
   }
 

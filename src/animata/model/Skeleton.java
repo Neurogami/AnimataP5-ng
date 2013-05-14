@@ -198,10 +198,17 @@ public class Skeleton {
         }
 
       public void toggleFixed(){
-        System.err.println("Toggle fixed for '"+name+"'." );
         setFixed(!getFixed());
-        System.err.println("Fixed for '"+name+"' is now " +  getFixed());
       }
+
+      public float x(){
+        return x;
+      }
+
+      public float y(){
+        return y;
+      }
+
 
     }
 

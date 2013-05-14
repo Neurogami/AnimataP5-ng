@@ -74,7 +74,6 @@ public class Layer {
 	}
 
 	private void setupLayerContents(XML element, String folder) {
-		System.err.println("setupLayerContents has folder '" + folder + "' and element " + element );
 		texture = new Texture(element.getChild("texture"), folder);
 		mesh = new Mesh(element.getChild("mesh"));
 		XML skeletonElement = element.getChild("skeleton");
@@ -92,7 +91,6 @@ public class Layer {
 	}
 
 	public Layer addLayer(String folder, XML element) {
-		System.err.println("addLayer has folder '" + folder + "' and element " + element );
 		Layer layer = new Layer(element, folder);
 		layers.add(layer);
 		return layer;
@@ -106,6 +104,27 @@ public class Layer {
 			layer.simulate();
 		}
 	}
+
+  public Joint getJoint(String name) {
+    Joint j = null;
+    
+		if (skeleton != null) {
+			for (Joint joint : skeleton.allJoints) {
+				if (joint.name.equals(name)) {
+					return joint; 
+				}
+			}
+		}
+
+		for (Layer llayer : layers) {
+			j = llayer.getJoint(name);
+		  if (j != null) {
+        return j;
+      }
+    }
+
+    return j;
+}
 
 	public void moveJointX(String name, float x) {
 		if (skeleton != null) {
