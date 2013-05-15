@@ -1,3 +1,9 @@
 :port: 8000
 :address: 127.0.0.1
 
+:initial_messages: 
+ - /animata/layer/layer_0001/image jgb-doll2.png
+ - /animata/move/joint head 10.0 10.0
+
+
+

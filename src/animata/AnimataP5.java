@@ -7,7 +7,7 @@ import processing.data.XML;
 import animata.model.Layer;
 
 import animata.model.Skeleton.Joint;
-
+import animata.model.Skeleton.Bone;
 
 public class AnimataP5 {
 
@@ -59,8 +59,20 @@ public class AnimataP5 {
     return root.getJoint(name);
   }
 
-  // This seems to work OK under simple conditions but the
-  // lack of any way to target a layer is a Bad Idea.
+  public Layer getLayer(String name) {
+    Layer l = null;
+    if (root.name.equals(name) ) {
+     return root;
+    }
+
+    return root.getLayer(name);
+  }
+
+  public Bone getBone(String name) {
+    return root.getBone(name);
+  }
+
+
   public void setNewMeshImage(String imageName, String layerName) {
    layersView.setNewMeshImage(imageName, layerName);
   }
@@ -74,6 +86,7 @@ public class AnimataP5 {
   }
 
   public void moveJoint(String name, float x,  float y) {
+//    System.err.println("moveJoint: " + name + " -> " + x + ", " + y);  // DEBUGGERY
     root.moveJoint(name, x, y);
   }
 

@@ -255,4 +255,12 @@ public class Skeleton {
             }
         }
     }
+
+    public Bone getBone(String name) {
+        Bone b = null;
+            for (Bone bone : bones) {
+              if (bone.name.equals(name) ) { return bone; }
+             }
+      return b;
+    }
 }

@@ -20,7 +20,6 @@ void setupOsc()  {
   println(" localOSCAddress:\t" + localOSCAddress);
   println(" localOSCPort:\t" + localOSCPort);
 
-
 }
 
 //-----------------------------------------------------------
@@ -132,7 +131,7 @@ void oscEvent(OscMessage oscMsg) {
     if ( parts[realm].equals("layervis") ){
   
         String layerName = (oscMsg.arguments()[0]).toString();
-         Float state = parseInt( (oscMsg.arguments()[1]).toString() );
+        int state = parseInt( (oscMsg.arguments()[1]).toString() );
         animataOscLayervis(layerName, state);
   
   }
@@ -151,7 +150,7 @@ void oscEvent(OscMessage oscMsg) {
        String layerName = (oscMsg.arguments()[0]).toString();
          Float x = parseFloat( (oscMsg.arguments()[1]).toString() );
          Float y = parseFloat( (oscMsg.arguments()[2]).toString() );
-        animataOscJoint(jointName, x, y);
+        animataOscLayerpos(layerName, x, y);
   }
 //  Moving a layer, x and y control the speed that the layer is moving:	/layerdeltapos name x y
   if ( parts[realm].equals("layerdeltapos") ){

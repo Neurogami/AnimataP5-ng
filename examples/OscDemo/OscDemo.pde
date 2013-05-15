@@ -237,8 +237,7 @@ void setJointPositions() {
     // Useful if you want to track joint locations
     // j = Doll.getJoint(name);  
     // println("Joint '" + name + " is at x, y " + j.x() + ", " + j.y() );
-    Doll.moveJointX(name, coords.x() ); 
-    Doll.moveJointY(name, coords.y() ); 
+    Doll.moveJoint(name, coords.x(), coords.y() ); 
   }
 }
 
@@ -259,11 +258,14 @@ void setTextureImage(String imageName, String layerName) {
   Doll.setNewMeshImage( imageName,  layerName); 
 }
 
+/***********************************************************************/
+/*  These are to handle the OSC commands offered by regular Animata    */
+/***********************************************************************/
 
-// These are to handle the OSC commands offered by regular Animata
 void animataOscJoint(String jointName, float x, float y) {
-    Doll.moveJointX(jointName, x ); 
-    Doll.moveJointY(jointName, y ); 
+   println("Move " + jointName + " to  " + x + ", " + y);
+//  Doll.moveJoint(jointName, x, y); 
+   jointTable.put(jointName, new Point(x, y) );
 }
 
 void animataOscAnibone(String boneName, float length){

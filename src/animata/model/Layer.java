@@ -12,6 +12,7 @@ import animata.model.Skeleton.Bone;
 
 public class Layer {
 
+
   public class Texture {
 
     private String location;
@@ -67,10 +68,6 @@ public class Layer {
   }
 
 
-  // This seems to work OK under simple conditions but the
-  // lack of any way to target a layer is a Bad Idea.
-  // Basically it ends up trying to update the texture image
-  // for any  layer it can.
   public void setNewTextureImage(PApplet applet, String imageName, String layerName) {
     System.err.println("Layer named '" + name + "' executing  setNewTextureImage: " + imageName + " for " + layerName );
     if (name.equals(layerName) ) {
@@ -133,6 +130,23 @@ public class Layer {
     }
   }
 
+  public Layer getLayer(String name) {
+    Layer l = null;
+
+    for (Layer llayer : layers) {
+      if (llayer.name.equals(name) ) {
+        return llayer;
+      }
+    }
+   return l;
+
+  }
+
+  public Bone getBone(String name) {
+  return skeleton.getBone(name);
+  }
+
+
   public Joint getJoint(String name) {
     Joint j = null;
 
@@ -153,6 +167,7 @@ public class Layer {
 
     return j;
   }
+
 
   public void moveJointX(String name, float x) {
     if (skeleton != null) {
@@ -181,11 +196,13 @@ public class Layer {
   }
 
   public void moveJoint(String name, float x, float y) {
+//    System.err.println("Layer#moveJoint: " + name + " -> " + x + ", " + y);
     if (skeleton != null) {
       for (Joint joint : skeleton.allJoints) {
         if (joint.name.equals(name)) {
           joint.x = x;
           joint.y = y;
+         return;
         }
       }
     }
