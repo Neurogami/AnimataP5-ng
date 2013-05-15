@@ -58,7 +58,6 @@ void draw() {
 }
 
 
-
 /* ****************** Some Observations *************************
 
 
@@ -265,43 +264,43 @@ void setTextureImage(String imageName, String layerName) {
 
 //    To move a joint, x and y are float values:	 /joint name x y
 void animataOscJoint(String jointName, float x, float y) {
-   println("Move " + jointName + " to  " + x + ", " + y);
-//  Doll.moveJoint(jointName, x, y); 
-   jointTable.put(jointName, new Point(x, y) );
+  println("Move " + jointName + " to  " + x + ", " + y);
+
+  //  Doll.moveJoint(jointName, x, y); 
+  //  In this demo the code stores location data in a hash map.
+  //  Question: Why not update the joint properties in the skeleton?
+  jointTable.put(jointName, new Point(x, y) );
 }
 
 
 //  Control the length of a bone, value is a float between 0 and 2:	 /anibone name value
 void animataOscAnibone(String boneName, float length){
-   println("animataOscAnibone " + boneName + " :  " + length);
-    Bone b = Doll.getBone(boneName);
-    b.setSize(length);
+  println("animataOscAnibone " + boneName + " :  " + length);
+  Bone b = Doll.getBone(boneName);
+  b.setSize(length);
 }
 
 //  Switch on and off a layer, on_off is 0 or 1:	 /layervis name on_off
 void animataOscLayervis(String layerName, int state) {
-   println("animataOscLayervis " + layerName + " :  " + state);
-   Layer l = Doll.getLayer(layerName);
-   println("animataOscLayervis. l = " + l);
-   l.setVisibility(state == 1);
+  println("animataOscLayervis " + layerName + " :  " + state);
+  Layer l = Doll.getLayer(layerName);
+  l.setVisibility(state == 1);
 }
 
 
 //  Set the transparency of the layer, value is a float between 0 and 1:	/layeralpha name value
 //  1 means invisible.
 void animataOscLayeralpha(String layerName, float value) {
-   println("animataOscLayeralpha " + layerName + " :  " + value);
-   Layer l = Doll.getLayer(layerName);
-   println("animataOscLayeralpha. l = " + l);
-   // P5 tint uses a int from 0 to 255, so we need to map this
-   l.setLayerAlpha(layerName, map(value, 0,1, 0,255) );
+  println("animataOscLayeralpha " + layerName + " :  " + value);
+  Layer l = Doll.getLayer(layerName);
+  // P5 tint uses a int from 0 to 255, so we need to map this
+  l.setLayerAlpha(layerName, map(value, 0,1, 0,255) );
 }
 
 //    Moving a layer, x and y are the position coordinates as float values:	/layerpos name x y
 void animataOscLayerpos(String layerName, float x, float y) {
-   println("animataOscLayerpos " + layerName + " to  " + x + ", " + y);
-   Layer l = Doll.getLayer(layerName);
-   println("animataOscLayerpos. l = " + l);
-   l.setPosition(x, y);
+  println("animataOscLayerpos " + layerName + " to  " + x + ", " + y);
+  Layer l = Doll.getLayer(layerName);
+  l.setPosition(x, y);
 
 }
