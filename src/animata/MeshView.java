@@ -41,7 +41,7 @@ public class MeshView {
     private void drawFace(Vertex[] vertices) {
         applet.beginShape();
         applet.texture(layer.texture.getImage(applet));
-        System.err.println("* * MeshView#drawFace, with layer alpha: " + layer.alpha ); // DEBUGGERY
+        // System.err.println("* * MeshView#drawFace, with layer alpha: " + layer.alpha ); // DEBUGGERY
         applet.tint(255, 255 - layer.alpha);
         for (int i = 0; i < vertices.length; i++) {
             Vertex vertex = vertices[i];

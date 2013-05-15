@@ -39,6 +39,7 @@ public class Layer {
       return image;
     }
 
+
     public void loadImage(PApplet applet, String imageName) {
       System.err.println("Texture#loadImage called! Will be using imageName = '" + imageName + "'" );
       location = folder + File.separator + imageName;
@@ -85,6 +86,48 @@ public class Layer {
   public void setVisibility(boolean b) {
     visible = b;
   }
+
+
+    public void setPosition(float _x, float _y) {
+        x = _x;
+        y = _y;
+    }
+
+    
+    public float x(){
+      return x;
+    }
+
+    public float y() {
+      return y;
+    }
+
+    public float z(){
+      return z;
+    }
+
+    public float scale() {
+      return scale();
+    }
+
+
+    public void x(float f){
+      x = f;
+    }
+
+    public void y(float f) {
+      y = f;
+    }
+
+    public void z(float f){
+      z = f;
+    }
+
+    public void scale(float f) {
+      scale = f;
+    }
+
+
 
   private void addChildLayersIfPresent(XML element, String folder) {
     XML[] innerLayers = element.getChildren("layer");

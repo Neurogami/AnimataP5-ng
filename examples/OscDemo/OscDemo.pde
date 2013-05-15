@@ -54,7 +54,7 @@ void setup() {
 void draw() {
   background(0);
   setJointPositions();
-  Doll.draw(10,10); 
+  Doll.draw(0,0); 
 }
 
 
@@ -302,5 +302,6 @@ void animataOscLayerpos(String layerName, float x, float y) {
    println("animataOscLayerpos " + layerName + " to  " + x + ", " + y);
    Layer l = Doll.getLayer(layerName);
    println("animataOscLayerpos. l = " + l);
+   l.setPosition(x, y);
 
 }

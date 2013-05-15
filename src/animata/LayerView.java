@@ -40,8 +40,6 @@ public class LayerView {
 
     System.err.println("LayerView#setNewMeshImage: " + imageName + " for " + layerName ); // DEBUG
 
-    
-    // System.err.println("LayerView#setNewMeshImage: mesh is null!"  );
     for (Layer llayer : layer.layers) {
       llayer.setNewTextureImage(applet, imageName, layerName);
     }
@@ -56,6 +54,17 @@ public class LayerView {
   }
 
   public void draw(float x, float y) {
+
+    System.err.println("LayerView#draw using: " + x + ", " + y + ". "); // DEBUG
+    System.err.println("LayerView#draw This layer has x, y " + layer.x() + ", " + layer.y() ); // DEBUG
+    // This will propagate layer locatins down to child layers. Is this correct?
+    // Is the location of child layers relative to the parent layer?
+    x = x+layer.x();
+    y = y+layer.y();
+
+    // How can we apply the changein x, y set in the Layer?
+    // The current x,y seems to xome direct from the sketch, in `draw` (e.g. Foo.draw(10, 20);)
+    // We could grab the x,y stored in the layer and appyt it
 
     applet.pushMatrix();
     doTransformation(x, y);
