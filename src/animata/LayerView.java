@@ -21,6 +21,21 @@ public class LayerView {
     addChildLayers(layer.layers);
   }
 
+  public Layer getLayer(String layerName) {
+        System.err.println("LayerView#getLayer: "   + layerName ); // DEBUG
+
+    Layer l = null;
+        for (Layer ll : layer.layers) {
+        System.err.println("LayerView#getLayer: compare "   + layerName + " to " + ll.name); // DEBUG
+        if (ll.name.equals(layerName)) {
+           return ll;
+        }
+      }
+
+      return l;
+
+  }
+
   // This seems to work OK under simple conditions but the
   // lack of any way to target a layer is a Bad Idea.
   public void setNewMeshImage(String imageName, String layerName ) {
@@ -58,7 +73,9 @@ public class LayerView {
 
   private void drawChildLayers(float x, float y) {
     for (LayerView layerView : layers) {
+      if (layerView.layer.visible() ) { 
       layerView.draw(x, y);
+      }
     }
   }
 

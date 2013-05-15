@@ -60,12 +60,12 @@ public class AnimataP5 {
   }
 
   public Layer getLayer(String name) {
-    Layer l = null;
+        System.err.println("AnimataP5#getLayer:  Look for " + name + ". root name = " + root.name  );  // DEBUGGERY
     if (root.name.equals(name) ) {
      return root;
     }
 
-    return root.getLayer(name);
+    return layersView.getLayer(name);
   }
 
   public Bone getBone(String name) {

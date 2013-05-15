@@ -1,6 +1,7 @@
 import animata.*;
 
 import animata.model.Skeleton.*;
+import animata.model.Layer;
 
 import processing.opengl.*;
 
@@ -280,7 +281,9 @@ void animataOscAnibone(String boneName, float length){
 //  Switch on and off a layer, on_off is 0 or 1:	 /layervis name on_off
 void animataOscLayervis(String layerName, int state) {
    println("animataOscLayervis " + layerName + " :  " + state);
-
+   Layer l = Doll.getLayer(layerName);
+println("animataOscLayervis. l = " + l);
+   l.setVisibility(state == 1);
 }
 //  Set the transparency of the layer, value is a float between 0 and 1:	/layeralpha name value
 void animataOscLayeralpha(String layerName, float value) {

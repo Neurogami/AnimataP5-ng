@@ -78,6 +78,14 @@ public class Layer {
     }
   }
 
+  public boolean visible() {
+    return visible;
+  }
+
+  public void setVisibility(boolean b) {
+    visible = b;
+  }
+
   private void addChildLayersIfPresent(XML element, String folder) {
     XML[] innerLayers = element.getChildren("layer");
     if (innerLayers.length > 0) {
@@ -94,6 +102,7 @@ public class Layer {
     z = -element.getFloat("z");
     alpha = element.getFloat("alpha", 255);
     scale = element.getFloat("scale", 1);
+    // FIXME It seems the rendering code ignore this
     visible = element.getInt("vis") == 1;
   }
 
@@ -130,15 +139,17 @@ public class Layer {
   }
 
   public Layer getLayer(String name) {
+    System.err.println("Layer#getLayer:  Look for " + name + "."  );  // DEBUGGERY
     Layer l = null;
 
     for (Layer llayer : layers) {
+      System.err.println("Layer#getLayer:  " + name + ".  Compare to " + llayer.name );  // DEBUGGERY
       if (llayer.name.equals(name) ) {
+        System.err.println("Layer#getLayer:  " + name + ".  Found match!"  );  // DEBUGGERY
         return llayer;
       }
     }
     return l;
-
   }
 
   public Bone getBone(String name) {

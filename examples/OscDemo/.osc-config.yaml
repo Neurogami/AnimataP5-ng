@@ -7,6 +7,9 @@
  - /joint head  20.0 54.0
  - /anibone  bogus 0.4
  - /anibone  face 0.4
+ - /layervis layer_0001 0
+ - /layervis layer_0001 1
+ - /layervis bogus 1
   
 
 
