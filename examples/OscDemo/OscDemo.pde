@@ -274,7 +274,7 @@ void animataOscJoint(String jointName, float x, float y) {
 void animataOscAnibone(String boneName, float length){
    println("animataOscAnibone " + boneName + " :  " + length);
     Bone b = Doll.getBone(boneName);
-
+    b.setSize(length);
 }
 
 //  Switch on and off a layer, on_off is 0 or 1:	 /layervis name on_off
