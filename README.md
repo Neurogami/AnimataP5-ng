@@ -10,6 +10,11 @@ Forked from zeni/animatap5 and updated to work with Processing 2.
 
 * Added an example showing the use of OSc to manipulate joints
 
+* Added assortred methods so that a scne can respond to the default OSC messages (as defined in the original Animata)
+
+Note: The OSC handling still has to be done by importing OscP5 and writing code to implement the server processing.
+
+You can choose to handle any OSC messsages you want.  An example is included that handles the same OSC messages that the original Animata handled, plus two others.
 
 See the sample applications for usage and some docs about Animata in general.
 
