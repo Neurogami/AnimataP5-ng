@@ -294,12 +294,13 @@ void animataOscLayeralpha(String layerName, float value) {
    Layer l = Doll.getLayer(layerName);
    println("animataOscLayeralpha. l = " + l);
    // P5 tint uses a int from 0 to 255, so we need to map this
-
    l.setLayerAlpha(layerName, map(value, 0,1, 0,255) );
 }
 
 //    Moving a layer, x and y are the position coordinates as float values:	/layerpos name x y
 void animataOscLayerpos(String layerName, float x, float y) {
    println("animataOscLayerpos " + layerName + " to  " + x + ", " + y);
+   Layer l = Doll.getLayer(layerName);
+   println("animataOscLayerpos. l = " + l);
 
 }

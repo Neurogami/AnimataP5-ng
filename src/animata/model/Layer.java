@@ -102,7 +102,6 @@ public class Layer {
     z = -element.getFloat("z");
     alpha = element.getFloat("alpha", 255);
     scale = element.getFloat("scale", 1);
-    // FIXME It seems the rendering code ignore this
     visible = element.getInt("vis") == 1;
   }
 

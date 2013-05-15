@@ -22,35 +22,29 @@ public class LayerView {
   }
 
   public Layer getLayer(String layerName) {
-        System.err.println("LayerView#getLayer: "   + layerName ); // DEBUG
+    System.err.println("LayerView#getLayer: "   + layerName ); // DEBUG
 
     Layer l = null;
-        for (Layer ll : layer.layers) {
-        System.err.println("LayerView#getLayer: compare "   + layerName + " to " + ll.name); // DEBUG
-        if (ll.name.equals(layerName)) {
-           return ll;
-        }
+    for (Layer ll : layer.layers) {
+      System.err.println("LayerView#getLayer: compare "   + layerName + " to " + ll.name); // DEBUG
+      if (ll.name.equals(layerName)) {
+        return ll;
       }
-
-      return l;
-
+    }
+    return l;
   }
 
   // This seems to work OK under simple conditions but the
   // lack of any way to target a layer is a Bad Idea.
   public void setNewMeshImage(String imageName, String layerName ) {
-    
+
     System.err.println("LayerView#setNewMeshImage: " + imageName + " for " + layerName ); // DEBUG
 
-    // The goal is to check that the layer
-//    if (mesh != null ) { 
-  //    mesh.setNewImageName(imageName);
-    //} else {
-      
+    
     // System.err.println("LayerView#setNewMeshImage: mesh is null!"  );
-      for (Layer llayer : layer.layers) {
-        llayer.setNewTextureImage(applet, imageName, layerName);
-      }
+    for (Layer llayer : layer.layers) {
+      llayer.setNewTextureImage(applet, imageName, layerName);
+    }
     //}
   }
 
@@ -62,6 +56,7 @@ public class LayerView {
   }
 
   public void draw(float x, float y) {
+
     applet.pushMatrix();
     doTransformation(x, y);
     if (mesh != null) {
@@ -74,7 +69,7 @@ public class LayerView {
   private void drawChildLayers(float x, float y) {
     for (LayerView layerView : layers) {
       if (layerView.layer.visible() ) { 
-      layerView.draw(x, y);
+        layerView.draw(x, y);
       }
     }
   }
