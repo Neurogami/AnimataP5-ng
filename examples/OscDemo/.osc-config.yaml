@@ -4,6 +4,9 @@
 :initial_messages: 
  - /animata/layer/layer_0001/image jgb-doll2.png
  - /animata/move/joint head 10.0 10.0
-
+ - /joint head  20.0 54.0
+ - /anibone  bogus 0.4
+ - /anibone  face 0.4
+  
 
 

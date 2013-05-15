@@ -12,7 +12,6 @@ import animata.model.Skeleton.Bone;
 
 public class Layer {
 
-
   public class Texture {
 
     private String location;
@@ -71,11 +70,11 @@ public class Layer {
   public void setNewTextureImage(PApplet applet, String imageName, String layerName) {
     System.err.println("Layer named '" + name + "' executing  setNewTextureImage: " + imageName + " for " + layerName );
     if (name.equals(layerName) ) {
-    if (texture != null ) { 
-      texture.loadImage(applet, imageName);
-    } else {
-      System.err.println("Layer#setNewTextureImage: texture is null!"  );
-    }
+      if (texture != null ) { 
+        texture.loadImage(applet, imageName);
+      } else {
+        System.err.println("Layer#setNewTextureImage: texture is null!"  );
+      }
     }
   }
 
@@ -138,12 +137,25 @@ public class Layer {
         return llayer;
       }
     }
-   return l;
+    return l;
 
   }
 
   public Bone getBone(String name) {
-  return skeleton.getBone(name);
+    Bone b = null;
+    System.err.println("Layer#getBone name =  " + name + ".  skeleton = " + skeleton );  // DEBUGGERY
+    if (skeleton != null ) {
+      return skeleton.getBone(name);
+    } else {
+      for (Layer llayer : layers) {
+        b = llayer.getBone(name);
+        if (b != null ) {
+          return b;
+        }
+      }
+    }
+    return b;
+
   }
 
 
@@ -196,13 +208,13 @@ public class Layer {
   }
 
   public void moveJoint(String name, float x, float y) {
-//    System.err.println("Layer#moveJoint: " + name + " -> " + x + ", " + y);
+    //    System.err.println("Layer#moveJoint: " + name + " -> " + x + ", " + y);
     if (skeleton != null) {
       for (Joint joint : skeleton.allJoints) {
         if (joint.name.equals(name)) {
           joint.x = x;
           joint.y = y;
-         return;
+          return;
         }
       }
     }

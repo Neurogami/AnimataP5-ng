@@ -121,12 +121,13 @@ void oscEvent(OscMessage oscMsg) {
 //  Control the length of a bone, value is a float between 0 and 2:	 /anibone name value
     if ( parts[realm].equals("anibone") ){
   
-        String boneName = (oscMsg.arguments()[0]).toString();
+         String boneName = (oscMsg.arguments()[0]).toString();
          Float length = parseFloat( (oscMsg.arguments()[1]).toString() );
-        animataOscAnibone(boneName, length);
+         animataOscAnibone(boneName, length);
   
   
   }
+
 //  Switch on and off a layer, on_off is 0 or 1:	 /layervis name on_off
     if ( parts[realm].equals("layervis") ){
   
@@ -135,6 +136,7 @@ void oscEvent(OscMessage oscMsg) {
         animataOscLayervis(layerName, state);
   
   }
+    
 //  Set the transparency of the layer, value is a float between 0 and 1:	/layeralpha name value
   if ( parts[realm].equals("layeralpha") ){
   
@@ -143,8 +145,8 @@ void oscEvent(OscMessage oscMsg) {
         animataOscLayeralpha(layerName, value);
   
   }
+
 //    Moving a layer, x and y are the position coordinates as float values:	/layerpos name x y
-  
   if ( parts[realm].equals("layerpos") ){
   
        String layerName = (oscMsg.arguments()[0]).toString();

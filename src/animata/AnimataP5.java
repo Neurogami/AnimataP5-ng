@@ -69,6 +69,7 @@ public class AnimataP5 {
   }
 
   public Bone getBone(String name) {
+  System.err.println("AnimataP5#getBone: " + name );  // DEBUGGERY
     return root.getBone(name);
   }
 
@@ -97,7 +98,6 @@ public class AnimataP5 {
   public void setJointFixed(String name, boolean b) {
     root.setJointFixed(name, b);
   }
-
 
   public void setLayerAlpha(String name, float value) {
     if (value > 255) {

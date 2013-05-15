@@ -262,23 +262,33 @@ void setTextureImage(String imageName, String layerName) {
 /*  These are to handle the OSC commands offered by regular Animata    */
 /***********************************************************************/
 
+//    To move a joint, x and y are float values:	 /joint name x y
 void animataOscJoint(String jointName, float x, float y) {
    println("Move " + jointName + " to  " + x + ", " + y);
 //  Doll.moveJoint(jointName, x, y); 
    jointTable.put(jointName, new Point(x, y) );
 }
 
+
+//  Control the length of a bone, value is a float between 0 and 2:	 /anibone name value
 void animataOscAnibone(String boneName, float length){
+   println("animataOscAnibone " + boneName + " :  " + length);
+    Bone b = Doll.getBone(boneName);
 
 }
 
+//  Switch on and off a layer, on_off is 0 or 1:	 /layervis name on_off
 void animataOscLayervis(String layerName, int state) {
+   println("animataOscLayervis " + layerName + " :  " + state);
 
 }
+//  Set the transparency of the layer, value is a float between 0 and 1:	/layeralpha name value
 void animataOscLayeralpha(String layerName, float value) {
-
+   println("animataOscLayeralpha " + layerName + " :  " + value);
 }
 
+//    Moving a layer, x and y are the position coordinates as float values:	/layerpos name x y
 void animataOscLayerpos(String layerName, float x, float y) {
+   println("animataOscLayerpos " + layerName + " to  " + x + ", " + y);
 
 }
