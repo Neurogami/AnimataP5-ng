@@ -1,6 +1,6 @@
 # AnimataP5 #
 
-A library for processing (http://processing.org) to render/control Animata (http://animata.kibu.hu) scenes.
+A library for [processing](http://processing.org) to render/control [Animata](http://animata.kibu.hu) scenes.
 
 Forked from zeni/animatap5 and updated to work with Processing 2.
 
@@ -18,6 +18,7 @@ You can choose to handle any OSC messsages you want.  An example is included tha
 
 See the sample applications for usage and some docs about Animata in general.
 
+See [osc.justthebestparts.com](http://osc.justthebestparts.com/) to learn about Open Sound Control.
 
 ## Building ##
 
