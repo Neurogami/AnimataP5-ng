@@ -261,15 +261,15 @@ public class Skeleton {
     }
 
     public Bone getBone(String name) {
-        System.err.println("Skeleton#getBone: " + name );  // DEBUGGERY
+     // System.err.println("Skeleton#getBone: " + name );  // DEBUGGERY
         Bone b = null;
             for (Bone bone : bones) {
               if (bone.name.equals(name) ) {
-                 System.err.println("AnimataP5#getBone found!  " + name );  // DEBUGGERY
+                 // System.err.println("AnimataP5#getBone found!  " + name );  // DEBUGGERY
                 return bone; 
               }
              }
-      System.err.println("AnimataP5#getBone b =  " + b );  // DEBUGGERY
+      // System.err.println("AnimataP5#getBone b =  " + b );  // DEBUGGERY
       return b;
     }
 }

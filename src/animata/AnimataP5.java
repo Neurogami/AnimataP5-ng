@@ -29,7 +29,7 @@ public class AnimataP5 {
 
   private void addScene(String xmlFileName) {
     String folder = new File(xmlFileName).getParent();
-    
+
     if (folder == null) { folder = applet.sketchPath + "/data";   }
 
     try {
@@ -60,22 +60,22 @@ public class AnimataP5 {
   }
 
   public Layer getLayer(String name) {
-        System.err.println("AnimataP5#getLayer:  Look for " + name + ". root name = " + root.name  );  // DEBUGGERY
+    // System.err.println("AnimataP5#getLayer:  Look for " + name + ". root name = " + root.name  );  // DEBUGGERY
     if (root.name.equals(name) ) {
-     return root;
+      return root;
     }
 
     return layersView.getLayer(name);
   }
 
   public Bone getBone(String name) {
-  System.err.println("AnimataP5#getBone: " + name );  // DEBUGGERY
+    // System.err.println("AnimataP5#getBone: " + name );  // DEBUGGERY
     return root.getBone(name);
   }
 
 
   public void setNewMeshImage(String imageName, String layerName) {
-   layersView.setNewMeshImage(imageName, layerName);
+    layersView.setNewMeshImage(imageName, layerName);
   }
 
   public void moveJointY(String name, float value) {
@@ -87,8 +87,12 @@ public class AnimataP5 {
   }
 
   public void moveJoint(String name, float x,  float y) {
-//    System.err.println("moveJoint: " + name + " -> " + x + ", " + y);  // DEBUGGERY
     root.moveJoint(name, x, y);
+  }
+
+    public void moveJointOnLayer(String jointName, String layerName, float x,  float y) {
+       root.moveJointOnLayer(jointName, layerName, x, y);
+  
   }
 
   public void toggleJointFixed(String name) {

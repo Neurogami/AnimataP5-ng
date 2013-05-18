@@ -41,7 +41,7 @@ public class Layer {
 
 
     public void loadImage(PApplet applet, String imageName) {
-      System.err.println("Texture#loadImage called! Will be using imageName = '" + imageName + "'" );
+      // System.err.println("Texture#loadImage called! Will be using imageName = '" + imageName + "'" );
       location = folder + File.separator + imageName;
       image = applet.loadImage(location);
     }
@@ -69,12 +69,12 @@ public class Layer {
 
 
   public void setNewTextureImage(PApplet applet, String imageName, String layerName) {
-    System.err.println("Layer named '" + name + "' executing  setNewTextureImage: " + imageName + " for " + layerName );
+    // System.err.println("Layer named '" + name + "' executing  setNewTextureImage: " + imageName + " for " + layerName );
     if (name.equals(layerName) ) {
       if (texture != null ) { 
         texture.loadImage(applet, imageName);
       } else {
-        System.err.println("Layer#setNewTextureImage: texture is null!"  );
+        // System.err.println("Layer#setNewTextureImage: texture is null!"  );
       }
     }
   }
@@ -181,13 +181,13 @@ public class Layer {
   }
 
   public Layer getLayer(String name) {
-    System.err.println("Layer#getLayer:  Look for " + name + "."  );  // DEBUGGERY
+    // System.err.println("Layer#getLayer:  Look for " + name + "."  );  // DEBUGGERY
     Layer l = null;
 
     for (Layer llayer : layers) {
-      System.err.println("Layer#getLayer:  " + name + ".  Compare to " + llayer.name );  // DEBUGGERY
+      // System.err.println("Layer#getLayer:  " + name + ".  Compare to " + llayer.name );  // DEBUGGERY
       if (llayer.name.equals(name) ) {
-        System.err.println("Layer#getLayer:  " + name + ".  Found match!"  );  // DEBUGGERY
+        // System.err.println("Layer#getLayer:  " + name + ".  Found match!"  );  // DEBUGGERY
         return llayer;
       }
     }
@@ -196,7 +196,7 @@ public class Layer {
 
   public Bone getBone(String name) {
     Bone b = null;
-    System.err.println("Layer#getBone name =  " + name + ".  skeleton = " + skeleton );  // DEBUGGERY
+    // System.err.println("Layer#getBone name =  " + name + ".  skeleton = " + skeleton );  // DEBUGGERY
     if (skeleton != null ) {
       return skeleton.getBone(name);
     } else {
@@ -261,7 +261,6 @@ public class Layer {
   }
 
   public void moveJoint(String name, float x, float y) {
-    //    System.err.println("Layer#moveJoint: " + name + " -> " + x + ", " + y);
     if (skeleton != null) {
       for (Joint joint : skeleton.allJoints) {
         if (joint.name.equals(name)) {
@@ -277,6 +276,24 @@ public class Layer {
     }
   }
 
+
+    public void moveJointOnLayer(String jointName, String layerName, float x,  float y) {
+    if (skeleton != null) {
+      if ( name.equals(layerName) ) {
+      for (Joint joint : skeleton.allJoints) {
+        if (joint.name.equals(jointName)) {
+          joint.x = x;
+          joint.y = y;
+          return;
+        }
+      }
+      }
+    }
+
+    for (Layer llayer : layers) {
+      llayer.moveJointOnLayer(jointName, layerName, x, y);
+    }
+  }
 
 
   public void toggleJointFixed(String name) {

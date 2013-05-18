@@ -22,11 +22,11 @@ public class LayerView {
   }
 
   public Layer getLayer(String layerName) {
-    System.err.println("LayerView#getLayer: "   + layerName ); // DEBUG
+     //System.err.println("LayerView#getLayer: "   + layerName ); // DEBUG
 
     Layer l = null;
     for (Layer ll : layer.layers) {
-      System.err.println("LayerView#getLayer: compare "   + layerName + " to " + ll.name); // DEBUG
+      // System.err.println("LayerView#getLayer: compare "   + layerName + " to " + ll.name); // DEBUG
       if (ll.name.equals(layerName)) {
         return ll;
       }
@@ -38,7 +38,7 @@ public class LayerView {
   // lack of any way to target a layer is a Bad Idea.
   public void setNewMeshImage(String imageName, String layerName ) {
 
-    System.err.println("LayerView#setNewMeshImage: " + imageName + " for " + layerName ); // DEBUG
+    // System.err.println("LayerView#setNewMeshImage: " + imageName + " for " + layerName ); // DEBUG
 
     for (Layer llayer : layer.layers) {
       llayer.setNewTextureImage(applet, imageName, layerName);
@@ -55,8 +55,8 @@ public class LayerView {
 
   public void draw(float x, float y) {
 
-    System.err.println("LayerView#draw using: " + x + ", " + y + ". "); // DEBUG
-    System.err.println("LayerView#draw This layer has x, y " + layer.x() + ", " + layer.y() ); // DEBUG
+    // System.err.println("LayerView#draw using: " + x + ", " + y + ". "); // DEBUG
+    // System.err.println("LayerView#draw This layer has x, y " + layer.x() + ", " + layer.y() ); // DEBUG
     // This will propagate layer locatins down to child layers. Is this correct?
     // Is the location of child layers relative to the parent layer?
     x = x+layer.x();
