@@ -9,7 +9,7 @@ import animata.model.Layer;
 import animata.model.Skeleton.Joint;
 import animata.model.Skeleton.Bone;
 
-public class AnimataP5 {
+public class AnimataP5 implements Comparable {
 
   public static final float timeDivision = 42f;
   public static float gravity = 0;
@@ -31,6 +31,11 @@ public class AnimataP5 {
     if (i < 0) { i = -1; }
     renderPriority = i;
   }
+
+   public int compareTo(Object o){
+        AnimataP5 ap5 = (AnimataP5)o;
+       return renderPriority() - ap5.renderPriority()  ;
+      }
 
 
   private void setup(PApplet applet) {
