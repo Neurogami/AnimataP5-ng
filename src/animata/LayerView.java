@@ -62,9 +62,9 @@ public class LayerView {
     x = x+layer.x();
     y = y+layer.y();
 
-    // How can we apply the changein x, y set in the Layer?
-    // The current x,y seems to xome direct from the sketch, in `draw` (e.g. Foo.draw(10, 20);)
-    // We could grab the x,y stored in the layer and appyt it
+    // How can we apply the change in x, y set in the Layer?
+    // The current x,y seems to come direct from the sketch, in `draw` (e.g. Foo.draw(10, 20);)
+    // We could grab the x,y stored in the layer and apply it
 
     applet.pushMatrix();
     doTransformation(x, y);
