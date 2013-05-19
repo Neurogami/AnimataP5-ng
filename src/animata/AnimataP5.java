@@ -14,6 +14,7 @@ public class AnimataP5 {
   public static final float timeDivision = 42f;
   public static float gravity = 0;
   private PApplet applet;
+  private int renderPriority = -1;
   public Layer root;
   public LayerView layersView;
 
@@ -21,6 +22,16 @@ public class AnimataP5 {
     setup(applet);
     addScene(nmtFileName);
   }
+
+  public int renderPriority() {
+    return renderPriority;
+  }
+
+  public void renderPriority(int i) {
+    if (i < 0) { i = -1; }
+    renderPriority = i;
+  }
+
 
   private void setup(PApplet applet) {
     this.applet = applet;
