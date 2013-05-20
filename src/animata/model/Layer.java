@@ -27,8 +27,12 @@ public class Layer {
       textureElement = child;
       folder = _folder;
       location = folder + File.separator + textureElement.getString("location");
+
+      
       x = textureElement.getFloat("x");
+      
       y = textureElement.getFloat("y");
+      
       scale = textureElement.getFloat("scale");
     }
 
@@ -39,13 +43,26 @@ public class Layer {
       return image;
     }
 
+    public float x() {
+      return x;
+    }
+
+    public float y() {
+      return y;
+    }
+
+    public float scale() {
+      return scale;
+    }
+
+
+
 
     public void loadImage(PApplet applet, String imageName) {
-      // System.err.println("Texture#loadImage called! Will be using imageName = '" + imageName + "'" );
       location = folder + File.separator + imageName;
       image = applet.loadImage(location);
     }
-  }
+  } // End of Texture class
 
   public ArrayList<Layer> layers = new ArrayList<Layer>();
   public Texture texture;
@@ -88,46 +105,47 @@ public class Layer {
   }
 
 
-    public void setPosition(float _x, float _y) {
-        x = _x;
-        y = _y;
-    }
+  public void setPosition(float _x, float _y) {
+    x = _x;
+    y = _y;
+  }
 
-    
-    public float x(){
-      return x;
-    }
+  public  String name(){
+    return name;
+  }
 
-    public float y() {
-      return y;
-    }
+  public float x() {
+    return x;
+  }
 
-    public float z(){
-      return z;
-    }
+  public float y() {
+    return y;
+  }
 
-    public float scale() {
-      return scale();
-    }
+  public float z(){
+    return z;
+  }
 
-
-    public void x(float f){
-      x = f;
-    }
-
-    public void y(float f) {
-      y = f;
-    }
-
-    public void z(float f){
-      z = f;
-    }
-
-    public void scale(float f) {
-      scale = f;
-    }
+  public float scale() {
+    return scale();
+  }
 
 
+  public void x(float f){
+    x = f;
+  }
+
+  public void y(float f) {
+    y = f;
+  }
+
+  public void z(float f){
+    z = f;
+  }
+
+  public void scale(float f) {
+    scale = f;
+  }
 
   private void addChildLayersIfPresent(XML element, String folder) {
     XML[] innerLayers = element.getChildren("layer");
@@ -140,6 +158,9 @@ public class Layer {
 
   private void setupAttributes(XML element) {
     name = element.getString("name","null");
+
+    System.err.println("Create new Layer '" + name+ "' with x, y " + element.getString("x") + ", " + element.getString("x") );
+      
     x = element.getFloat("x");
     y = element.getFloat("y");
     z = -element.getFloat("z");
@@ -277,16 +298,16 @@ public class Layer {
   }
 
 
-    public void moveJointOnLayer(String jointName, String layerName, float x,  float y) {
+  public void moveJointOnLayer(String jointName, String layerName, float x,  float y) {
     if (skeleton != null) {
       if ( name.equals(layerName) ) {
-      for (Joint joint : skeleton.allJoints) {
-        if (joint.name.equals(jointName)) {
-          joint.x = x;
-          joint.y = y;
-          return;
+        for (Joint joint : skeleton.allJoints) {
+          if (joint.name.equals(jointName)) {
+            joint.x = x;
+            joint.y = y;
+            return;
+          }
         }
-      }
       }
     }
 

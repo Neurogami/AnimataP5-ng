@@ -32,11 +32,10 @@ public class AnimataP5 implements Comparable {
     renderPriority = i;
   }
 
-   public int compareTo(Object o){
-        AnimataP5 ap5 = (AnimataP5)o;
-       return renderPriority() - ap5.renderPriority()  ;
-      }
-
+  public int compareTo(Object o){
+    AnimataP5 ap5 = (AnimataP5)o;
+    return renderPriority() - ap5.renderPriority()  ;
+  }
 
   private void setup(PApplet applet) {
     this.applet = applet;
@@ -106,9 +105,9 @@ public class AnimataP5 implements Comparable {
     root.moveJoint(name, x, y);
   }
 
-    public void moveJointOnLayer(String jointName, String layerName, float x,  float y) {
-       root.moveJointOnLayer(jointName, layerName, x, y);
-  
+  public void moveJointOnLayer(String jointName, String layerName, float x,  float y) {
+    root.moveJointOnLayer(jointName, layerName, x, y);
+
   }
 
   public void toggleJointFixed(String name) {

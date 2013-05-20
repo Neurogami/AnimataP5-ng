@@ -59,8 +59,19 @@ public class LayerView {
     // System.err.println("LayerView#draw This layer has x, y " + layer.x() + ", " + layer.y() ); // DEBUG
     // This will propagate layer locatins down to child layers. Is this correct?
     // Is the location of child layers relative to the parent layer?
+    // If you don;t do this then you find some scenes created in Animata make no sense becasue none of
+    // the layer offsets are getting applied.
+    
     x = x+layer.x();
     y = y+layer.y();
+
+    // HOWEVER: doTransformation is adding in the layer x and y.
+    // Yet without the above lines the placement of items in some in scenes is obvioulsy wrong.
+    // 
+    if  (layer.name().equals("background") ) {
+      // System.err.println("* * LayerView#draw  '" + layer.name()  + "' using: " + x + ", " + y + ". Scale:" + layer.scale() ); // DEBUG
+      System.err.println("* * LayerView#draw  '" + layer.name()  + "' using: " + x + ", " + y + "." ); // DEBUG
+    }
 
     // How can we apply the change in x, y set in the Layer?
     // The current x,y seems to come direct from the sketch, in `draw` (e.g. Foo.draw(10, 20);)
@@ -84,7 +95,9 @@ public class LayerView {
   }
 
   private void doTransformation(float _x, float _y) {
-    applet.translate(layer.x + _x, layer.y + _y, layer.z);
+    //applet.translate(layer.x + _x, layer.y + _y, layer.z);
+    // This, with the changes in draw, seems to work better
+    applet.translate( _x, _y, layer.z);
     applet.scale(layer.scale, layer.scale, 1);
   }
 }

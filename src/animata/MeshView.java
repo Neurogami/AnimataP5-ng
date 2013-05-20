@@ -1,6 +1,8 @@
 package animata;
 
 import processing.core.PApplet;
+//import processing.core.PImage;
+
 import animata.model.Layer;
 import animata.model.Mesh.Face;
 import animata.model.Mesh.Vertex;
@@ -23,7 +25,6 @@ public class MeshView {
 
 
   public void setNewImageName(String imageName) {
-    // System.err.println("MeshView#setNewImageName: " + imageName );
     if (this.applet != null ) {
       this.layer.texture.loadImage(this.applet, imageName);
     } else {
@@ -32,6 +33,9 @@ public class MeshView {
   }
 
   private void drawFaces(Face[] faces) {
+
+    System.err.println( "Draw faces using texture x, y " + layer.texture.x() + ", " + layer.texture.y() ); // DEBUG
+    
     for (int i = 0; i < faces.length; i++) {
       Face face = faces[i];
       drawFace(face.vertices);
@@ -39,14 +43,21 @@ public class MeshView {
   }
 
   private void drawFace(Vertex[] vertices) {
+   // PImage textureImage = layer.texture.getImage(applet);
+
+    applet.pushMatrix();
+    applet.scale(layer.texture.scale() );
+    applet.translate(layer.texture.x(), layer.texture.y() );   
     applet.beginShape();
     applet.texture(layer.texture.getImage(applet));
-    // System.err.println("* * MeshView#drawFace, with layer alpha: " + layer.alpha ); // DEBUGGERY
-    applet.tint(255, 255 - layer.alpha);
+   // Animata store alpha as a float. 
+   // Note that an alpha value of 1 means it is visible. A value of 0 means transparent.
+    applet.tint(255, 255 - applet.map(layer.alpha, 0,1, 255, 0)  );
     for (int i = 0; i < vertices.length; i++) {
       Vertex vertex = vertices[i];
       applet.vertex(vertex.x, vertex.y, vertex.u, vertex.v);
     }
     applet.endShape();
+    applet.popMatrix();
   }
 }
