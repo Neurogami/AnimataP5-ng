@@ -55,13 +55,15 @@ public class Layer {
       return scale;
     }
 
-
-
-
     public void loadImage(PApplet applet, String imageName) {
       location = folder + File.separator + imageName;
       image = applet.loadImage(location);
     }
+
+    public void setImage(PApplet applet, PImage _image) {
+      image = _image;
+    }
+
   } // End of Texture class
 
   public ArrayList<Layer> layers = new ArrayList<Layer>();
@@ -83,6 +85,19 @@ public class Layer {
     setupAttributes(element);
     addChildLayersIfPresent(element, folder);
   }
+
+
+    public void setNewTextureImage(PApplet applet, PImage image, String layerName) {
+    // System.err.println("Layer named '" + name + "' executing  setNewTextureImage: " + imageName + " for " + layerName );
+    if (name.equals(layerName) ) {
+      if (texture != null ) { 
+        texture.setImage(applet, image);
+      } else {
+        // System.err.println("Layer#setNewTextureImage: texture is null!"  );
+      }
+    }
+  }
+
 
 
   public void setNewTextureImage(PApplet applet, String imageName, String layerName) {
@@ -159,7 +174,7 @@ public class Layer {
   private void setupAttributes(XML element) {
     name = element.getString("name","null");
 
-    System.err.println("Create new Layer '" + name+ "' with x, y " + element.getString("x") + ", " + element.getString("x") );
+    // System.err.println("Create new Layer '" + name+ "' with x, y " + element.getString("x") + ", " + element.getString("x") ); // DEBUG
       
     x = element.getFloat("x");
     y = element.getFloat("y");

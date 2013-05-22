@@ -1,7 +1,7 @@
 package animata;
 
 import processing.core.PApplet;
-//import processing.core.PImage;
+import processing.core.PImage;
 
 import animata.model.Layer;
 import animata.model.Mesh.Face;
@@ -34,7 +34,7 @@ public class MeshView {
 
   private void drawFaces(Face[] faces) {
 
-    System.err.println( "Draw faces using texture x, y " + layer.texture.x() + ", " + layer.texture.y() ); // DEBUG
+    //System.err.println( "Draw faces using texture x, y " + layer.texture.x() + ", " + layer.texture.y() ); // DEBUG
     
     for (int i = 0; i < faces.length; i++) {
       Face face = faces[i];

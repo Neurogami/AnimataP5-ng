@@ -3,6 +3,7 @@ package animata;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import animata.model.Layer;
 
 public class LayerView {
@@ -34,16 +35,18 @@ public class LayerView {
     return l;
   }
 
-  // This seems to work OK under simple conditions but the
-  // lack of any way to target a layer is a Bad Idea.
+ public void setNewMeshImage(PImage layerImage, String layerName ) {
+    for (Layer llayer : layer.layers) {
+      llayer.setNewTextureImage(applet, layerImage, layerName);
+    }
+  }
+
+
   public void setNewMeshImage(String imageName, String layerName ) {
-
     // System.err.println("LayerView#setNewMeshImage: " + imageName + " for " + layerName ); // DEBUG
-
     for (Layer llayer : layer.layers) {
       llayer.setNewTextureImage(applet, imageName, layerName);
     }
-    //}
   }
 
   private void addChildLayers(ArrayList<Layer> layers) {
@@ -70,7 +73,7 @@ public class LayerView {
     // 
     if  (layer.name().equals("background") ) {
       // System.err.println("* * LayerView#draw  '" + layer.name()  + "' using: " + x + ", " + y + ". Scale:" + layer.scale() ); // DEBUG
-      System.err.println("* * LayerView#draw  '" + layer.name()  + "' using: " + x + ", " + y + "." ); // DEBUG
+      // System.err.println("* * LayerView#draw  '" + layer.name()  + "' using: " + x + ", " + y + "." ); // DEBUG
     }
 
     // How can we apply the change in x, y set in the Layer?
@@ -89,6 +92,8 @@ public class LayerView {
   private void drawChildLayers(float x, float y) {
     for (LayerView layerView : layers) {
       if (layerView.layer.visible() ) { 
+        // Each call to a layer draw does a scale.
+        // However, there's no parent scale being passed on
         layerView.draw(x, y);
       }
     }

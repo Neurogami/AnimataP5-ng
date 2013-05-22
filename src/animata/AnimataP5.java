@@ -3,6 +3,7 @@ package animata;
 import java.io.File;
 import java.io.IOException;
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.data.XML;
 import animata.model.Layer;
 
@@ -91,6 +92,10 @@ public class AnimataP5 implements Comparable {
 
   public void setNewMeshImage(String imageName, String layerName) {
     layersView.setNewMeshImage(imageName, layerName);
+  }
+
+  public void setNewMeshImage(PImage image, String layerName) {
+    layersView.setNewMeshImage(image, layerName);
   }
 
   public void moveJointY(String name, float value) {
