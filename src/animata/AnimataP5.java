@@ -2,6 +2,9 @@ package animata;
 
 import java.io.File;
 import java.io.IOException;
+
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.data.XML;
@@ -18,6 +21,9 @@ public class AnimataP5 implements Comparable {
   private int renderPriority = -1;
   public Layer root;
   public LayerView layersView;
+
+  
+  public ArrayList sceneImages;
 
   public AnimataP5(PApplet applet, String nmtFileName) {
     setup(applet);
@@ -39,6 +45,7 @@ public class AnimataP5 implements Comparable {
   }
 
   private void setup(PApplet applet) {
+    sceneImages = new ArrayList();
     this.applet = applet;
     root = new Layer();
   }

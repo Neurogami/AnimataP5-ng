@@ -89,6 +89,10 @@ public class Skeleton {
           size = f;
         }
 
+        public void setScale(float f) {
+          scale = f;
+        }
+
         private void setInitialConditions() {
             falloff = 1.0f;
         }
