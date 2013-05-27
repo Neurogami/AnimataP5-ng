@@ -1,3 +1,7 @@
 resources/build.properties
 bin
 distribution
+notes.md
+resources/build.properties.windows
+WIN_REMAKE.bat
+__REMAKE.sh
