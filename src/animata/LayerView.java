@@ -23,13 +23,17 @@ public class LayerView {
   }
 
   public Layer getLayer(String layerName) {
-     //System.err.println("LayerView#getLayer: "   + layerName ); // DEBUG
+     System.err.println("LayerView#getLayer: "   + layerName ); // DEBUG
 
     Layer l = null;
+    // This is not correctly checking sub-layers of layers, etc.
+    // It needs to recurse, and it needs to know when return a value.
     for (Layer ll : layer.layers) {
-      // System.err.println("LayerView#getLayer: compare "   + layerName + " to " + ll.name); // DEBUG
+       System.err.println("LayerView#getLayer: compare "   + layerName + " to " + ll.name); // DEBUG
       if (ll.name.equals(layerName)) {
         return ll;
+      } else {
+        l = ll.getLayer(layerName);
       }
     }
     return l;

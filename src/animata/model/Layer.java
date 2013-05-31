@@ -362,6 +362,8 @@ public class Layer {
   }
 
   public void setLayerAlpha(String _name, float a) {
+    System.err.println("setLayerAlpha: Layer named '" + this.name + "'" );
+
     if (this != null) {
       if (this.name.equals(_name)) {
         this.alpha = a;
