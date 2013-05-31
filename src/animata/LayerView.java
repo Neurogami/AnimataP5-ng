@@ -71,10 +71,6 @@ public class LayerView {
     // HOWEVER: doTransformation is adding in the layer x and y.
     // Yet without the above lines the placement of items in some in scenes is obvioulsy wrong.
     // 
-    if  (layer.name().equals("background") ) {
-      // System.err.println("* * LayerView#draw  '" + layer.name()  + "' using: " + x + ", " + y + ". Scale:" + layer.scale() ); // DEBUG
-      // System.err.println("* * LayerView#draw  '" + layer.name()  + "' using: " + x + ", " + y + "." ); // DEBUG
-    }
 
     // How can we apply the change in x, y set in the Layer?
     // The current x,y seems to come direct from the sketch, in `draw` (e.g. Foo.draw(10, 20);)
@@ -85,8 +81,9 @@ public class LayerView {
     if (mesh != null) {
       mesh.draw();
     }
+    drawChildLayers(x, y); // This used to come AFTER popMatrix, but it seems that the paretn layer needs to pass on it's own scaling and such
     applet.popMatrix();
-    drawChildLayers(x, y);
+
   }
 
   private void drawChildLayers(float x, float y) {
@@ -94,6 +91,8 @@ public class LayerView {
       if (layerView.layer.visible() ) { 
         // Each call to a layer draw does a scale.
         // However, there's no parent scale being passed on
+        // That seems to be a bug. I C Animata, if you scale the owner layer
+        // then the child layers are scaled as well.
         layerView.draw(x, y);
       }
     }
