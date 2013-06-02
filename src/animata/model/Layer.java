@@ -179,7 +179,7 @@ public class Layer {
     x = element.getFloat("x");
     y = element.getFloat("y");
     z = -element.getFloat("z");
-    alpha = element.getFloat("alpha", 255);
+    alpha = element.getFloat("alpha", 1);
     scale = element.getFloat("scale", 1);
     visible = element.getInt("vis") == 1;
   }
@@ -361,6 +361,15 @@ public class Layer {
     }
   }
 
+  // A decisoin needs to be made, and used consistently
+  // C Animata uses a float, from 0.0 to 1.0, to indicate alpha.
+  // P5 uses a value from 0 to 255.
+  // The public API for this library needs to be consistent.
+  //
+  // If it reads in an XML value for alpha it needs to be able to
+  // handle alpha asa float.  So, the API should assume a 0-1 float
+  // is being used.  Someplace in all this that float must be 
+  // mapped to P5's 0-255 range.
   public void setLayerAlpha(String _name, float a) {
     System.err.println("setLayerAlpha: Layer named '" + this.name + "'" );
 
@@ -369,6 +378,7 @@ public class Layer {
         this.alpha = a;
       }
     }
+
     for (Layer llayer : layers) {
       llayer.setLayerAlpha(_name, a);
     }

@@ -131,8 +131,8 @@ public class AnimataP5 implements Comparable {
   }
 
   public void setLayerAlpha(String name, float value) {
-    if (value > 255) {
-      value = 255;
+    if (value > 1) {
+      value = 1;
     }
     if (value < 0) {
       value = 0;

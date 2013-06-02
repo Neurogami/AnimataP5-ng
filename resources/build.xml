@@ -30,7 +30,7 @@
 	<property name='libraryName' value='AnimataP5'/>
 
 <!-- #### (8) give your library a name. edit value.   #### -->
-	<property name='versionNumber' value='0.3.0'/>
+	<property name='versionNumber' value='0.4.0'/>
 
 <!-- #### (9) your contact url. edit value. #### -->
 	<property name='yourLink' value='http://neurogami.com'/>
@@ -42,7 +42,7 @@
 	<property name='tested:platform' value='Ubuntu'/>
 
 <!-- #### (12) the processing version this library has been tested with. edit value. #### -->
-	<property name='tested:processingVersion' value='2.0b8'/>
+	<property name='tested:processingVersion' value='2.0b9'/>
 
 <!-- #### (13) does the library depend on any other library, dll, jnilib, etc. edit value. #### -->
 	<property name='tested:dependencies' value='oscP5'/>
