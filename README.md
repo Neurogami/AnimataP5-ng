@@ -1,8 +1,8 @@
-# AnimataP5 #
+# AnimataP5-ng #
 
 A library for [processing](http://processing.org) to render/control [Animata](http://animata.kibu.hu) scenes.
 
-Forked from zeni/animatap5 and updated to work with Processing 2.
+Originall copied from zeni/animatap5, then updated to work with Processing 2, then given freaky magic powers.
 
 * Added code to allow run-time altering of the Joint `fixed` property.
 
@@ -37,23 +37,23 @@ You can also look at the file `Rakefile` to see how it invokes `ant` to do the b
 
 When installing a library in Processing you need to place the folder in the `libraries` directory of your `sketchbook` folder.
 
-    <sketchbook-path>/libraries/AnimataP5
+    <sketchbook-path>/libraries/AnimataP5-ng
 
-The library folder needs it's own subdirectory named `library` that holds `AnimataP5.jar`
+The library folder needs it's own subdirectory named `library` that holds `AnimataP5-ng.jar`
 
-    sketchbook-path>/libraries/AnimataP5/library/AnimataP5.jar
+    sketchbook-path>/libraries/AnimataP5/library/AnimataP5-ng.jar
 
 Examples go in an `examples` directory
 
-    sketchbook-path>/libraries/AnimataP5/examples
+    sketchbook-path>/libraries/AnimataP5-ng/examples
 
-The build processing should be giving you an `AnimataP5.zip` that bundles up the needed files in the proper folders.  
+The build processing should be giving you an `AnimataP5-ng.zip` that bundles up the needed files in the proper folders.  
 
 Copy that file into your sketchbook libraries folder and unzip it.
 
 You should them be able to try out the example sketch: 
 
-   `File -> Examples -> Contributed Libraries -> AnimataP5 -> AnimataSimple`
+   `File -> Examples -> Contributed Libraries -> AnimataP5-ng -> AnimataSimple`
 
 If all goes well you should see a smallish screen with two arms, one overlaid on the other, each moving.  
 
