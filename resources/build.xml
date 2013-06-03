@@ -27,10 +27,10 @@
 	<property name='copyright' value='(c) 2013'/>
 
 <!-- #### (7) give your library a name. edit value.  #### -->
-	<property name='libraryName' value='AnimataP5'/>
+	<property name='libraryName' value='AnimataP5ng'/>
 
 <!-- #### (8) give your library a name. edit value.   #### -->
-	<property name='versionNumber' value='0.4.0'/>
+	<property name='versionNumber' value='0.4.1'/>
 
 <!-- #### (9) your contact url. edit value. #### -->
 	<property name='yourLink' value='http://neurogami.com'/>
