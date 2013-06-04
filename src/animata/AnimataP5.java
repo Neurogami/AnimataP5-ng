@@ -71,6 +71,12 @@ public class AnimataP5 implements Comparable {
     }
   }
 
+
+  public void setLayerSpriteImages(String layerName, ArrayList listOfPImages, int spriteUpdateOnFrameCount) {
+    Layer l = getLayer(layerName);
+    l.texture.spriteImages = listOfPImages;
+    l.texture.spriteUpdateOnFrameCount = spriteUpdateOnFrameCount;
+  }
   public void draw(float x, float y) {
     root.simulate();
     applet.textureMode(PApplet.NORMAL);

@@ -14,6 +14,10 @@ public class Layer {
 
   public class Texture {
 
+    public ArrayList spriteImages = null;
+    public int spriteUpdateOnFrameCount = 1;
+
+    private int spriteIndex = 0;
     private String location;
     private float x;
     private float y;
@@ -22,19 +26,35 @@ public class Layer {
 
     private XML textureElement;
     private String folder;
-
+    private int drawFrameCount = 0;
+    
     public Texture(XML child, String _folder) {
       textureElement = child;
       folder = _folder;
       location = folder + File.separator + textureElement.getString("location");
-
-      
       x = textureElement.getFloat("x");
-      
       y = textureElement.getFloat("y");
-      
       scale = textureElement.getFloat("scale");
     }
+
+    // We use this to grab the current sprite image, if that is in use
+    //
+    public PImage getCurrentImage(PApplet applet) {
+     if (spriteImages == null ){
+       return getImage(applet);
+     }
+     drawFrameCount++;
+     drawFrameCount %= spriteUpdateOnFrameCount;
+     
+     if (drawFrameCount == 0 ) {
+       spriteIndex++;
+       spriteIndex %= spriteImages.size();
+     }
+
+     return ( (PImage) spriteImages.get(spriteIndex) );
+     
+    }
+
 
     public PImage getImage(PApplet applet) {
       if (image == null) {

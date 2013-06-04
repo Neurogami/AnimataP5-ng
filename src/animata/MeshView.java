@@ -45,7 +45,8 @@ public class MeshView {
     applet.scale(layer.texture.scale() );
     applet.translate(layer.texture.x(), layer.texture.y() );   
     applet.beginShape();
-    applet.texture(layer.texture.getImage(applet));
+    //applet.texture(layer.texture.getImage(applet));
+    applet.texture(layer.texture.getCurrentImage(applet));
    // Animata store alpha as a float. 
    // Note that an alpha value of 1 means it is visible. A value of 0 means transparent.
     applet.tint(255, 255 - applet.map(layer.alpha, 0,1, 255, 0)  );
