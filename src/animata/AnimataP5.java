@@ -23,7 +23,6 @@ public class AnimataP5 implements Comparable {
   public LayerView layersView;
 
   
-  public ArrayList sceneImages;
 
   public AnimataP5(PApplet applet, String nmtFileName) {
     setup(applet);
@@ -45,7 +44,6 @@ public class AnimataP5 implements Comparable {
   }
 
   private void setup(PApplet applet) {
-    sceneImages = new ArrayList();
     this.applet = applet;
     root = new Layer();
   }
@@ -74,7 +72,7 @@ public class AnimataP5 implements Comparable {
   // New. Assigns a set of images that the Layer's texture will cycle through to give a sprite effect
   public void setLayerSpriteImages(String layerName, ArrayList listOfPImages, int spriteUpdateOnFrameCount) {
     Layer l = getLayer(layerName);
-    l.texture.spriteImages = listOfPImages;
+    l.texture.spriteImages = new ArrayList(listOfPImages); 
     l.texture.spriteUpdateOnFrameCount = spriteUpdateOnFrameCount;
   }
   public void draw(float x, float y) {
