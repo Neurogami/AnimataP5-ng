@@ -23,13 +23,11 @@ public class LayerView {
   }
 
   public Layer getLayer(String layerName) {
-     System.err.println("LayerView#getLayer: "   + layerName ); // DEBUG
 
     Layer l = null;
     // This is not correctly checking sub-layers of layers, etc.
     // It needs to recurse, and it needs to know when return a value.
     for (Layer ll : layer.layers) {
-       System.err.println("LayerView#getLayer: compare "   + layerName + " to " + ll.name); // DEBUG
       if (ll.name.equals(layerName)) {
         return ll;
       } else {
@@ -47,7 +45,6 @@ public class LayerView {
 
 
   public void setNewMeshImage(String imageName, String layerName ) {
-    // System.err.println("LayerView#setNewMeshImage: " + imageName + " for " + layerName ); // DEBUG
     for (Layer llayer : layer.layers) {
       llayer.setNewTextureImage(applet, imageName, layerName);
     }
@@ -62,30 +59,15 @@ public class LayerView {
 
   public void draw(float x, float y) {
 
-    // System.err.println("LayerView#draw using: " + x + ", " + y + ". "); // DEBUG
-    // System.err.println("LayerView#draw This layer has x, y " + layer.x() + ", " + layer.y() ); // DEBUG
-    // This will propagate layer locatins down to child layers. Is this correct?
-    // Is the location of child layers relative to the parent layer?
-    // If you don;t do this then you find some scenes created in Animata make no sense becasue none of
-    // the layer offsets are getting applied.
-    
     x = x+layer.x();
     y = y+layer.y();
-
-    // HOWEVER: doTransformation is adding in the layer x and y.
-    // Yet without the above lines the placement of items in some in scenes is obvioulsy wrong.
-    // 
-
-    // How can we apply the change in x, y set in the Layer?
-    // The current x,y seems to come direct from the sketch, in `draw` (e.g. Foo.draw(10, 20);)
-    // We could grab the x,y stored in the layer and apply it
 
     applet.pushMatrix();
     doTransformation(x, y);
     if (mesh != null) {
       mesh.draw();
     }
-    drawChildLayers(x, y); // This used to come AFTER popMatrix, but it seems that the paretn layer needs to pass on it's own scaling and such
+    drawChildLayers(x, y); // This used to come AFTER popMatrix, but it seems that the parent layer needs to pass on it's own scaling and such
     applet.popMatrix();
 
   }

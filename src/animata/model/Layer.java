@@ -88,7 +88,6 @@ public class Layer {
 
 
     public void setNewTextureImage(PApplet applet, PImage image, String layerName) {
-    // System.err.println("Layer named '" + name + "' executing  setNewTextureImage: " + imageName + " for " + layerName );
     if (name.equals(layerName) ) {
       if (texture != null ) { 
         texture.setImage(applet, image);
@@ -101,7 +100,6 @@ public class Layer {
 
 
   public void setNewTextureImage(PApplet applet, String imageName, String layerName) {
-    // System.err.println("Layer named '" + name + "' executing  setNewTextureImage: " + imageName + " for " + layerName );
     if (name.equals(layerName) ) {
       if (texture != null ) { 
         texture.loadImage(applet, imageName);
@@ -174,8 +172,6 @@ public class Layer {
   private void setupAttributes(XML element) {
     name = element.getString("name","null");
 
-    // System.err.println("Create new Layer '" + name+ "' with x, y " + element.getString("x") + ", " + element.getString("x") ); // DEBUG
-      
     x = element.getFloat("x");
     y = element.getFloat("y");
     z = -element.getFloat("z");
@@ -217,13 +213,10 @@ public class Layer {
   }
 
   public Layer getLayer(String name) {
-    // System.err.println("Layer#getLayer:  Look for " + name + "."  );  // DEBUGGERY
     Layer l = null;
 
     for (Layer llayer : layers) {
-      // System.err.println("Layer#getLayer:  " + name + ".  Compare to " + llayer.name );  // DEBUGGERY
       if (llayer.name.equals(name) ) {
-        // System.err.println("Layer#getLayer:  " + name + ".  Found match!"  );  // DEBUGGERY
         return llayer;
       }
     }
@@ -232,7 +225,6 @@ public class Layer {
 
   public Bone getBone(String name) {
     Bone b = null;
-    // System.err.println("Layer#getBone name =  " + name + ".  skeleton = " + skeleton );  // DEBUGGERY
     if (skeleton != null ) {
       return skeleton.getBone(name);
     } else {
@@ -371,7 +363,6 @@ public class Layer {
   // is being used.  Someplace in all this that float must be 
   // mapped to P5's 0-255 range.
   public void setLayerAlpha(String _name, float a) {
-    System.err.println("setLayerAlpha: Layer named '" + this.name + "'" );
 
     if (this != null) {
       if (this.name.equals(_name)) {

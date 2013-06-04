@@ -2,7 +2,7 @@
 
 A library for [processing](http://processing.org) to render/control [Animata](http://animata.kibu.hu) scenes.
 
-Originall copied from zeni/animatap5, then updated to work with Processing 2, then given freaky magic powers.
+Originally copied from zeni/animatap5, then updated to work with Processing 2, then given freaky magic powers.
 
 * Added code to allow run-time altering of the Joint `fixed` property.
 
@@ -10,11 +10,11 @@ Originall copied from zeni/animatap5, then updated to work with Processing 2, th
 
 * Added an example showing the use of OSc to manipulate joints
 
-* Added assortred methods so that a scne can respond to the default OSC messages (as defined in the original Animata)
+* Added assorted methods so that a scene can respond to the default OSC messages (as defined in the original Animata)
 
 Note: The OSC handling still has to be done by importing OscP5 and writing code to implement the server processing.
 
-You can choose to handle any OSC messsages you want.  An example is included that handles the same OSC messages that the original Animata handled, plus two others.
+You can choose to handle any OSC messages you want.  An example is included that handles the same OSC messages that the original Animata handled, plus two others.
 
 See the sample applications for usage and some docs about Animata in general.
 
@@ -30,30 +30,30 @@ That assumes that you have Ruby installed.
 
 You can also look at the file `Rakefile` to see how it invokes `ant` to do the build.
 
-`build.xml` requires a `build.properties` file that defines some user-specific properties.  There is a sample file included; you need to modify this and change the name.
+`build.xml` requires a `build.properties` file that defines some user-specific properties.  There is a sample file included; you need to modify this and change the name.  
 
 
 ## Installation ##
 
 When installing a library in Processing you need to place the folder in the `libraries` directory of your `sketchbook` folder.
 
-    <sketchbook-path>/libraries/AnimataP5-ng
+    <sketchbook-path>/libraries/AnimataP5ng
 
-The library folder needs it's own subdirectory named `library` that holds `AnimataP5-ng.jar`
+The library folder needs it's own subdirectory named `library` that holds `AnimataP5ng.jar`
 
-    sketchbook-path>/libraries/AnimataP5/library/AnimataP5-ng.jar
+    sketchbook-path>/libraries/AnimataP5/library/AnimataP5ng.jar
 
 Examples go in an `examples` directory
 
-    sketchbook-path>/libraries/AnimataP5-ng/examples
+    sketchbook-path>/libraries/AnimataP5ng/examples
 
-The build processing should be giving you an `AnimataP5-ng.zip` that bundles up the needed files in the proper folders.  
+The build processing should be giving you an `AnimataP5ng.zip` that bundles up the needed files in the proper folders.  
 
 Copy that file into your sketchbook libraries folder and unzip it.
 
 You should them be able to try out the example sketch: 
 
-   `File -> Examples -> Contributed Libraries -> AnimataP5-ng -> AnimataSimple`
+   `File -> Examples -> Contributed Libraries -> AnimataP5ng -> AnimataSimple`
 
 If all goes well you should see a smallish screen with two arms, one overlaid on the other, each moving.  
 

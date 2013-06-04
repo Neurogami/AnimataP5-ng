@@ -83,7 +83,7 @@ public class AnimataP5 implements Comparable {
   }
 
   public Layer getLayer(String name) {
-    System.err.println("AnimataP5#getLayer:  Look for " + name + ". root name = " + root.name  );  // DEBUGGERY
+    System.err.println("AnimataP5ng#getLayer:  Look for " + name + ". root name = " + root.name  );  // DEBUGGERY
     if (root.name.equals(name) ) {
       return root;
     }

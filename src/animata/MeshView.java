@@ -33,9 +33,6 @@ public class MeshView {
   }
 
   private void drawFaces(Face[] faces) {
-
-    //System.err.println( "Draw faces using texture x, y " + layer.texture.x() + ", " + layer.texture.y() ); // DEBUG
-    
     for (int i = 0; i < faces.length; i++) {
       Face face = faces[i];
       drawFace(face.vertices);
@@ -43,7 +40,6 @@ public class MeshView {
   }
 
   private void drawFace(Vertex[] vertices) {
-   // PImage textureImage = layer.texture.getImage(applet);
 
     applet.pushMatrix();
     applet.scale(layer.texture.scale() );
