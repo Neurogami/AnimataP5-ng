@@ -2,7 +2,7 @@
 
 A library for [processing](http://processing.org) to render/control [Animata](http://animata.kibu.hu) scenes.
 
-Originally copied from "zeni/animatap5":https://github.com/zeni/animatap5, then updated to work with Processing 2, then assorted bugs and omissions were taken care of, then given freaky magic powers.
+Originally copied from [zeni/animatap5](https://github.com/zeni/animatap5), then updated to work with Processing 2, then assorted bugs and omissions were taken care of, then given freaky magic powers.
 
 `AnimataP5-ng` should now be rendering Animata scenes just as Animata itself does.
 
