@@ -71,7 +71,7 @@ public class AnimataP5 implements Comparable {
     }
   }
 
-
+  // New. Assigns a set of images that the Layer's texture will cycle through to give a sprite effect
   public void setLayerSpriteImages(String layerName, ArrayList listOfPImages, int spriteUpdateOnFrameCount) {
     Layer l = getLayer(layerName);
     l.texture.spriteImages = listOfPImages;
