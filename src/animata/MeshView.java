@@ -33,6 +33,8 @@ public class MeshView {
   }
 
   private void drawFaces(Face[] faces) {
+    layer.texture.updateCurrentImage(); 
+    
     for (int i = 0; i < faces.length; i++) {
       Face face = faces[i];
       drawFace(face.vertices);
@@ -45,8 +47,11 @@ public class MeshView {
     applet.scale(layer.texture.scale() );
     applet.translate(layer.texture.x(), layer.texture.y() );   
     applet.beginShape();
-    //applet.texture(layer.texture.getImage(applet));
-    applet.texture(layer.texture.getCurrentImage(applet));
+    applet.texture(layer.texture.getImage(applet));
+
+    // This works, techincally, but it is updating the frame count on each face,
+    // so the iamge changes before the whole texture is rendered.
+//    applet.texture(layer.texture.getCurrentImage(applet));
    // Animata store alpha as a float. 
    // Note that an alpha value of 1 means it is visible. A value of 0 means transparent.
     applet.tint(255, 255 - applet.map(layer.alpha, 0,1, 255, 0)  );

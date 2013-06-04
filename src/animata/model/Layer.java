@@ -37,12 +37,15 @@ public class Layer {
       scale = textureElement.getFloat("scale");
     }
 
+
+
     // We use this to grab the current sprite image, if that is in use
     //
-    public PImage getCurrentImage(PApplet applet) {
+    public void updateCurrentImage() {
      if (spriteImages == null ){
-       return getImage(applet);
+       return;
      }
+
      drawFrameCount++;
      drawFrameCount %= spriteUpdateOnFrameCount;
      
@@ -51,7 +54,7 @@ public class Layer {
        spriteIndex %= spriteImages.size();
      }
 
-     return ( (PImage) spriteImages.get(spriteIndex) );
+     image = (PImage) spriteImages.get(spriteIndex);
      
     }
 
