@@ -2,13 +2,30 @@
 
 A library for [processing](http://processing.org) to render/control [Animata](http://animata.kibu.hu) scenes.
 
-Originally copied from zeni/animatap5, then updated to work with Processing 2, then given freaky magic powers.
+Originally copied from "zeni/animatap5":https://github.com/zeni/animatap5, then updated to work with Processing 2, then assorted bugs and omissions were taken care of, then given freaky magic powers.
+
+`AnimataP5-ng` should now be rendering Animata scenes just as Animata itself does.
+
+However, some features have been added that expand what the Animata renderer can do.
+
+Since a Processing sketch can have any number (more or less) of Animata scenes running at the same time, the AnimataP5 class has an integer `renderPriority` property you can set and use to sort scenes before rendering them.
+
+You can also set a list of PImages to use for a texture in order to have an animated "sprite" effect.
+
+The main class has a method,  `setLayerSpriteImages(String layerName, ArrayList listOfPImages, int spriteUpdateOnFrameCount)`.
+
+It will find the first instance of a layer with that name (so try to use unique layer names), and pass along that list of images to used by that layer's Texture instance.
+
+The `spriteUpdateOnFrameCount` value is used to control how often the texture image changes.  When a layer is drawn, a call is made to `updateCurrentImage()`.  This method tracks a "drawing frame" count. If that count modulo `spriteUpdateOnFrameCount` equals zero, then then next image in the image array is used; the process cycles over the list of images.
+
+
+### Some previous changes and additions ###
 
 * Added code to allow run-time altering of the Joint `fixed` property.
 
 * Added code for referencing joints by name and reading location values
 
-* Added an example showing the use of OSc to manipulate joints
+* Added an example showing the use of OSC to manipulate joints
 
 * Added assorted methods so that a scene can respond to the default OSC messages (as defined in the original Animata)
 
