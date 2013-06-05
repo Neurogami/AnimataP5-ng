@@ -24,6 +24,9 @@ task :build do
     if RUBY_PLATFORM =~ /gw32/
       warn "Using ant -propertyfile build.properties.windows  "
       sh "call ant -propertyfile build.properties.windows "
+    elsif RUBY_PLATFORM =~ /darwin/
+
+      sh "call ant -propertyfile build.properties.osx "
      else
     puts `ant`
     end

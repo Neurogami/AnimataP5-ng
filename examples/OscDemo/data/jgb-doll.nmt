@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <animata version="0.004">
-    <layer name="layer_0001" x="146.999969" y="9.000000" z="0.000000" alpha="1.000000" scale="1.000000" vis="1">
+    <layer name="body" x="146.999969" y="9.000000" z="0.000000" alpha="1.000000" scale="1.000000" vis="1">
         <texture location="jgb-doll.png" x="0.000000" y="0.000000" scale="1.000000" />
         <mesh>
             <vertices>

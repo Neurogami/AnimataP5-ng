@@ -304,3 +304,11 @@ void animataOscLayerpos(String layerName, float x, float y) {
   l.setPosition(x, y);
 
 }
+
+//    Moving a layer, x and y are the position coordinates as float values:	/layerpos name x y
+void animataOscLayerDeltapos(String layerName, float x, float y) {
+  println("animataOscLayerpos " + layerName + " to  " + x + ", " + y);
+  Layer l = Doll.getLayer(layerName);
+  l.setPosition(x+l.x(), y+l.y());
+
+}

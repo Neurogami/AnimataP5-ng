@@ -2,15 +2,18 @@
 :address: 127.0.0.1
 
 :initial_messages: 
- - /animata/layer/layer_0001/image jgb-doll2.png
- - /animata/move/joint head 10.0 10.0
+ - /animata/layer/body/image jgb-doll2.png
+ - /animata/layer/body/image jgb-doll.png
+ - /animata/move/body/head 10.0 10.0
+ - /animata/move/body/r_hand 120.0 110.0
  - /joint head  20.0 54.0
  - /anibone  bogus 0.4
  - /anibone  face 0.4
- - /layervis layer_0001 0
- - /layervis layer_0001 1
+ - /layervis body 0
+ - /layervis body 1
  - /layervis bogus 1
- - /layerpos layer_0001 100 40 
+ - /layerpos body 100 40 
+ - /layerdeltapos body  -10 -10 
   
 
 

@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<animata version="0.004">
+    <layer name="main_head" x="117.000000" y="108.999969" z="0.000000" alpha="1.000000" scale="1.000000" vis="1">
+        <texture location="sprite_front_000.png" x="0.000000" y="0.000000" scale="1.000000" />
+        <mesh>
+            <vertices>
+                <vertex x="16.850191" y="11.581918" u="0.043750" v="0.055000" selected="0" />
+                <vertex x="203.698227" y="0.008632" u="0.513750" v="0.035000" selected="0" />
+                <vertex x="407.774719" y="2.316369" u="1.021250" v="0.027500" selected="0" />
+                <vertex x="412.173431" y="141.995392" u="1.018750" v="0.355000" selected="0" />
+                <vertex x="206.965591" y="271.021759" u="0.513750" v="0.712500" selected="1" />
+                <vertex x="68.745544" y="297.119781" u="0.046250" v="0.690000" selected="0" />
+                <vertex x="374.027435" y="287.909302" u="1.003750" v="0.680000" selected="0" />
+                <vertex x="163.316681" y="128.698395" u="0.401250" v="0.352500" selected="0" />
+                <vertex x="260.245880" y="131.445663" u="0.661250" v="0.355000" selected="0" />
+                <vertex x="5.477905" y="142.402451" u="0.026250" v="0.352500" selected="0" />
+            </vertices>
+            <faces>
+                <face v0="0" v1="9" v2="7" />
+                <face v0="7" v1="0" v2="1" />
+                <face v0="1" v1="8" v2="2" />
+                <face v0="2" v1="8" v2="3" />
+                <face v0="3" v1="6" v2="8" />
+                <face v0="8" v1="6" v2="4" />
+                <face v0="4" v1="8" v2="7" />
+                <face v0="8" v1="1" v2="7" />
+                <face v0="4" v1="5" v2="7" />
+                <face v0="7" v1="9" v2="5" />
+            </faces>
+        </mesh>
+        <skeleton>
+            <joints>
+                <joint x="100.839256" y="143.920746" fixed="0" selected="0" osc="0" />
+                <joint x="132.887512" y="250.800873" fixed="0" selected="0" osc="0" />
+                <joint x="312.506348" y="125.598999" fixed="0" selected="0" osc="0" />
+                <joint x="286.946777" y="262.251648" fixed="0" selected="0" osc="0" />
+                <joint name="head" x="211.010742" y="31.477043" fixed="0" selected="0" osc="0" />
+                <joint name="neck" x="209.977112" y="253.485672" fixed="0" selected="0" osc="0" />
+                <joint x="197.500000" y="137.000031" fixed="1" selected="0" osc="0" />
+                <joint name="chin_joint" x="197.500000" y="293.214844" fixed="0" selected="0" osc="0" />
+            </joints>
+            <bones>
+                <bone name="l_mouth" j0="0" j1="1" stiffness="0.192058" lm="0.820000" lmmin="0.010000" lmmax="0.820000" tempo="0.000000" time="394.918976" size="136.014679" selected="0" radius="1.000000">
+                    <attached>
+                        <vertex id="5" d="110.657448" w="0.010000" ca="80.987495" sa="75.406204" />
+                        <vertex id="9" d="124.145134" w="0.010000" ca="-85.533646" sa="89.977829" />
+                    </attached>
+                </bone>
+                <bone name="r_mouth" j0="3" j1="2" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="139.014389" selected="0" radius="1.000000">
+                    <attached>
+                        <vertex id="3" d="123.873123" w="0.010000" ca="71.380119" sa="101.239464" />
+                        <vertex id="6" d="119.814163" w="0.010000" ca="-79.029991" sa="90.053841" />
+                    </attached>
+                </bone>
+                <bone name="head" j0="4" j1="5" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="222.002213" selected="0" radius="1.000000">
+                    <attached>
+                        <vertex id="1" d="142.573975" w="0.010000" ca="-142.343689" sa="8.100259" />
+                    </attached>
+                </bone>
+                <bone j0="0" j1="5" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="154.646027" selected="0" radius="1.000000" />
+                <bone name="l_eye" j0="0" j1="4" stiffness="0.500000" lm="1.119977" lmmin="0.970000" lmmax="1.150000" tempo="0.049000" time="1372.146606" size="140.547028" selected="1" radius="1.000000" />
+                <bone name="r_eye" j0="4" j1="2" stiffness="0.500000" lm="1.079994" lmmin="0.950000" lmmax="1.080000" tempo="0.113000" time="2012.203369" size="128.161118" selected="0" radius="1.000000" />
+                <bone j0="2" j1="5" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="163.912308" selected="0" radius="1.000000" />
+                <bone j0="3" j1="4" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="242.938599" selected="0" radius="1.000000">
+                    <attached>
+                        <vertex id="2" d="214.452621" w="0.010000" ca="88.023872" sa="195.554916" />
+                        <vertex id="8" d="19.101501" w="0.842746" ca="11.128199" sa="15.525159" />
+                    </attached>
+                </bone>
+                <bone j0="1" j1="4" stiffness="0.500000" lm="1.000000" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="1.570796" size="232.822205" selected="0" radius="1.000000" />
+                <bone name="mouth_bone" j0="7" j1="6" stiffness="0.500000" lm="0.958373" lmmin="0.010000" lmmax="1.000000" tempo="0.000000" time="32.573685" size="163.000000" selected="0" radius="1.000000">
+                    <attached>
+                        <vertex id="4" d="56.709911" w="0.304173" ca="-55.914368" sa="9.465590" />
+                    </attached>
+                </bone>
+            </bones>
+        </skeleton>
+    </layer>
+</animata>

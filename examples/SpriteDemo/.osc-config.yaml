@@ -1,0 +1,12 @@
+:port: 8000
+:address: 127.0.0.1
+
+:initial_messages: 
+ - /animata/sprite/orientation/left
+ - /animata/sprite/orientation/right
+ - /animata/sprite_left/joint/chin_joint/move 100 300
+ - /animata/sprite_left/joint/chin_joint/move 100 100
+ - /animata/sprite_left/layer/main_head/move   500.0 30.0
+ - /animata/sprite_left/bone/l_mouth/length 20.8
+ - /animata/sprite_left/bone/l_mouth/length 200.3
+

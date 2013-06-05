@@ -3,6 +3,7 @@ bin
 distribution
 notes.md
 resources/build.properties.windows
+resources/build.properties.osx
 WIN_REMAKE.bat
 __REMAKE.sh
 reference/resources/inherit.gif
