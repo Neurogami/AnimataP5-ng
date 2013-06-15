@@ -79,6 +79,15 @@ It's kind of creepy, but very cool.
 The example also allows you to play with the `fixed` property of the shoulder joints as well as use the mouse to move the location of the wrist joint.
 
 
+## Examples ##
+
+There is a simple example showing the rendering of multiple scenes.
+
+For more complex examples, please see [https://github.com/JustTheBestParts/OSC-Demos](https://github.com/JustTheBestParts/OSC-Demos).
+
+Those examples use [Open Sound Control](http://osc.justthebestparts.com/) to control the content of the scenes.
+
+
 ## License ##
 
 Sadly, the original Animata source has been released under the GNU GPL v3, and if this code is based on that code then the GPL extends to this code as well.  
