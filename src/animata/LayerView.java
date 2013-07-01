@@ -38,6 +38,7 @@ public class LayerView {
   }
 
  public void setNewMeshPImage(PImage layerImage, String layerName ) {
+     System.err.println(":: LayerView#setNewMeshPImage for " + layerName); // DEBUGGERY
     for (Layer llayer : layer.layers) {
       llayer.setNewTexturePImage(applet, layerImage, layerName);
     }

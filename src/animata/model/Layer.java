@@ -27,7 +27,7 @@ public class Layer {
     private XML textureElement;
     private String folder;
     private int drawFrameCount = 0;
-    
+
     public Texture(XML child, String _folder) {
       textureElement = child;
       folder = _folder;
@@ -42,20 +42,20 @@ public class Layer {
     // We use this to grab the current sprite image, if that is in use
     //
     public void updateCurrentImage() {
-     if (spriteImages == null ){
-       return;
-     }
+      if (spriteImages == null ){
+        return;
+      }
 
-     drawFrameCount++;
-     drawFrameCount %= spriteUpdateOnFrameCount;
-     
-     if (drawFrameCount == 0 ) {
-       spriteIndex++;
-       spriteIndex %= spriteImages.size();
-     }
+      drawFrameCount++;
+      drawFrameCount %= spriteUpdateOnFrameCount;
 
-     image = (PImage) spriteImages.get(spriteIndex);
-     
+      if (drawFrameCount == 0 ) {
+        spriteIndex++;
+        spriteIndex %= spriteImages.size();
+      }
+
+      image = (PImage) spriteImages.get(spriteIndex);
+
     }
 
 
@@ -110,16 +110,17 @@ public class Layer {
   }
 
 
-    public void setNewTexturePImage(PApplet applet, PImage image, String layerName) {
+  public void setNewTexturePImage(PApplet applet, PImage image, String layerName) {
+    System.err.println(":: Layer#setNewMeshPImage. My name = " + name + "; looking for " + layerName ); // DEBUGGERY
     if (name.equals(layerName) ) {
       if (texture != null ) { 
+        System.err.println(":: Setting texture ! LayerView#setNewMeshPImage"); // DEBUGGERY
         texture.setImage(applet, image);
-      } else {
-        // System.err.println("Layer#setNewTextureImage: texture is null!"  );
-      }
+      } 
+    }else {
+      for (Layer ll :layers) { ll.setNewTexturePImage(applet, image, layerName); }
     }
   }
-
 
 
   public void setNewTextureImage(PApplet applet, String imageName, String layerName) {
