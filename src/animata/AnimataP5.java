@@ -105,8 +105,8 @@ public class AnimataP5 implements Comparable {
     layersView.setNewMeshImage(imageName, layerName);
   }
 
-  public void setNewMeshImage(PImage image, String layerName) {
-    layersView.setNewMeshImage(image, layerName);
+  public void setNewMeshPImage(PImage image, String layerName) {
+    layersView.setNewMeshPImage(image, layerName);
   }
 
   public void moveJointY(String name, float value) {

@@ -37,9 +37,9 @@ public class LayerView {
     return l;
   }
 
- public void setNewMeshImage(PImage layerImage, String layerName ) {
+ public void setNewMeshPImage(PImage layerImage, String layerName ) {
     for (Layer llayer : layer.layers) {
-      llayer.setNewTextureImage(applet, layerImage, layerName);
+      llayer.setNewTexturePImage(applet, layerImage, layerName);
     }
   }
 

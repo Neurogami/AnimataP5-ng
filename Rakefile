@@ -26,7 +26,7 @@ task :build do
       sh "call ant -propertyfile build.properties.windows "
     elsif RUBY_PLATFORM =~ /darwin/
 
-      sh "call ant -propertyfile build.properties.osx "
+      sh "ant -propertyfile build.properties.osx "
      else
     puts `ant`
     end

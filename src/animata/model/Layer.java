@@ -110,7 +110,7 @@ public class Layer {
   }
 
 
-    public void setNewTextureImage(PApplet applet, PImage image, String layerName) {
+    public void setNewTexturePImage(PApplet applet, PImage image, String layerName) {
     if (name.equals(layerName) ) {
       if (texture != null ) { 
         texture.setImage(applet, image);
