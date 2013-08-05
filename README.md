@@ -81,9 +81,13 @@ The example also allows you to play with the `fixed` property of the shoulder jo
 
 ## Examples ##
 
-There is a simple example showing the rendering of multiple scenes.
+There is a simple example, `AnimataSimple`, showing the rendering of multiple scenes.
 
-For more complex examples, please see [https://github.com/JustTheBestParts/OSC-Demos](https://github.com/JustTheBestParts/OSC-Demos).
+`OscDemo` is exactly that, an example of manipulating layers using OSC.
+
+`LayerEffects` demonstrates a some programmatic manipulation of scenes, plus it's another example of having multiple scenes in the same sketch.  It shows an endless side-scrolling effect (by looping the movement of two layers) as well as nested zooming.
+
+For more examples, please see [https://github.com/JustTheBestParts/OSC-Demos](https://github.com/JustTheBestParts/OSC-Demos).
 
 Those examples use [Open Sound Control](http://osc.justthebestparts.com/) to control the content of the scenes.
 
