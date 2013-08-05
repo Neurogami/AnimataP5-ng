@@ -5,14 +5,14 @@
             <texture location="buildings1.png" x="0.000000" y="0.000000" scale="1.000000" />
             <mesh>
                 <vertices>
-                    <vertex x="0.0" y="477.439941" u="-0.000117" v="0.954880" selected="0" />
-                    <vertex x="0.0" y="0.000031" u="-0.000117" v="0.000000" selected="0" />
+                    <vertex x="0.000000" y="477.439941" u="-0.000117" v="0.954880" selected="0" />
+                    <vertex x="0.000000" y="0.000031" u="-0.000117" v="0.000000" selected="0" />
                     <vertex x="1200.500000" y="477.440002" u="1.000417" v="0.954880" selected="0" />
                     <vertex x="1200.500000" y="1.280014" u="1.000417" v="0.002560" selected="0" />
-                    <vertex x="347.484924" y="225.667175" u="0.224659" v="0.357818" selected="0" />
+                    <vertex x="234.115845" y="108.047531" u="0.224659" v="0.357818" selected="0" />
                     <vertex x="545.954529" y="180.363632" u="0.454962" v="0.360727" selected="0" />
-                    <vertex x="534.327820" y="458.069275" u="0.458598" v="0.730182" selected="1" />
-                    <vertex x="243.300339" y="225.681747" u="0.148295" v="0.747636" selected="1" />
+                    <vertex x="502.976379" y="253.851883" u="0.458598" v="0.730182" selected="1" />
+                    <vertex x="208.085602" y="481.157654" u="0.148295" v="0.747636" selected="1" />
                     <vertex x="957.590820" y="256.000000" u="0.797992" v="0.512000" selected="0" />
                     <vertex x="1199.045410" y="267.636353" u="0.999205" v="0.535273" selected="0" />
                     <vertex x="604.136353" y="0.000015" u="0.503447" v="0.000000" selected="0" />
@@ -41,17 +41,17 @@
             </mesh>
             <skeleton>
                 <joints>
-                    <joint x="487.803619" y="271.427856" fixed="0" selected="0" osc="0" />
+                    <joint x="308.382904" y="237.747330" fixed="0" selected="0" osc="0" />
                     <joint x="401.850891" y="376.411804" fixed="1" selected="0" osc="0" />
                     <joint x="423.772736" y="32.000046" fixed="1" selected="0" osc="0" />
                 </joints>
                 <bones>
-                    <bone j0="2" j1="0" stiffness="0.500000" lm="1.269534" lmmin="0.820000" lmmax="1.290000" tempo="0.054000" time="762.256653" size="195.174866" selected="0" radius="1.000000">
+                    <bone j0="2" j1="0" stiffness="0.500000" lm="1.208138" lmmin="0.820000" lmmax="1.290000" tempo="0.054000" time="1189.953857" size="195.174866" selected="0" radius="1.000000">
                         <attached>
                             <vertex id="4" d="131.949402" w="0.010000" ca="41.522785" sa="125.245773" />
                         </attached>
                     </bone>
-                    <bone j0="0" j1="1" stiffness="0.500000" lm="0.746051" lmmin="0.740000" lmmax="1.040000" tempo="0.039000" time="720.710510" size="181.823990" selected="1" radius="1.000000">
+                    <bone j0="0" j1="1" stiffness="0.500000" lm="0.919394" lmmin="0.740000" lmmax="1.040000" tempo="0.039000" time="1020.820374" size="181.823990" selected="1" radius="1.000000">
                         <attached>
                             <vertex id="6" d="160.148636" w="0.010000" ca="44.589096" sa="-153.816116" />
                             <vertex id="7" d="225.602264" w="0.010000" ca="56.294891" sa="218.465714" />
@@ -71,8 +71,8 @@
                     <vertex x="788.668945" y="235.492950" u="0.657224" v="0.470986" selected="0" />
                     <vertex x="615.147888" y="476.619690" u="0.512623" v="0.953239" selected="0" />
                     <vertex x="602.753540" y="1.126785" u="0.502295" v="0.002254" selected="0" />
-                    <vertex x="474.217316" y="278.454956" u="0.373144" v="0.462545" selected="0" />
-                    <vertex x="588.892456" y="322.928131" u="0.472538" v="0.645818" selected="0" />
+                    <vertex x="455.170776" y="247.300018" u="0.373144" v="0.462545" selected="0" />
+                    <vertex x="572.978516" y="331.534698" u="0.472538" v="0.645818" selected="0" />
                     <vertex x="1199.772705" y="368.000000" u="0.999811" v="0.736000" selected="0" />
                     <vertex x="-3.362976" y="188.804764" u="0.001023" v="0.372364" selected="1" />
                     <vertex x="241.227264" y="100.363647" u="0.201023" v="0.200727" selected="0" />
@@ -108,21 +108,36 @@
                 <joints>
                     <joint x="606.318237" y="138.181824" fixed="1" selected="0" osc="0" />
                     <joint x="667.409058" y="388.363647" fixed="1" selected="0" osc="0" />
-                    <joint x="662.624146" y="305.664825" fixed="0" selected="0" osc="0" />
+                    <joint x="641.416321" y="281.916779" fixed="0" selected="0" osc="0" />
                 </joints>
                 <bones>
-                    <bone j0="2" j1="0" stiffness="0.500000" lm="1.445697" lmmin="0.160000" lmmax="1.460000" tempo="0.034000" time="221.272110" size="121.808960" selected="1" radius="1.000000">
+                    <bone j0="2" j1="0" stiffness="0.500000" lm="1.191511" lmmin="0.160000" lmmax="1.460000" tempo="0.034000" time="490.715729" size="121.808960" selected="1" radius="1.000000">
                         <attached>
                             <vertex id="7" d="172.725403" w="0.010000" ca="1.641285" sa="-172.717606" />
                         </attached>
                     </bone>
-                    <bone j0="2" j1="1" stiffness="0.500000" lm="0.605587" lmmin="0.050000" lmmax="0.820000" tempo="0.039000" time="455.071899" size="136.262268" selected="0" radius="1.000000">
+                    <bone j0="2" j1="1" stiffness="0.500000" lm="0.793769" lmmin="0.050000" lmmax="0.820000" tempo="0.039000" time="755.181763" size="136.262268" selected="0" radius="1.000000">
                         <attached>
                             <vertex id="8" d="81.454590" w="0.010000" ca="-22.606890" sa="78.254578" />
                         </attached>
                     </bone>
                 </bones>
             </skeleton>
+        </layer>
+        <layer name="zoom" x="-353.999939" y="-40.000000" z="0.000000" alpha="1.000000" scale="1.000000" vis="1">
+            <texture location="zoom.png" x="0.000000" y="0.000000" scale="1.000000" />
+            <mesh>
+                <vertices>
+                    <vertex x="353.045410" y="439.999969" u="0.294205" v="0.880000" selected="0" />
+                    <vertex x="755.954468" y="438.545410" u="0.629962" v="0.877091" selected="0" />
+                    <vertex x="754.499939" y="41.454559" u="0.628750" v="0.082909" selected="0" />
+                    <vertex x="355.954529" y="44.363647" u="0.296629" v="0.088727" selected="0" />
+                </vertices>
+                <faces>
+                    <face v0="3" v1="0" v2="1" />
+                    <face v0="1" v1="3" v2="2" />
+                </faces>
+            </mesh>
         </layer>
     </layer>
 </animata>
