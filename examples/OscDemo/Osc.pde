@@ -4,10 +4,11 @@ import netP5.*;
 OscP5 oscP5;
 
 String configFile      = "config.txt";
+Config config;
 String clientOSCAddress = "0.0.0.0";
 String localOSCAddress = "0.0.0.0";
 int    clientOSCPort    = 8081;
-int    localOSCPort    = 8000;
+int    localOSCPort    = 7013;
 
 //-----------------------------------------------------------
 void setupOsc()  {
@@ -25,25 +26,12 @@ void setupOsc()  {
 void loadData(){
   println("***************************** DEBUG: load data ... ******************************"); // DEBUG
 
-  String defaultValues[] = split("127.0.0.1\n127.0.0.1\n8081\n8001", "\n");
-
-  try {
-    String lines[] = loadStrings(configFile);
-
-    for (int i=0; i < lines.length; i++) {
-      defaultValues[i] =  lines[i]; 
-    }
-  } catch(Exception e) {
-    println("Error loading data from '" + configFile + "'");
-    e.printStackTrace();
-  }
-
-  int i = 0;
-
-  clientOSCAddress = trim(defaultValues[i]);          i++;
-  localOSCAddress  = trim(defaultValues[i]);          i++;
-  clientOSCPort    = int(trim(defaultValues[i]));     i++;
-  localOSCPort     = int(trim(defaultValues[i]));     i++;
+  config = new Config(configFile);
+  config.load();
+  clientOSCAddress = config.value("clientOSCAddress");
+  localOSCAddress  = config.value("localOSCAddress"); 
+  clientOSCPort    = config.intValue("clientOSCPort");
+  localOSCPort     = config.intValue("localOSCPort"); 
 
 }
 
@@ -52,6 +40,10 @@ void loadData(){
 void oscEvent(OscMessage oscMsg) {
 
   /* print the address pattern and the typetag of the received OscMessage */
+
+  if (config.value("convertTouchOSC") != null) {
+    oscMsg = convertFromTouchOSC(oscMsg);
+  }
 
   print("### received an osc message.");
   print(" addrpattern: "+oscMsg.addrPattern());
@@ -148,3 +140,56 @@ void oscEvent(OscMessage oscMsg) {
 }
 
 
+// Some OSC clients do not ive you the option to send "fixed" arguments.
+// At best you can define a custom address pattern.
+//
+// A good example of this is TouchOSC, hence the name for this method and config option.
+//
+// TocuOSC allows you to define your own screens using assorted widgets.  The widgets can send
+// 1 or 2 arguments, typiccally floating point; the widgets are variations on binary switches or
+// gradient-value sliders.
+//
+// You can define the address pattern to be, for example, '/joint' but there is no way to
+// hard-code the first parameter to be a joint name.  All you send as the arguments are the values
+// returned by the widget.
+//
+// To get around this, we assume that the address patern in the client has the joint, layer, or bone
+// name appended as the last segment.  In other wordds, since we cannot have the client
+// send "/joint head 100.0 344.8" we have it send  "/joint/head 100.0 344.8" 
+// This method then splits out that name and uses it to create a new OSC message; this is the message
+// that is then actually executed.
+//
+// It gets a bit more complicated.  When the there are two arguments after the name value they
+// refer to screen location.  Animata expects them to be absolute values. However, many (most?)
+// OSC clients are going to be sending a float in the range of 0.0 to 1.0.  
+//
+// This function makes some assumptions about what "role" values are playing, and assumes that if 
+// an OSC message is meant to specify a location then the float value is a percentage of a screen
+// dimension.  For example, you indicate the middle of screen with 0.5 0.5, and the bottom right corner
+// as 1.0 1.0
+//
+// This really only works for OSC messages that follow the standard Animata OSC mesage set
+//   
+// See http://usinganimata.wikia.com/wiki/Animata_OSC_Commands
+OscMessage convertFromTouchOSC(OscMessage oscMsg) {
+  String patt = oscMsg.addrPattern();
+  String[] parts = splitTokens(patt, "/");
+  String[] lessOne = shorten(parts);
+  String name =  parts[parts.length - 1];
+  String newAddrPattern = "/" + join(lessOne , "/");
+  OscMessage m = new OscMessage(newAddrPattern);
+  m.add(name);
+
+  if (oscMsg.arguments().length == 1) {
+    if (newAddrPattern.equals("/layervis" ) )  {
+      m.add(parseInt( (oscMsg.arguments()[0]).toString() ));
+    } else {
+      m.add(parseFloat( (oscMsg.arguments()[0]).toString() ));
+    }
+  } else { // We assume there are 2, since the standard OSC messages have either 1 or 2 args,
+    // All default 2-arg OSC messages are assumed to refer to screen coordinates.
+    m.add(  map( parseFloat( (oscMsg.arguments()[1]).toString()), 0.0, 1.0,  0.0,  height ) ); 
+    m.add(  map( parseFloat( (oscMsg.arguments()[0]).toString()), 0.0, 1.0,  width, 0.0   ) );
+  }
+  return m;
+}
