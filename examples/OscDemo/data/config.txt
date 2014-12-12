@@ -1,0 +1,5 @@
+clientOSCAddress: 127.0.0.1
+localOSCAddress:192.168.0.15
+clientOSCPort: 8081
+localOSCPort:7013
+#convertTouchOSC: false

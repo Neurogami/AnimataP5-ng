@@ -39,12 +39,14 @@ void loadData(){
 //-----------------------------------------------------------
 void oscEvent(OscMessage oscMsg) {
 
-  /* print the address pattern and the typetag of the received OscMessage */
-
+  // NOTE: If you think something is going astray see if you have not
+  // set the config to do TouchOSC conversion because
+  // that munges the address pattern
   if (config.value("convertTouchOSC") != null) {
     oscMsg = convertFromTouchOSC(oscMsg);
   }
 
+  /* print the address pattern and the typetag of the received OscMessage */
   print("### received an osc message.");
   print(" addrpattern: "+oscMsg.addrPattern());
   println(" typetag: "+oscMsg.typetag());
@@ -81,7 +83,17 @@ void oscEvent(OscMessage oscMsg) {
 
     //    /animata/layer/<layername>/image  s
     if ( parts[area].equals("layer") ) {
+      println("83");
       String layerName = parts[layer];
+      println("86");
+
+      println("property = " + property );
+
+      // It blows up on '/animata/layer/body/image jgb-doll2.png'
+      // The code seems to think the pattern is /animata/layer/body typetag: sf
+
+      println("parts" + parts );
+
       if (parts[property].equals("image") ) {
         println("Load an image into'" + layerName  + "' ...");
         String s =  (oscMsg.arguments()[0]).toString();

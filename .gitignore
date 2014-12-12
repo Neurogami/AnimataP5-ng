@@ -1,6 +1,7 @@
 resources/build.properties
 bin
-distribution
+distribution/web
+distribution/src
 notes.md
 resources/build.properties.windows
 resources/build.properties.osx
@@ -9,3 +10,6 @@ __REMAKE.sh
 reference/resources/inherit.gif
 reference/*
 screencast-notes.md
+examples/LayerEffects/data/_Landscape.nmt
+examples/LayerEffects/data/__Landscape.nmt
+
